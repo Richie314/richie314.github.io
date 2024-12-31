@@ -15,8 +15,22 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+## Site under construcion!
+Hello world, my name is Riccardo.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+I am a computer engineering student at the 
+[University of Pisa](https://unipit.it) and honorous student at 
+[Sant'Anna School of Advanced studie](https://santannapisa.it).
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+I come from Livorno but i currently live in Pisa.
+
+I'm an open source enthusiast and have a lot of hobbies.
+I'm a great ASP.NET and PHP fan, but I also work with IoT platforms (ESP, Arduino) and containers (both Docker and Podman).
+
+## Sport
+I practiced Triple jump and Long jump for many years before starting university. Despite not competing anymore I remain a huge Track and Field enjoyer.
+
+My best results can be found on [Atletica.me](https://atletica.me/atleta/Riccardo-Ciucci/335769)
+
+## Hobbies
+As every engineer, I grew up playing with LEGO and, to this day as an adult, I can proudly say I'm still a fan.
