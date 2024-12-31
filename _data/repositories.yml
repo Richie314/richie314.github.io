@@ -1,7 +1,7 @@
 github_users:
   - Richie314
 
-repo_description_lines_max: 2
+repo_description_lines_max: 3
 
 github_repos:
   - Richie314/StarWarsIntro
