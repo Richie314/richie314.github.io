@@ -32,7 +32,6 @@ nav_order: 2
 
 ---
 
-
 {% endif %}
 
 {% if site.data.repositories.github_repos %}
