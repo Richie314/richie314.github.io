@@ -19,7 +19,7 @@ social: true # includes social icons at the bottom of the page
 Hello world, my name is Riccardo.
 
 I am a computer engineering student at the 
-[University of Pisa](https://unipit.it) and honorous student at 
+[University of Pisa](https://unipi.it) and honorous student at 
 [Sant'Anna School of Advanced studie](https://santannapisa.it).
 
 I come from Livorno but i currently live in Pisa.
