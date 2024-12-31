@@ -20,7 +20,7 @@ Hello world, my name is Riccardo.
 
 I am a computer engineering student at the 
 [University of Pisa](https://unipi.it) and honorous student at 
-[Sant'Anna School of Advanced studie](https://santannapisa.it).
+[Sant'Anna School of Advanced studies](https://santannapisa.it).
 
 I come from Livorno but i currently live in Pisa.
 
