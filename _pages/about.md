@@ -16,10 +16,11 @@ social: true # includes social icons at the bottom of the page
 ---
 
 ## Site under construcion!
+
 Hello world, my name is Riccardo.
 
-I am a computer engineering student at the 
-[University of Pisa](https://unipi.it) and honorous student at 
+I am a computer engineering student at the
+[University of Pisa](https://www.unipi.it) and honorous student at
 [Sant'Anna School of Advanced studies](https://santannapisa.it).
 
 I come from Livorno but i currently live in Pisa.
@@ -28,9 +29,11 @@ I'm an open source enthusiast and have a lot of hobbies.
 I'm a great ASP.NET and PHP fan, but I also work with IoT platforms (ESP, Arduino) and containers (both Docker and Podman).
 
 ## Sport
+
 I practiced Triple jump and Long jump for many years before starting university. Despite not competing anymore I remain a huge Track and Field enjoyer.
 
 My best results can be found on [Atletica.me](https://atletica.me/atleta/Riccardo-Ciucci/335769)
 
 ## Hobbies
+
 As every engineer, I grew up playing with LEGO and, to this day as an adult, I can proudly say I'm still a fan.
