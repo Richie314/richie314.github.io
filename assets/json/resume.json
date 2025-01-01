@@ -2,7 +2,7 @@
   "basics": {
     "name": "Riccardo Ciucci",
     "label": "College student",
-    "image": "",
+    "image": "/assets/img/prof_pic_color.jpg",
     "email": "riccardo@ciucci.dev",
     "phone": "",
     "url": "https://ciucci.dev/",
@@ -19,6 +19,11 @@
         "network": "Linkedin",
         "username": "riccardo-ciucci-03bba8309",
         "url": "https://www.linkedin.com/in/riccardo-ciucci-03bba8309"
+      },
+      {
+        "network": "Github",
+        "username": "Richie314",
+        "url": "https://github.com/Richie314"
       }
     ]
   },
@@ -40,21 +45,32 @@
       "institution": "Liceo Francesco Cecioni",
       "location": "Livorno, Italy",
       "url": "https://liceocecioni.edu.it",
-      "area": "",
-      "studyType": "High School, Liceo scientifico opzione scienze applicate",
+      "area": "High School",
+      "studyType": "Liceo scientifico opzione scienze applicate",
       "startDate": "2017-09-15",
       "endDate": "2022-07-05",
       "score": "100L",
+      "courses": []
+    },
+    {
+      "institution": "Sant'Anna School of Advanced Studies",
+      "location": "Pisa, Italy",
+      "url": "https://santannapisa.it",
+      "area": "University",
+      "studyType": "Engineering",
+      "startDate": "2022-10-01",
+      "endDate": "",
+      "score": "",
       "courses": []
     }
   ],
   "awards": [
     {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+      "title": "Bronze medal at CyberChallenge",
+      "date": "2023-06-30",
+      "awarder": "Cybersecurity National Lab",
+      "url": "https://dii.unipi.it/news/news/di-nuovo-podio-il-team-pisano-alla-cyberchallenge-la-competizione-italiana-degli-hackers",
+      "summary": "The CyberChallenge is a team CTF (Capture The Flag): a cybersecurity competition where 6 people represent their university, UniPisa in my case. We ranked third nationwide in the finals."
     }
   ],
   "certificates": [
@@ -71,7 +87,7 @@
     {
       "name": "Docker",
       "level": "Basic",
-      "icon": "fa-solid fa-docker",
+      "icon": "fab fa-docker",
       "keywords": [
         "Dockerfile",
         "Docker Compose",
@@ -81,10 +97,11 @@
     },
     {
       "name": "Web development",
-      "level": "Medium",
-      "icon": "fa-solid fa-docker",
+      "level": "Medium-Advanced",
+      "icon": "fa-brands fa-php",
       "keywords": [
         "Javascript",
+        "jQuery",
         "Html",
         "Css",
         "Php",
@@ -92,6 +109,46 @@
         "Twig",
         "ASP.NET",
         "ASP.NET Core"
+      ]
+    },
+    {
+      "name": "Arduino",
+      "level": "Good",
+      "icon": "fa-solid fa-microchip",
+      "keywords": [
+        "Arduino",
+        "ESP-32"
+      ]
+    },
+    {
+      "name": "C/C++",
+      "level": "Medium",
+      "icon": "fa-solid fa-square-binary",
+      "keywords": [
+        "C",
+        "C++",
+        "Linux"
+      ]
+    },
+    {
+      "name": "C#",
+      "level": "Medium",
+      "icon": "fa-brands fa-windows",
+      "keywords": [
+        "C#",
+        "Windows",
+        "Windows Forms"
+      ]
+    },
+    {
+      "name": "Python",
+      "level": "Medium",
+      "icon": "fa-brands fa-python",
+      "keywords": [
+        "Python",
+        "Python Requests",
+        "Web scraping",
+        "Telegram Bot Api"
       ]
     }
   ],
@@ -109,15 +166,13 @@
   ],
   "interests": [
     {
-      "name": "Physics",
+      "name": "Cybersecurity",
       "icon": "fa-solid fa-tag",
       "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
+        "Rev",
+        "Osint",
+        "Web",
+        "Embed"
       ]
     }
   ],

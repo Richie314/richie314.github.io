@@ -10,7 +10,7 @@ profile:
   image_circular: false # crops the image to make it circular
   more_info:
 
-news: true # includes a list of news items
+news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
@@ -26,7 +26,12 @@ I am a computer engineering student at the
 I come from Livorno but i currently live in Pisa.
 
 I'm an open source enthusiast and have a lot of hobbies.
-I'm a great ASP.NET and PHP fan, but I also work with IoT platforms (ESP, Arduino) and containers (both Docker and Podman).
+I'm a great ASP.NET and PHP fan, but I also work with IoT platforms (ESP, Arduino) and containers (both Docker and Podman). I've also worked with C and basic Linux development.
+
+## Cybersecurity
+
+During the first year of university I approached cybersecurity and the CTF world. I am a member of the
+[BeautifulSSSUP](https://github.com/BeautifulSSSUP) team.
 
 ## Sport
 
