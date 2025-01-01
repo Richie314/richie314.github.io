@@ -41,11 +41,8 @@ During the first year of university I approached cybersecurity and the CTF world
 
 ## Personal life
 
-{% quote break noprep
-  cite="Richard Bach"
-  url="https://en.wikipedia.org/wiki/Richard_Bach"
-%}
-  _You're never given a dream without also being given the power to make it true_.
+{% quote break noprep cite="Richard Bach" %}
+  You're never given a dream without also being given the power to make it true
 {% endquote %} 
 
 ### Sport

@@ -221,6 +221,7 @@ plugins:
   - jekyll-tabs
   - jekyll-toc
   - jekyll-twitter-plugin
+  - jekyll_quote
   - jemoji
   - terser
 
