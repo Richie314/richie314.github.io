@@ -13,6 +13,9 @@ profile:
 news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
+
+quote: You're never given a dream without also being given the power to make it true
+quote-author: Richard Bach
 ---
 
 > ##### WARNING
@@ -41,9 +44,7 @@ During the first year of university I approached cybersecurity and the CTF world
 
 ## Personal life
 
-{% quote break noprep cite="Richard Bach" %}
-  You're never given a dream without also being given the power to make it true
-{% endquote %} 
+{% include blockquote.liquid %}
 
 ### Sport
 

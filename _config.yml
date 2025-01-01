@@ -221,7 +221,6 @@ plugins:
   - jekyll-tabs
   - jekyll-toc
   - jekyll-twitter-plugin
-  - jekyll_quote
   - jemoji
   - terser
 
@@ -350,13 +349,6 @@ external_links:
   rel: external nofollow noopener
   target: _blank
   exclude:
-
-# -----------------------------------------------------------------------------
-# Jekyll Quote
-# -----------------------------------------------------------------------------
-
-quote:
-  die_on_quote_error: false
 
 # -----------------------------------------------------------------------------
 # Responsive WebP Images
