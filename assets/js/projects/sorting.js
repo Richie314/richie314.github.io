@@ -1,5 +1,8 @@
 var ran = n => Math.floor(Math.random() * 10e+8) % n;
-
+const _Colors = {
+    Cols: ["#112d4e", "#112d4e", "#dbe2ef"],
+    Bg: ["#f9f7f7", "#dbe2ef", "#3f72af"]
+}
 var bubble = {
     buffer: [0],
     SwapSimple(i, j) {

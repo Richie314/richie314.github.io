@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col mb-3">
+        <label for="{{ include.algo }}-tot" class="form-label">
+            Array size
+        </label>
+        <input type="number" class="form-control" 
+            id="{{ include.algo }}-tot" 
+            min="4" max="1024" step="1" value="32">
+    </div>
+    <div class="col mb-3">
+        <label for="{{ include.algo }}-interval" class="form-label">
+            Iteration delay
+        </label>
+        <input type="number" class="form-control" 
+            id="{{ include.algo }}-interval" 
+            min="10" max="1000" step="1" value="100">
+    </div>
+</div>
+
+<canvas 
+    id="{{ include.algo }}" width="1350" heght="900" 
+    style="max-width: 100%; max-height: 250px">
+</canvas>
+
+<div class="row">
+    <div class="col">
+        <button type="button" onclick="{{ include.algo }}.Input()" 
+            class="btn btn-secondary"
+            title="Shuffle the array">
+            Shuffle
+        </button>
+    </div>
+    <div class="col">
+        <button type="button" onclick="{{ include.algo }}.Sort()" 
+            id="{{ include.algo }}-btn" class="btn btn-secondary"
+            title="Sort the array">
+            Sort
+        </button>
+    </div>
+</div>
+<p class="user-select-none">
+    <span>
+        Swaps:
+    </span>
+    <output id="{{ include.algo }}-swaps"></output>
+</p>
