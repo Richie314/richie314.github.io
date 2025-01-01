@@ -8,7 +8,13 @@
                 </label>
                 <input type="number" class="form-control" 
                     id="{{ include.algo }}-tot" 
-                    min="4" max="1024" step="1" value="32">
+                    min="4" max="1024" step="1" 
+                {% if include.array_size %}
+                    value="{{ include.array_size }}"
+                {% else %}
+                    value="32"
+                {% endif %}
+                >
             </div>
         </div>
         <div class="row">
@@ -18,7 +24,13 @@
                 </label>
                 <input type="number" class="form-control" 
                     id="{{ include.algo }}-interval" 
-                    min="10" max="1000" step="1" value="100">
+                    min="10" max="1000" step="1"
+                {% if include.delay %}
+                    value="{{ include.delay }}"
+                {% else %}
+                    value="100"
+                {% endif %}
+                >
             </div>
         </div>
         <div class="row user-select-none">
@@ -49,7 +61,11 @@
 </div>
 <p>   
     <span>
+    {% if include.swap_label %}
+        {{ include.swap_label }}
+    {% else %}
         Swaps:
+    {% endif  %}
     </span>
     <output id="{{ include.algo }}-swaps"></output>
 </p>
