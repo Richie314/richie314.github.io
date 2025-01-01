@@ -60,4 +60,4 @@ template <typename T> inline void BubbleSort(
 	}
 }
 ```
-<script type="text/javascript" defer src="{{ 'assets/js/projects' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/projects/sorting.js' | relative_url }}"></script>
