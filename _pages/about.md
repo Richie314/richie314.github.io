@@ -2,8 +2,8 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
-
+#subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Engineering student from Livorno
 profile:
   align: left
   image: prof_pic_color.jpg
@@ -33,12 +33,18 @@ I'm a great ASP.NET and PHP fan, but I also work with IoT platforms (ESP, Arduin
 During the first year of university I approached cybersecurity and the CTF world. I am a member of the
 [BeautifulSSSUP](https://github.com/BeautifulSSSUP) team.
 
-## Sport
+---
+
+## Personal life
+
+>_You're never given a dream without also being given the power to make it true_, Richard Bach
+
+### Sport
 
 I practiced Triple jump and Long jump for many years before starting university. Despite not competing anymore I remain a huge Track and Field enjoyer.
 
 My best results can be found on [Atletica.me](https://atletica.me/atleta/Riccardo-Ciucci/335769)
 
-## Hobbies
+### Hobbies
 
 As every engineer, I grew up playing with LEGO and, to this day as an adult, I can proudly say I'm still a fan.

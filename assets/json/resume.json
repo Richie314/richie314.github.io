@@ -53,11 +53,22 @@
       "courses": []
     },
     {
+      "institution": "University of Pisa",
+      "location": "Pisa, Italy",
+      "url": "https://unipi.it",
+      "area": "University",
+      "studyType": "Computer Engineering",
+      "startDate": "2022-09-25",
+      "endDate": "",
+      "score": "",
+      "courses": []
+    },
+    {
       "institution": "Sant'Anna School of Advanced Studies",
       "location": "Pisa, Italy",
       "url": "https://santannapisa.it",
       "area": "University",
-      "studyType": "Engineering",
+      "studyType": "Information engineering",
       "startDate": "2022-10-01",
       "endDate": "",
       "score": "",
