@@ -21,6 +21,22 @@
                     min="10" max="1000" step="1" value="100">
             </div>
         </div>
+        <div class="row user-select-none">
+            <div class="col">
+                <button type="button" onclick="{{ include.algo }}.Input()" 
+                    class="btn btn-secondary"
+                    title="Shuffle the array">
+                    Shuffle
+                </button>
+            </div>
+            <div class="col">
+                <button type="button" onclick="{{ include.algo }}.Sort()" 
+                    id="{{ include.algo }}-btn" class="btn btn-secondary"
+                    title="Sort the array">
+                    Sort
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Drawing canvas -->
@@ -31,26 +47,9 @@
         </canvas>
     </div>
 </div>
-
-<div class="row user-select-none">
-    <div class="col">
-        <button type="button" onclick="{{ include.algo }}.Input()" 
-            class="btn btn-secondary"
-            title="Shuffle the array">
-            Shuffle
-        </button>
-    </div>
-    <div class="col">
-        <button type="button" onclick="{{ include.algo }}.Sort()" 
-            id="{{ include.algo }}-btn" class="btn btn-secondary"
-            title="Sort the array">
-            Sort
-        </button>
-    </div>
-    <div class="col">
-        <span>
-            Swaps:
-        </span>
-        <output id="{{ include.algo }}-swaps"></output>
-    </div>
-</div>
+<p>   
+    <span>
+        Swaps:
+    </span>
+    <output id="{{ include.algo }}-swaps"></output>
+</p>
