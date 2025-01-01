@@ -15,7 +15,11 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-## Site under construcion!
+> ##### WARNING
+>
+> **Site under construcion!**
+> Many pages still have default content from the theme
+{: .block-warning }
 
 Hello world, my name is Riccardo.
 
@@ -37,7 +41,12 @@ During the first year of university I approached cybersecurity and the CTF world
 
 ## Personal life
 
->_You're never given a dream without also being given the power to make it true_, Richard Bach
+{% quote break noprep
+  cite="Richard Bach"
+  url="https://en.wikipedia.org/wiki/Richard_Bach"
+%}
+  _You're never given a dream without also being given the power to make it true_.
+{% endquote %} 
 
 ### Sport
 
