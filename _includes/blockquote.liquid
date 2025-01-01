@@ -1,17 +1,24 @@
 {% if page.quote %}
-<blockquote class="blockquote">
-  <p class="mb-0">{{ page.quote }}</p>
+<figure class="quote" style="user-select: none;">
+	<blockquote class="quote-body">
+    <p>
+      {{ page.quote }}
+    </p>
+  </blockquote>
   {% if page.quote-author and page.quote-source %}
-  <footer class="blockquote-footer">{{ page.quote-author }},
-    <cite title="Source Title">{{ page.quote-source }}</cite>
-  </footer>
+    <figcaption class="quote-credits">{{ page.quote-author }}, 
+      <cite>{{ page.quote-source }}</cite>
+    </figcaption>
   {% elsif page.quote-author %}
-  <footer class="blockquote-footer">{{ page.quote-author }}
-  </footer>
+    <figcaption class="quote-credits">{{ page.quote-author }}</figcaption>
   {% endif %}
-</blockquote>
+</figure>
 {% else %}
-<blockquote class="blockquote">
-  <p class="mb-0">Check your front matter for quote variables!</p>
-</blockquote>
+<figure class="quote" style="user-select: none;">
+  <blockquote class="quote-body">
+    <p>
+        <code>quote</code> not set in page matter!
+    </p>
+  </blockquote>
+</figure>
 {% endif %}

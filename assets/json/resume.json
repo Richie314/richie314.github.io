@@ -28,18 +28,6 @@
     ]
   },
   "work": [],
-  "volunteer": [
-    {
-      "organization": "Amichiamoci",
-      "location": "Livorno, Italy",
-      "position": "IT Staff",
-      "url": "https://www.amichiamoci.it",
-      "startDate": "2022-08-01",
-      "endDate": "2023-10-15",
-      "summary": "System manager for the Event",
-      "highlights": []
-    }
-  ],
   "education": [
     {
       "institution": "Liceo Francesco Cecioni",
@@ -68,7 +56,7 @@
       "location": "Pisa, Italy",
       "url": "https://santannapisa.it",
       "area": "University",
-      "studyType": "Information engineering",
+      "studyType": "Information Engineering",
       "startDate": "2022-10-01",
       "endDate": "",
       "score": "",
@@ -82,6 +70,18 @@
       "awarder": "Cybersecurity National Lab",
       "url": "https://dii.unipi.it/news/news/di-nuovo-podio-il-team-pisano-alla-cyberchallenge-la-competizione-italiana-degli-hackers",
       "summary": "The CyberChallenge is a team CTF (Capture The Flag): a cybersecurity competition where 6 people represent their university, UniPisa in my case. We ranked third nationwide in the finals."
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Amichiamoci",
+      "location": "Livorno, Italy",
+      "position": "IT Staff",
+      "url": "https://www.amichiamoci.it",
+      "startDate": "2022-08-01",
+      "endDate": "2023-10-15",
+      "summary": "System manager for the Event",
+      "highlights": []
     }
   ],
   "certificates": [
