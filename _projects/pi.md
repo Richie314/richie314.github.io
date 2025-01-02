@@ -36,7 +36,7 @@ $$ \pi = N sin{180° \over N} $$
         </div>
     </div>
     <div class="col">
-        <canvas id="archimedes-canvas" width="1000" height="1000" style="margin-inline: auto; max-heigh: 350px;"></canvas>
+        <canvas id="archimedes-canvas" width="1000" height="1000" style="margin-inline: auto; max-height: 350px;"></canvas>
     </div>
 </div>
 
@@ -118,7 +118,7 @@ $$ {128096012 \over {3\pi}} = \sum\limits_{k=0}^\infty { { (6k)! (13591409 + 545
 </div>
 <div class="row">
     <div class="col">
-        <span class="italic">@Html.Pi() = </span>
+        <span class="italic">Pi = </span>
         <output id="ramanujan-receive">3.140592653839794</output>
     </div>
 </div>

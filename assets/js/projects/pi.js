@@ -1,4 +1,10 @@
 'use strict';
+
+const _Colors = {
+    Cols: ["#112d4e", "#112d4e", "#dbe2ef"],
+    Bg: ["#f9f7f7", "#dbe2ef", "#3f72af"]
+}
+
 var ArchimedesInput = document.getElementById('archimedes-input');
 var ArchimedesReceive = document.getElementById('archimedes-receive');
 var archimedescanvas = document.getElementById('archimedes-canvas');
@@ -313,7 +319,7 @@ var Pi = {
         const digits = Math.floor(Pi.CheckUserInput(CollisionInput));
         if (this.collisionsRunning) {
             //start (was stopped before)
-            CollisionBtn.innerHTML = 'Annulla';
+            CollisionBtn.innerHTML = 'Abort';
             currentPi = new Decimal(0);
             steps = Decimal.pow(10, digits - 1);
             block1 = new PiCollideBlock(100, 20, 1, 0, 0);
@@ -322,7 +328,7 @@ var Pi = {
             //start animations
             requestAnimationFrame(Pi.CollisionShow);
             Pi.CollisionsUpdate().then(() => {
-                CollisionBtn.innerHTML = 'Avvia';
+                CollisionBtn.innerHTML = 'Start';
             });
         }
     },
@@ -379,11 +385,11 @@ var Pi = {
     {
         if (Pi.RandomId === 0)
         {
-            RandomInput.innerHTML = 'Pausa calcolo';
+            RandomInput.innerHTML = 'Pause';
             //RandomCtx.clearRect(0, 0, RandomReceiveCanvas.width, RandomReceiveCanvas.height)
             Pi.RandomId = setInterval(Pi.RandomUpdate, 10);
         } else {
-            RandomInput.innerHTML = 'Riprendi calcolo';
+            RandomInput.innerHTML = 'Resume';
             clearInterval(Pi.RandomId);
             Pi.RandomId = 0;
         }
@@ -420,7 +426,7 @@ var Pi = {
             clearInterval(Pi.RandomId);
             Pi.RandomId = 0;
         }
-        RandomInput.innerHTML = 'Avvia calcolo';
+        RandomInput.innerHTML = 'Start';
         Pi.RandomCurrentPi.num = new Decimal(0);
         Pi.RandomCurrentPi.den = new Decimal(1);
         RandomReceive.innerHTML = '0';
