@@ -1,1 +1,1 @@
-User-agent: * Disallow: Sitemap: https://richie314.github.io/sitemap.xml
+User-agent: * Disallow: Sitemap: https://ciucci.dev/sitemap.xml
