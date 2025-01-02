@@ -434,44 +434,10 @@ var Pi = {
     }
 }
 
-var SqrtDemo = {
-    Input: document.getElementById('radix-example-input'),
-    Rows: [],
-    Generate() {
-        let a = 1, b = 1, N = Number(SqrtDemo.Input.value);
-        SqrtDemo.Rows.forEach(([A, B, S]) => {
-            A.innerHTML = a;
-            B.innerHTML = b;
-            S.innerHTML = (b / a).toFixed(7);
-            let nA = a + b, nB = N * a + b;
-            a = nA;
-            b = nB;
-        });
-    },
-    Init() {
-        let a = [...document.body.querySelectorAll('.radix-example-row-a')],
-            b = [...document.body.querySelectorAll('.radix-example-row-b')],
-            s = [...document.body.querySelectorAll('.radix-example-row-sqrt')];
-        const order = (l, r) => 
-            Number(l.getAttribute('row-index')) - Number(r.getAttribute('row-index'))
-        a.sort(order); b.sort(order); s.sort(order);
-        if (a.length !== b.length || a.length !== s.length) {
-            throw new Error('Table columns for sqrt() demo malformed!');
-        }
-        for (let i = 0; i < a.length; i++) {
-            SqrtDemo.Rows.push([a[i], b[i], s[i]]);
-        }
-        SqrtDemo.Input.addEventListener('input', SqrtDemo.Generate);
-        SqrtDemo.Generate();
-    }
-}
-
 Pi.Archimedes();
 ArchimedesInput.addEventListener('input', Pi.Archimedes);
 Pi.Archimedes2();
 ArchimedesInput2.addEventListener('input', Pi.Archimedes2);
-
-SqrtDemo.Init();
 
 Pi.Leibniz();
 LeibnizInput.addEventListener('input', Pi.Leibniz);

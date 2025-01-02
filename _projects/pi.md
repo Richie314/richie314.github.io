@@ -43,8 +43,11 @@ $$ \pi = N sin{180° \over N} $$
 ![Archimede method](/assets/img/archimede-method.svg)
 
 $$ h = r - \sqrt{r^2 - {L^2 \over 4}} $$
+
 $$ {L'}^2 = 2rh \rightarrow {L'}^2 = 2r^2 - 2r\sqrt{r^2 - {L^2 \over 4}} $$
+
 $$ L' = \sqrt{2r^2 - 2r\sqrt{r^2 - {L^2 \over 4}}} $$
+
 $$ \pi \approx N \times L' = N\sqrt{2r^2 - 2r\sqrt{r^2 - {L^2 \over 4}}} $$
 
 <div class="row">
@@ -125,7 +128,7 @@ $$ {128096012 \over {3\pi}} = \sum\limits_{k=0}^\infty { { (6k)! (13591409 + 545
 
 ## The collisions method
 
-[<i class="fa fa-youtube-play"></i>](https://www.youtube.com/watch?v=jsYwFizhncE "Watch on YouTube")
+[Watch on Youtube <i class="fa fa-youtube-play"></i>](https://www.youtube.com/watch?v=jsYwFizhncE "Watch on YouTube")
 
 <div class="row">
     <div class="col">
