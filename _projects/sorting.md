@@ -4,7 +4,7 @@ title: Sorting Algorithms simulation
 description: >
     Play with many sorting algorithms rendered in canvas and understand how they work.
     Each one is accompanied with a simple c++ implementation
-img: assets/img/12.jpg
+img: assets/img/sorting.svg
 importance: 1
 category: education
 ---

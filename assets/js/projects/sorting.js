@@ -3,6 +3,9 @@ const _Colors = {
     Cols: ["#112d4e", "#112d4e", "#dbe2ef"],
     Bg: ["#f9f7f7", "#dbe2ef", "#3f72af"]
 }
+const STOP = 'Stop';
+const SORT = 'Sort';
+
 var bubble = {
     buffer: [0],
     SwapSimple(i, j) {
@@ -115,7 +118,7 @@ var bubble = {
                 clearInterval(bubble.id)
                 bubble.j = -1
                 bubble.id = 0
-                bubble.btn.innerHTML = 'Riordina'
+                bubble.btn.innerHTML = SORT
             }
         }
         requestAnimationFrame(bubble.Display)
@@ -125,14 +128,14 @@ var bubble = {
             if (this.interval.value < 10 || this.interval.value > 1000) {
                 this.interval.value = 10
             }
-            this.btn.innerHTML = 'Ferma'
+            this.btn.innerHTML = STOP
             this.j = 0
             this.id = setInterval(bubble.Sorting, this.interval.value)
             console.log('Bubble sort started with id: ' + this.id)
         } else {
             clearInterval(this.id)
             this.id = 0
-            this.btn.innerHTML = 'Riordina'
+            this.btn.innerHTML = SORT
         }
     },
     Create() {
@@ -269,7 +272,7 @@ var selection = {
                 selection.j = -1
                 selection.index = -1
                 selection.id = 0
-                selection.btn.innerHTML = 'Riordina'
+                selection.btn.innerHTML = SORT
             }
         }
         requestAnimationFrame(selection.Display)
@@ -281,7 +284,7 @@ var selection = {
             }
             this.swapsNum = 0
             this.swaps.innerHTML = '0'
-            this.btn.innerHTML = 'Ferma'
+            this.btn.innerHTML = STOP
             this.j = 1
             this.i = 0
             this.index = 0
@@ -290,7 +293,7 @@ var selection = {
         } else {
             clearInterval(this.id)
             this.id = 0
-            this.btn.innerHTML = 'Riordina'
+            this.btn.innerHTML = SORT
         }
     },
     Create() {
@@ -624,7 +627,7 @@ var cocktailshaker = {
                 cocktailshaker.c = -1
                 cocktailshaker.n = -1
                 cocktailshaker.id = 0
-                cocktailshaker.btn.innerHTML = 'Riordina'
+                cocktailshaker.btn.innerHTML = SORT
             }
         }
         requestAnimationFrame(cocktailshaker.Display)
@@ -634,12 +637,12 @@ var cocktailshaker = {
             if (this.interval.value < 10 || this.interval.value > 1000) {
                 this.interval.value = 10
             }
-            this.btn.innerHTML = 'Ferma'
+            this.btn.innerHTML = STOP
             this.id = setInterval(cocktailshaker.Sorting, this.interval.value)
         } else {
             clearInterval(this.id)
             this.id = 0
-            this.btn.innerHTML = 'Riordina'
+            this.btn.innerHTML = SORT
         }
     },
     Create() {
@@ -778,7 +781,7 @@ var insertion = {
                 insertion.i = -1
                 insertion.j = -1
                 insertion.id = 0
-                insertion.btn.innerHTML = 'Riordina'
+                insertion.btn.innerHTML = SORT
             }
         }
         requestAnimationFrame(insertion.Display)
@@ -788,12 +791,12 @@ var insertion = {
             if (this.interval.value < 10 || this.interval.value > 1000) {
                 this.interval.value = 10
             }
-            this.btn.innerHTML = 'Ferma'
+            this.btn.innerHTML = STOP
             this.id = setInterval(insertion.Sorting, this.interval.value)
         } else {
             clearInterval(this.id)
             this.id = 0
-            this.btn.innerHTML = 'Riordina'
+            this.btn.innerHTML = SORT
         }
     },
     Create() {
@@ -930,7 +933,7 @@ var shell = {
                 shell.i = -1
                 shell.gap = -1
                 shell.id = 0
-                shell.btn.innerHTML = 'Riordina'
+                shell.btn.innerHTML = SORT
             }
         }
         requestAnimationFrame(shell.Display)
@@ -940,12 +943,12 @@ var shell = {
             if (this.interval.value < 10 || this.interval.value > 1000) {
                 this.interval.value = 10
             }
-            this.btn.innerHTML = 'Ferma'
+            this.btn.innerHTML = STOP
             this.id = setInterval(shell.Sorting, this.interval.value)
         } else {
             clearInterval(this.id)
             this.id = 0
-            this.btn.innerHTML = 'Riordina'
+            this.btn.innerHTML = SORT
         }
     },
     Create() {
@@ -1080,7 +1083,7 @@ var oddeven = {
                 clearInterval(oddeven.id)
                 oddeven.i = -1
                 oddeven.id = 0
-                oddeven.btn.innerHTML = 'Riordina'
+                oddeven.btn.innerHTML = SORT
             }
         }
         requestAnimationFrame(oddeven.Display)
@@ -1090,13 +1093,13 @@ var oddeven = {
             if (this.interval.value < 10 || this.interval.value > 1000) {
                 this.interval.value = 10
             }
-            this.btn.innerHTML = 'Ferma'
+            this.btn.innerHTML = STOP
             this.id = setInterval(oddeven.Sorting, this.interval.value)
             console.log('oddeven sort started with id: ' + this.id)
         } else {
             clearInterval(this.id)
             this.id = 0
-            this.btn.innerHTML = 'Riordina'
+            this.btn.innerHTML = SORT
         }
     },
     Create() {
