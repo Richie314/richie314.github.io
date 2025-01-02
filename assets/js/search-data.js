@@ -70,6 +70,11 @@ ninja.data = [{
           description: "another project with an image 🎉",
           section: "Projects",handler: () => {
               window.location.href = "/projects/9_project/";
+            },},{id: "projects-calculate-𝜋-in-the-browser",
+          title: 'Calculate 𝜋 in the browser',
+          description: "Play with different method of approximation of 𝜋",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/pi/";
             },},{id: "projects-sorting-algorithms-simulation",
           title: 'Sorting Algorithms simulation',
           description: "Play with many sorting algorithms rendered in canvas and understand how they work. Each one is accompanied with a simple c++ implementation",
