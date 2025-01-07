@@ -99,68 +99,37 @@
       "name": "Docker",
       "level": "Basic",
       "icon": "fab fa-docker",
-      "keywords": [
-        "Dockerfile",
-        "Docker Compose",
-        "Podman",
-        "Docker Networking"
-      ]
+      "keywords": ["Dockerfile", "Docker Compose", "Podman", "Docker Networking"]
     },
     {
       "name": "Web development",
       "level": "Medium-Advanced",
       "icon": "fa-brands fa-php",
-      "keywords": [
-        "Javascript",
-        "jQuery",
-        "Html",
-        "Css",
-        "Php",
-        "Symfony",
-        "Twig",
-        "ASP.NET",
-        "ASP.NET Core"
-      ]
+      "keywords": ["Javascript", "jQuery", "Html", "Css", "Php", "Symfony", "Twig", "ASP.NET", "ASP.NET Core"]
     },
     {
       "name": "Arduino",
       "level": "Good",
       "icon": "fa-solid fa-microchip",
-      "keywords": [
-        "Arduino",
-        "ESP-32"
-      ]
+      "keywords": ["Arduino", "ESP-32"]
     },
     {
       "name": "C/C++",
       "level": "Medium",
       "icon": "fa-solid fa-square-binary",
-      "keywords": [
-        "C",
-        "C++",
-        "Linux"
-      ]
+      "keywords": ["C", "C++", "Linux"]
     },
     {
       "name": "C#",
       "level": "Medium",
       "icon": "fa-brands fa-windows",
-      "keywords": [
-        "C#",
-        "Windows",
-        "Windows Forms"
-      ]
+      "keywords": ["C#", "Windows", "Windows Forms"]
     },
     {
       "name": "Python",
       "level": "Medium",
       "icon": "fa-brands fa-python",
-      "keywords": [
-        "Python",
-        "Python Requests",
-        "Web scraping",
-        "Telegram Bot Api"
-      ]
+      "keywords": ["Python", "Python Requests", "Web scraping", "Telegram Bot Api"]
     }
   ],
   "languages": [
@@ -179,12 +148,7 @@
     {
       "name": "Cybersecurity",
       "icon": "fa-solid fa-tag",
-      "keywords": [
-        "Rev",
-        "Osint",
-        "Web",
-        "Embed"
-      ]
+      "keywords": ["Rev", "Osint", "Web", "Embed"]
     }
   ],
   "references": [],

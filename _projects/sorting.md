@@ -2,15 +2,14 @@
 layout: page
 title: Sorting Algorithms simulation
 description: >
-    Play with many sorting algorithms rendered in canvas and understand how they work.
-    Each one is accompanied with a simple c++ implementation
+  Play with many sorting algorithms rendered in canvas and understand how they work.
+  Each one is accompanied with a simple c++ implementation
 img: assets/img/sorting.svg
 importance: 1
 category: education
 ---
 
 <script defer src="{{ '/assets/js/projects/sorting.js' | relative_url }}"></script>
-
 
 ## Bubble sort
 
@@ -35,7 +34,6 @@ template <typename T> inline void BubbleSort(
 }
 ```
 
-
 ## Cocktail Shaker sort
 
 {% include sorting.liquid algo='cocktailshaker' %}
@@ -58,7 +56,6 @@ template <typename T> inline void ShakerSort(
     }
 }
 ```
-
 
 ## Insertion sort
 

@@ -1,24 +1,23 @@
 {% if page.quote %}
-<figure class="quote" style="user-select: none;">
-	<blockquote class="quote-body">
-    <p>
-      {{ page.quote }}
-    </p>
-  </blockquote>
-  {% if page.quote-author and page.quote-source %}
-    <figcaption class="quote-credits">{{ page.quote-author }}, 
-      <cite>{{ page.quote-source }}</cite>
-    </figcaption>
-  {% elsif page.quote-author %}
-    <figcaption class="quote-credits">{{ page.quote-author }}</figcaption>
-  {% endif %}
-</figure>
+  <figure class="quote" style="user-select: none;">
+    <blockquote class="quote-body">
+      <p>
+        {{ page.quote }}
+      </p>
+    </blockquote>
+    {% if page['quote-author'] and page['quote-source'] %}
+      <figcaption class="quote-credits">
+        {{ page['quote-author'] }},
+        <cite>{{ page['quote-source'] }}</cite>
+      </figcaption>
+    {% elsif page['quote-author'] %}
+      <figcaption class="quote-credits">{{ page['quote-author'] }}</figcaption>
+    {% endif %}
+  </figure>
 {% else %}
-<figure class="quote" style="user-select: none;">
-  <blockquote class="quote-body">
-    <p>
-        <code>quote</code> not set in page matter!
-    </p>
-  </blockquote>
-</figure>
+  <figure class="quote" style="user-select: none;">
+    <blockquote class="quote-body">
+      <p><code>quote</code> not set in page matter!</p>
+    </blockquote>
+  </figure>
 {% endif %}
