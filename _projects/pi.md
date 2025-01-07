@@ -145,14 +145,16 @@ $$ \pi \approx 4 \sum_{K=0}^N { { (-1)^K } \over {2K+1} } $$
 
 <div class="row">
     <div class="col">
-        <span class="italic">N = </span>
-        <input type="number" min="4" max="1000000"
-                value="1000" id="leibniz-input" size="10" step="1">
+        <div class="input-group">
+            <span class="input-group-text">N = </span>
+            <input type="number" 
+                min="4" max="1000000" step="1"
+                value="1000" id="leibniz-input" size="10"
+                class="form-control">
+        </div> 
     </div>
-</div>
-<div class="row">
     <div class="col">
-        <span class="italic">Pi = </span>
+        <span class="italic">𝜋 = </span>
         <output id="leibniz-receive">3.14</output>
     </div>
 </div>
@@ -164,7 +166,7 @@ $$
 ### Implementation
 
 ```js
-async function LeibnizIterateUntil(n) {
+async function Leibniz(n) {
     let p = new Decimal(1);
     const One = new Decimal(1); // Used to not generate n uneeded instances
     let even = false;
@@ -191,15 +193,16 @@ $$ {128096012 \over {3\pi}} = \sum_{k=0}^\infty { { (6k)! (13591409 + 545140134k
 
 <div class="row">
     <div class="col">
-        <span class="italic">k = </span>
-        <input 
-            type="number" min="2" max="256"
-            value="32" id="ramanujan-input" size="10" step="1">
+        <div class="input-group">
+            <span class="input-group-text">k = </span>
+            <input type="number" 
+                min="2" max="256" step="1"
+                value="32" id="ramanujan-input" size="10"
+                class="form-control">
+        </div> 
     </div>
-</div>
-<div class="row">
     <div class="col">
-        <span class="italic">Pi = </span>
+        <span class="italic">𝜋 = </span>
         <output id="ramanujan-receive">3.140592653839794</output>
     </div>
 </div>
@@ -238,16 +241,17 @@ function RamanujanIteration(start, end) {
 
 ## The collisions method
 
-[Watch on Youtube <i class="fa fa-youtube-play"></i>](https://www.youtube.com/watch?v=jsYwFizhncE "Watch on YouTube")
+[Watch on Youtube](https://www.youtube.com/watch?v=jsYwFizhncE "Watch on YouTube")
 
 <div class="row">
     <div class="col">
         <div class="row">
             <div class="col mb-3">
-                <label for="collision-input">
-                    Cifre:
+                <label for="collision-input" class="form-label">
+                    Digits
                 </label>
-                <input type="number" id="collision-input"
+                <input type="number" 
+                    id="collision-input" class="form-control"
                     min="2" value="4" max="7" step="1" />
             </div>
         </div>
@@ -267,7 +271,7 @@ function RamanujanIteration(start, end) {
             </div>
         </div>
     </div>
-    <div class="col">
+    <div class="col col-9">
         <canvas id="collision-canvas" width="600" height="300" style="width: 100%; margin-inline: auto; max-height: 350px;"></canvas>
     </div>
 </div>
@@ -278,45 +282,48 @@ $$ { { {\pi r^2} \over 4 } \over {r^2}} = { {\pi r^2} \over {4 r^2}} = { \pi \ov
 
 $$ {N_{Internals} \over N_{Total}} \approx { \pi \over 4} $$
 
-<div class="col">
-    <div class="row">
-        <div class="col mb-3">
-            <label for="random-function-select">
-                Generatore di numeri impiegato:
-            </label>
-            <select id="random-function-select">
-                <option value="default">Predefinito del browser</option>
-                <option value="decimalJS">Da libreria DecimalJS</option>
-            </select>
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <div class="col mb-3">
+                <label for="random-function-select" class="form-label">
+                    Random generator
+                </label>
+                <select id="random-function-select" class="form-control">
+                    <option value="default">Browser built in</option>
+                    <option value="decimalJS">From Decimal.js library</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <button type="button" class="btn btn-primary" id="random-input">
+                    Start
+                </button>
+            </div>
+            <div class="col mb-3">
+                <button type="button" class="btn btn-primary" id="random-reset">
+                    Reset
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <span>𝜋 = </span>
+                <output id="random-receive" class="receive">3.14</output>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <span>Number of points: </span>
+                <span id="random-total" class="receive">0</span>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col mb-3">
-            <button type="button" class="btn btn-primary" id="random-input">
-                Start
-            </button>
-        </div>
-        <div class="col mb-3">
-            <button type="button" class="btn btn-primary" id="random-reset">
-                Reset
-            </button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <span>Pi = </span>
-            <output id="random-receive" class="receive">3.14</output>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <span>Number of points: </span>
-            <span id="random-total" class="receive">0</span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <canvas id="random-canvas-1" width="1000" height="1000" style="margin-inline: auto; max-height: 300px;"></canvas>
-        </div>
+    <div class="col col-8">
+        <canvas 
+            id="random-canvas-1" 
+            width="1000" height="1000" 
+            style="margin-inline: auto; max-height: 300px; border: 1px solid;"></canvas>
     </div>
 </div>
