@@ -9,7 +9,60 @@ category: education
 ---
 
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/9.0.0/decimal.min.js"></script>
+<script defer src="{{ '/assets/js/projects/async-tools.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/js/projects/pi.js' | relative_url }}"></script>
+
+First, for this demo, we're going to need two helper functions to ease calculations and
+better display the results. This is beacuse most of the code we're going to run will be asynchornous.
+
+```js
+async function RunParallel(arrayofFunctions) {
+    if (!arrayofFunctions)
+        return;
+    const arrayOfPromises = arrayofFunctions.filter(f => typeof f === 'function').map(
+        (f, i, all) => new Promise((res, rej) => {
+            try {
+                res(f());
+            } catch (err) {
+                rej(err);
+            }
+        })
+    );
+    return await Promise.all(arrayOfPromises);
+}
+async function delay(time) {
+    if (!time || isNaN(time))
+        return;
+    return await new Promise(resolve => setTimeout(resolve, time));
+}
+```
+
+We'll also use the [DecimalJS](https://mikemcl.github.io/decimal.js/) library and 
+these other functions for basic operations.
+
+```js
+function factorial(num) {
+  var n = new Decimal(1);
+  if (num < 2) return n;
+  for (var k = 2; k <= num; n = n.times(k++)) {}
+  return n;
+}
+function gcd(a, b) {
+  let c = a.minus(b);
+  while (c.comparedTo(0) !== 0) {
+    if (c.isPositive()) {
+      a = a.dividedBy(c);
+    } else {
+      b = b.dividedBy(c.negated());
+    }
+    c = a.minus(b);
+  }
+  return a;
+}
+function CoPrime(a, b) {
+  return gcd(a, b).equals(1);
+}
+```
 
 ## Archimede's method
 
@@ -103,6 +156,26 @@ $$ \pi \approx 4\sum\limits\_{K=0}^N { { (-1)^K } \over {2K+1} } $$
 
 $$ \theta = \sum\limits\_{N=0}^\infty { {(-1)^N tan^{2N+1}{\theta} } \over {2N+1} } = tan{\theta} - {tan^3{\theta} \over 3} + {tan^5{\theta} \over 5} - {tan^7{\theta} \over 7} + ... $$
 
+### Implementation
+
+```js
+async function LeibnizIterateUntil(n) {
+    let p = new Decimal(1);
+    const One = new Decimal(1); // Used to not generate n uneeded instances
+    let even = false;
+    for (let k = 1; k <= n; k++) {
+        const t = One.dividevBy(2 * k + 1);
+        if (even) {
+            p = p.plut(t); // 2,4,6,...
+        } else {
+            p = p.minus(t);// 1,3,5
+        }
+        even = !even;
+    }
+    return p.times(4);
+}
+```
+
 ## Ramanujan's formula
 
 $$ {1 \over \pi} = { {2 \sqrt{ 2 }} \over 9801}\sum\limits\_{k=0}^\infty { { (4k)! (1103 + 26390k)} \over { (k!)^4 396^{4k}} } $$
@@ -114,8 +187,9 @@ $$ {128096012 \over {3\pi}} = \sum\limits\_{k=0}^\infty { { (6k)! (13591409 + 54
 <div class="row">
     <div class="col">
         <span class="italic">k = </span>
-        <input type="number" min="2" max="256"
-                value="32" id="ramanujan-input" size="10" step="1">
+        <input 
+            type="number" min="2" max="256"
+            value="32" id="ramanujan-input" size="10" step="1">
     </div>
 </div>
 <div class="row">
@@ -124,6 +198,38 @@ $$ {128096012 \over {3\pi}} = \sum\limits\_{k=0}^\infty { { (6k)! (13591409 + 54
         <output id="ramanujan-receive">3.140592653839794</output>
     </div>
 </div>
+
+### Implementation
+
+```js
+async function Ramanujan(n) {
+    const oldP = Decimal.precision;
+    Decimal.set({ precision: 5 * n }); // We're gonna need a lot of precision
+
+    // Since the operation is quite resource expensive, 
+    // calculations will be splitted in two blocks (that will later be summed).
+    // This will result in a slight performance loss (JS is single-threaded)
+    // but will prevent the browser UI from freezing
+    const pivot = Math.floor(n / 2);
+    let blocks = await RunParallel([() => RamanujanIteration(0, pivot), () => RamanujanIteration(pivot, n)]);
+    const C = Decimal(1).div(Decimal(426880).times(Decimal(10005).sqrt())); // Constant we will divide the results by
+    let p = Decimal(1).div(C.times(blocks[0].plus(blocks[1])));
+    
+    Decimal.set({ precision: oldP }); // Restore the initial precision
+    return p;
+}
+
+function RamanujanIteration(start, end) {
+    let p = new Decimal(0);
+    for (var k = start; k < end; k++) {
+        const Mk = Decimal(factorial(6 * k)).div(Decimal(factorial(3 * k)).times(Decimal(factorial(k)).pow(3)));
+        const Lk = Decimal(545140134).times(k).plus(13591409);
+        const Xk = Decimal(-262537412640768000).pow(k);
+        p = p.plus(Mk.times(Lk).div(Xk));
+    }
+    return p;
+}
+```
 
 ## The collisions method
 
