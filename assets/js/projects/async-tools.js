@@ -1,0 +1,1 @@
+async function RunParallel(n){if(!n)return;const t=(n=n.filter((n=>"function"==typeof n))).map((n=>new Promise(((t,e)=>{try{t(n())}catch(n){e(n)}}))));return await Promise.all(t)}async function delay(n){if(n&&!isNaN(n))return await new Promise((t=>setTimeout(t,n)))}
