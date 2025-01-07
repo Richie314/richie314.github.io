@@ -25,7 +25,8 @@ quote-author: Richard Bach
 >
 > **Site under construcion!**
 > Many pages still have default content from the theme
-> {: .block-warning }
+
+{: .block-warning }
 
 Hello world, my name is Riccardo.
 
