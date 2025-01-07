@@ -2,11 +2,11 @@
   "basics": {
     "name": "Riccardo Ciucci",
     "label": "College student",
-    "image": "/assets/img/prof_pic_color.jpg",
+    "image": "",
     "email": "riccardo@ciucci.dev",
     "phone": "",
     "url": "https://ciucci.dev/",
-    "summary": "",
+    "summary": "Computer engineering student studying in Pisa",
     "location": {
       "address": "",
       "postalCode": "",
