@@ -1,3 +1,6 @@
 _site/
 .git/
-assets/
+node_modules/
+readme_preview/
+lighthouse_results/
+.github/

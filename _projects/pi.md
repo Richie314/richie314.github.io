@@ -78,8 +78,11 @@ The first to try to approximate this value was Archimedes in Syracuse, in 250 BC
 He noticed that, by inscribing a regular polygon with more and more sides inside a circle of radius 0.5, its perimeter got closer and closer to 𝜋, in this case the value of the circumference.
 Some even say that Archimedes was killed by a Roman soldier because he refused to stop working on his "circles".
 
-<img src="/assets/img/archimedes_death.jpg" title="Archimede's death" 
-    style="margin-inline: auto; width: 100%; max-width: 500px;">
+<img 
+    src="/assets/img/archimedes_death.jpg" 
+    title="Archimede's death"
+    class="m-x-auto d-block rounded-1"
+    style="width: 100%; max-width: 300px;">
 
 $$ \pi = N sin{180° \over N} $$
 
@@ -106,7 +109,8 @@ $$ \pi = N sin{180° \over N} $$
     <div class="col col-8">
         <canvas id="archimedes-canvas" 
             width="1000" height="1000" 
-            style="margin-inline: auto; max-height: 350px;"></canvas>
+            class="m-x-auto"
+            style="max-height: 250px;"></canvas>
     </div>
 </div>
 
@@ -160,8 +164,9 @@ Starting from the hexagon it is simple, since _L_ = _r_
     </div>
     <div class="col col-8">
         <canvas id="archimedes-canvas-2" 
-            width="1000" height="1000" 
-            style="margin-inline: auto; max-height: 350px;"></canvas>
+            width="1000" height="1000"
+            class="d-none m-x-auto" 
+            style="max-height: 250px;"></canvas>
     </div>
 </div>
 
@@ -210,7 +215,7 @@ $$
 \theta = \sum_{N=0}^\infty { {(-1)^N tan^{2N+1}{\theta} } \over {2N+1} } = tan{\theta} - {tan^3{\theta} \over 3} + {tan^5{\theta} \over 5} - {tan^7{\theta} \over 7} + ... 
 $$
 
-By setting $ θ = 𝜋 / 4 $, we arrive at Leibniz's formula.
+By setting $$ θ = 𝜋 / 4 $$, we arrive at Leibniz's formula.
 
 ### Implementation
 
@@ -397,8 +402,9 @@ Because it uses randomly drawn numbers, this method is also called the Monte Car
     <div class="col col-8">
         <canvas 
             id="random-canvas-1" 
-            width="1000" height="1000" 
-            style="margin-inline: auto; max-height: 300px; border: 1px solid;"></canvas>
+            width="1000" height="1000"
+            class="d-block m-x-auto border border-1" 
+            style="max-height: 200px;"></canvas>
     </div>
 </div>
 
