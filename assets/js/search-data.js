@@ -18,7 +18,7 @@ ninja.data = [{
           },
         },{id: "nav-projects",
           title: "Projects",
-          description: "A growing collection of your cool projects.",
+          description: "A non representative list of some side project",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
@@ -80,6 +80,11 @@ ninja.data = [{
           description: "Play with many sorting algorithms rendered in canvas and understand how they work. Each one is accompanied with a simple c++ implementation",
           section: "Projects",handler: () => {
               window.location.href = "/projects/sorting/";
+            },},{id: "projects-star-wars-intro-maker",
+          title: 'Star Wars intro maker',
+          description: "Star Wars intro simulation via javascript and css",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/starwars/";
             },},{
         id: 'social-email',
         title: 'email',
