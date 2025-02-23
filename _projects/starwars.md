@@ -3,7 +3,7 @@ layout: page
 title: Star Wars intro maker
 description: >
   Star Wars intro simulation via javascript and css
-# img: assets/img/sorting.svg
+img: assets/img/star-wars.svg
 importance: 1
 category: fun
 ---
