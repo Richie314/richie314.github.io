@@ -32,7 +32,7 @@ ninja.data = [{
           },
         },{id: "projects-calculate-𝜋-in-the-browser",
           title: 'Calculate 𝜋 in the browser',
-          description: "Play with different method of approximation of 𝜋",
+          description: "Play with different methods of approximation of 𝜋",
           section: "Projects",handler: () => {
               window.location.href = "/projects/pi/";
             },},{id: "projects-sorting-algorithms-simulation",
