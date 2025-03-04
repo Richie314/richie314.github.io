@@ -2,7 +2,7 @@
 layout: page
 title: Calculate 𝜋 in the browser
 description: >
-  Play with different method of approximation of 𝜋
+  Play with different methods of approximation of 𝜋
 img: assets/img/pi-cover.svg
 importance: 2
 category: education
@@ -408,4 +408,4 @@ Because it uses randomly drawn numbers, this method is also called the Monte Car
     </div>
 </div>
 
-The use of randomly generated numbers unfortunately makes the values ​​found not very reliable, as it is not possible to generate a number in a completely unconditional way. However, these "extractions" can be an indication of how good the algorithm that returns pseudo-random numbers is.
+The use of randomly generated numbers unfortunately makes the values found not very reliable, as it is not possible to generate a number in a completely unconditional way. However, these "extractions" can be an indication of how good the algorithm that returns pseudo-random numbers is.
