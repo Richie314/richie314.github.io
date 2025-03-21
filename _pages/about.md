@@ -21,12 +21,6 @@ quote-author: Richard Bach
 #quote-source:
 ---
 
-> ##### WARNING
->
-> **Site under construcion!**
-> Many pages still have default content from the theme
-{: .block-warning }
-
 Hello world, my name is Riccardo.
 
 I am a computer engineering student at the
