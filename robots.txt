@@ -1,1 +1,4 @@
-User-agent: * Disallow: Sitemap: https://ciucci.dev/sitemap.xml
+User-agent: *
+Disallow:
+
+Sitemap: https://ciucci.dev/sitemap.xml
