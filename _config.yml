@@ -14,7 +14,7 @@ footer_text: >
   with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme
   and hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.<br />
 keywords: Riccardo, Ciucci # add your own keywords or leave empty
-lang: it # the language of your site (for example: en, fr, cn, ru, etc.)
+lang: en # it # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 🧑🏻‍💻 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://ciucci.dev # the base hostname & protocol for your site
@@ -241,7 +241,7 @@ sass:
 
 jekyll-minifier:
   compress_javascript: false # set to false since we are using terser as the js minifier
-  # exclude: ["robots.txt", "assets/js/search/*.js"]
+  exclude: ["robots.txt"]
 
 # -----------------------------------------------------------------------------
 # Terser

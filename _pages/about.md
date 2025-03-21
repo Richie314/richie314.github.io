@@ -8,7 +8,7 @@ profile:
   align: left
   image: prof_pic_color.jpg
   image_circular: false # crops the image to make it circular
-  image_width: 288
+  image_width: 250
   more_info:
 
 news: false # includes a list of news items
