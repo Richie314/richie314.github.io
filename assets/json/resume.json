@@ -69,7 +69,7 @@
       "date": "2023-06-30",
       "awarder": "Cybersecurity National Lab",
       "url": "https://dii.unipi.it/news/news/di-nuovo-podio-il-team-pisano-alla-cyberchallenge-la-competizione-italiana-degli-hackers",
-      "summary": "The CyberChallenge is a team CTF (Capture The Flag): a cybersecurity competition where 6 people represent their university, UniPisa in my case. We ranked third nationwide in the finals."
+      "summary": "The CyberChallenge is a team CTF (Capture The Flag): a cybersecurity competition where teams of six people represent their university, UniPisa in my case. We ranked third nationwide in the finals."
     },
     {
       "title": "Silver medal at Italian Culture and Talent Olympiads",
@@ -86,8 +86,8 @@
       "position": "IT Staff",
       "url": "https://www.amichiamoci.it",
       "startDate": "2022-08-01",
-      "endDate": "2023-10-15",
-      "summary": "System manager for the Event",
+      "endDate": "",
+      "summary": "System developer and manager for the Event",
       "highlights": []
     }
   ],

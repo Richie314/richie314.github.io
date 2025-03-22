@@ -23,19 +23,22 @@ quote-author: Richard Bach
 
 Hello world, my name is Riccardo.
 
-I am a computer engineering student at the
+I come from Livorno and am now a computer engineering student at the
 [University of Pisa](https://www.unipi.it) and honorous student at
-[Sant'Anna School of Advanced studies](https://santannapisa.it).
+[Sant'Anna School of Advanced studies](https://santannapisa.it), where I currenctly live.
 
-I come from Livorno but i currently live in Pisa.
+My primary expertise includes PHP, Docker, JavaScript, Python, ASP.NET Core, and C#, but I have also worked extensively with Podman, C/C++, Linux, and IoT boards such as Arduinos and ESPs.
 
-I'm an open source enthusiast and have a lot of hobbies.
-I'm a great ASP.NET and PHP fan, but I also work with IoT platforms (ESP, Arduino) and containers (both Docker and Podman). I've also worked with C and basic Linux development.
+Open source material was a great pillar of my learning years in programming, and, as of that,
+I strongly believe now in Open Source development and keep all my repositories public on GitHub.
 
 ## Cybersecurity
 
 During the first year of university I approached cybersecurity and the CTF world. I am a member of the
 [BeautifulSSSUP](https://github.com/BeautifulSSSUP) team.
+
+At my first real CTF, my team (University of Pisa) ranked third nationwide.
+My pramiry skills involve around web-based challenges, reverse engineering and also Osint but am looking forward to master new areas.
 
 ---
 
