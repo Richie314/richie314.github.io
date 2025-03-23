@@ -37,4 +37,4 @@ RUN bundle exec jekyll build
 FROM nginx
 LABEL author "Riccardo Ciucci <riccardo@ciucci.dev>"
 WORKDIR /usr/share/nginx/html
-COPY --from=builder /app/_site/* .
+COPY --from=builder /app/_site/ .
