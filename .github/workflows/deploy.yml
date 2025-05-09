@@ -8,6 +8,7 @@ on:
     paths:
       - "assets/**"
       - ".well-known/**"
+      - "microsoft-identity-association.json"
       - "**.bib"
       - "**.html"
       - "**.js"
@@ -36,6 +37,7 @@ on:
     paths:
       - "assets/**"
       - ".well-known/**"
+      - "microsoft-identity-association.json"
       - "**.bib"
       - "**.html"
       - "**.js"
