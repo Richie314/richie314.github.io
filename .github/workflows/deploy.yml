@@ -8,7 +8,7 @@ on:
     paths:
       - "assets/**"
       - ".well-known/**"
-      - "microsoft-identity-association.json"
+      - ".nojekyll"
       - "**.bib"
       - "**.html"
       - "**.js"
@@ -37,7 +37,7 @@ on:
     paths:
       - "assets/**"
       - ".well-known/**"
-      - "microsoft-identity-association.json"
+      - ".nojekyll"
       - "**.bib"
       - "**.html"
       - "**.js"
