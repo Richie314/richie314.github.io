@@ -38,7 +38,7 @@ During the first year of university I approached cybersecurity and the CTF world
 [BeautifulSSSUP](https://github.com/BeautifulSSSUP) team.
 
 At my first real CTF, my team (University of Pisa) ranked third nationwide.
-My pramiry skills involve around web-based challenges, reverse engineering and also Osint but am looking forward to master new areas.
+My primary skills involve around web-based challenges, reverse engineering and also Osint but am looking forward to master new areas.
 
 ---
 
