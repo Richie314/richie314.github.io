@@ -21,7 +21,7 @@ GEM
     bibtex-ruby (6.1.0)
       latex-decode (~> 0.0)
       racc (~> 1.7)
-    bigdecimal (3.1.9)
+    bigdecimal (4.0.1)
     bump (0.10.0)
     citeproc (1.1.0)
       date
@@ -49,7 +49,7 @@ GEM
     css_parser (1.21.0)
       addressable
     cssminify2 (2.0.1)
-    csv (3.3.2)
+    csv (3.3.5)
     date (3.4.1)
     deep_merge (1.2.2)
     drb (2.2.1)
@@ -103,7 +103,7 @@ GEM
       nokogiri (>= 1.4)
     htmlcompressor (0.4.0)
     http_parser.rb (0.8.0)
-    httparty (0.22.0)
+    httparty (0.24.0)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -206,8 +206,8 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (5.25.4)
-    multi_xml (0.7.1)
-      bigdecimal (~> 3.1)
+    multi_xml (0.8.0)
+      bigdecimal (>= 3.1, < 5)
     namae (1.2.0)
       racc (~> 1.7)
     nokogiri (1.18.9)
