@@ -89,6 +89,16 @@
       "endDate": "",
       "summary": "System developer and manager for the Event",
       "highlights": []
+    },
+    {
+      "organization": "Allievi Scuola Superiore Sant'Anna",
+      "location": "Pisa, Italy",
+      "position": "Chief administrator of students IT systems",
+      "url": "https://www.allievi.xyz",
+      "startDate": "2024-09-29",
+      "endDate": "2025-09-18",
+      "summary": "Students at Sant'Anna have a variety of internal services. The architecture consists on a series of web applications ran via Podman containers across multiple machines. A serires of graphql based microservices added features and connected them all. For a year, I have been the chief administrator of those machines and services.",
+      "highlights": []
     }
   ],
   "certificates": [
@@ -112,7 +122,7 @@
       "name": "Web development",
       "level": "Medium-Advanced",
       "icon": "fa-brands fa-php",
-      "keywords": ["Javascript", "jQuery", "Html", "Css", "Php", "Symfony", "Twig", "ASP.NET", "ASP.NET Core"]
+      "keywords": ["Javascript", "Html", "Css", "Php", "Symfony", "Twig", "GraphQL"]
     },
     {
       "name": "Arduino",
@@ -130,7 +140,7 @@
       "name": "C#",
       "level": "Medium",
       "icon": "fa-brands fa-windows",
-      "keywords": ["C#", "Windows", "Windows Forms"]
+      "keywords": ["C#", "ASP.NET", "ASP.NET Core", "Windows", "Windows Forms"]
     },
     {
       "name": "Python",
@@ -156,6 +166,11 @@
       "name": "Cybersecurity",
       "icon": "fa-solid fa-tag",
       "keywords": ["Rev", "Osint", "Web", "Embed"]
+    },
+    {
+      "name": "Computational mathematics",
+      "icon": "fa-solid fa-tag",
+      "keywords": ["C++", "C#", "Optimization"]
     }
   ],
   "references": [],
