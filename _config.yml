@@ -7,21 +7,21 @@ first_name: Riccardo
 middle_name:
 last_name: Ciucci
 contact_note:
-description: > # the ">" symbol means to ignore newlines until "footer_text:"
+description: >
   Computer engineering student from Livorno, Italy.
 footer_text: >
   <br />Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> 
   with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme
   and hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.<br />
-keywords: Riccardo, Ciucci # add your own keywords or leave empty
-lang: en # it # the language of your site (for example: en, fr, cn, ru, etc.)
+keywords: Riccardo, Ciucci
+lang: en # it
 icon: 🧑🏻‍💻 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
-url: https://ciucci.dev # the base hostname & protocol for your site
-baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
-last_updated: true # set to true if you want to display last updated in the footer
-impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
-back_to_top: true # set to false to disable the back to top button
+url: https://ciucci.dev
+baseurl: 
+last_updated: true 
+impressum_path: 
+back_to_top: true 
 
 # -----------------------------------------------------------------------------
 # Theme
@@ -217,7 +217,7 @@ plugins:
   - jekyll-minifier
   - jekyll-paginate-v2
   - jekyll-regex-replace
-  - jekyll/scholar
+  - jekyll-scholar
   - jekyll-sitemap
   - jekyll-tabs
   - jekyll-toc
