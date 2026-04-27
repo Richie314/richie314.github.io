@@ -45,7 +45,7 @@
       "location": "Pisa, Italy",
       "url": "https://unipi.it",
       "area": "University",
-      "studyType": "Computer Engineering",
+      "studyType": "Information Engineering",
       "startDate": "2022-09-25",
       "endDate": "",
       "score": "",
@@ -74,7 +74,7 @@
     {
       "title": "Silver medal at Italian Culture and Talent Olympiads",
       "date": "2021-10-08",
-      "awarder": "Cybersecurity National Lab",
+      "awarder": "Italian Culture and Talent Olympiads committee",
       "url": "https://www.olimpiadidellacultura.it/albo_oro",
       "summary": "The Culture and talent olympiads are an italian team competion for high school students. My team ranked second in the finals held in Tolfa (RM) after the pandemic."
     }
@@ -157,7 +157,7 @@
     },
     {
       "language": "English",
-      "fluency": "Fluent (C1)",
+      "fluency": "Fluent (C1 Cambridge certified)",
       "icon": ""
     }
   ],

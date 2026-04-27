@@ -3,7 +3,7 @@ layout: about
 title: About
 permalink: /
 #subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
-subtitle: Engineering student from Livorno
+subtitle: Computer engineering student from Livorno
 profile:
   align: left
   image: prof_pic_color.jpg
@@ -21,24 +21,19 @@ quote-author: Richard Bach
 #quote-source:
 ---
 
-Hello world, my name is Riccardo.
+Hello world, I'm Riccardo, a computer engineering student at the [University of Pisa](https://www.unipi.it) and honor student at the [Sant'Anna School of Advanced studies](https://santannapisa.it), where I currently live, originally from Livorno.
 
-I come from Livorno and am now a computer engineering student at the
-[University of Pisa](https://www.unipi.it) and honorous student at
-[Sant'Anna School of Advanced studies](https://santannapisa.it), where I currenctly live.
+My core stack revolves around PHP, Docker, JavaScript, Python, ASP.NET Core, and C#, though I've also spent a good amount of time with Podman, C/C++, Linux, and IoT boards like Arduinos and ESPs.
 
-My primary expertise includes PHP, Docker, JavaScript, Python, ASP.NET Core, and C#, but I have also worked extensively with Podman, C/C++, Linux, and IoT boards such as Arduinos and ESPs.
-
-Open source material was a great pillar of my learning years in programming, and, as of that,
-I strongly believe now in Open Source development and keep all my repositories public on GitHub.
+I enjoy working across the full spectrum: from low-level hardware tinkering to building and deploying full web applications.
+Open source was a cornerstone of my growth as a developer, and that's a debt I take seriously: all my projects live publicly on [GitHub](https://github.com/Richie314), and I intend to keep it that way.
 
 ## Cybersecurity
 
-During the first year of university I approached cybersecurity and the CTF world. I am a member of the
-[BeautifulSSSUP](https://github.com/BeautifulSSSUP) team.
+During my first year of university I fell headfirst into cybersecurity and the CTF world.
+I'm a member of the [BeautifulSSSUP](https://ctftime.org/team/177099) team, and at my very first real CTF competition, my University of Pisa team placed third nationwide - a result that only deepened my obsession with the field.
 
-At my first real CTF, my team (University of Pisa) ranked third nationwide.
-My primary skills involve around web-based challenges, reverse engineering and also Osint but am looking forward to master new areas.
+My main strengths are web-based challenges, reverse engineering, and OSINT, though I'm always looking to push into new territory.
 
 ---
 
