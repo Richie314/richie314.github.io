@@ -8,7 +8,7 @@ profile:
   align: left
   image: prof_pic_color.jpg
   image_circular: false # crops the image to make it circular
-  image_width: 250
+  image_width: 200
   more_info:
 
 news: false # includes a list of news items
@@ -43,7 +43,8 @@ My main strengths are web-based challenges, reverse engineering, and OSINT, thou
 
 ### Sport
 
-I practiced Triple jump and Long jump for many years before starting university. Despite not competing anymore I remain a huge Track and Field enjoyer.
+I practiced Triple jump and Long jump for many years before starting university.
+Despite not competing anymore I remain a huge Track and Field enjoyer.
 
 My best results can be found on [Atletica.me](https://atletica.me/atleta/Riccardo-Ciucci/335769)
 
