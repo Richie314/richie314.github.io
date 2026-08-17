@@ -4,7 +4,9 @@ github_users:
 repo_description_lines_max: 3
 
 github_repos:
+  - Richie314/minQP-ipm-cpp
+  - Richie314/GapControlledSimplex
   - Richie314/StarWarsIntro
   - Amichiamoci/App
-  - Richie314/OperationalResearch
+  - Richie314/dictionary
   - Richie314/moving-mass-simulator
