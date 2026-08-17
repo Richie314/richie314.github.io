@@ -52,6 +52,17 @@
       "courses": []
     },
     {
+      "institution": "University of Pisa",
+      "location": "Pisa, Italy",
+      "url": "https://unipi.it",
+      "area": "University",
+      "studyType": "Computer Science, AI curriculum",
+      "startDate": "2026-09-15",
+      "endDate": "",
+      "score": "",
+      "courses": []
+    },
+    {
       "institution": "Sant'Anna School of Advanced Studies",
       "location": "Pisa, Italy",
       "url": "https://santannapisa.it",
@@ -72,11 +83,11 @@
       "summary": "The CyberChallenge is a team CTF (Capture The Flag): a cybersecurity competition where teams of six people represent their university, UniPisa in my case. We ranked third nationwide in the finals."
     },
     {
-      "title": "Silver medal at Italian Culture and Talent Olympiads",
+      "title": "Silver medal at Italian Culture and Talent Olympiad",
       "date": "2021-10-08",
-      "awarder": "Italian Culture and Talent Olympiads committee",
+      "awarder": "Italian Culture and Talent Olympiad committee",
       "url": "https://www.olimpiadidellacultura.it/albo_oro",
-      "summary": "The Culture and talent olympiads are an italian team competion for high school students. My team ranked second in the finals held in Tolfa (RM) after the pandemic."
+      "summary": "The Culture and talent olympiad is an italian team competion for high school students. My team ranked second in the finals held in Tolfa (RM) after the pandemic."
     }
   ],
   "volunteer": [
