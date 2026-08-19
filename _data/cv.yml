@@ -1,97 +1,133 @@
 - title: General Information
   type: map
   contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+    - name: Name
+      value: Riccardo Ciucci
+    #- name: Position
+    #  value: College student
+    - name: Summary
+      value: Computer engineering student based in Pisa
+    - name: Email
+      value: <a href="mailto:riccardo@ciucci.dev">riccardo@ciucci.dev</a>
+    - name: Location
+      value: Livorno, Italy
+    #- name: Website
+    #  value: <a href="https://ciucci.dev/">ciucci.dev</a>
+    - name: LinkedIn
+      value: <a href="https://www.linkedin.com/in/riccardo-ciucci-03bba8309">riccardo-ciucci-03bba8309</a>
+    - name: GitHub
+      value: <a href="https://github.com/Richie314">Richie314</a>
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: Computer Science, AI curriculum
+      institution: <a href="https://di.unipi.it">University of Pisa</a>, Pisa, Italy
+      year: 2026 - present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+        - Master's degree.
+    - title: Information Engineering
+      institution: <a href="https://santannapisa.it">Sant'Anna School of Advanced Studies</a>, Pisa, Italy
+      year: 2022 - present
       description:
-        - Description 1.
-        - Description 2.
+        - Bachelor of Science.
+    - title: Computer Engineering
+      institution: <a href="https://dii.unipi.it">University of Pisa</a>, Pisa, Italy
+      year: 2022 - 2026
+      description:
+        - Bachelor's degree.
+        - "Final score: 110/110."
+    - title: Liceo scientifico opzione scienze applicate
+      institution: <a href="https://liceocecioni.edu.it">Liceo Francesco Cecioni</a>, Livorno, Italy
+      year: 2017 - 2022
+      description:
+        - High school diploma.
+        - "Final score: 100/100 cum laude."
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: IT Staff
+      institution: <a href="https://www.amichiamoci.it">Amichiamoci</a>, Livorno, Italy
+      year: 2022 - present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - System developer and manager for the event.
+    - title: Chief administrator of students' IT systems
+      institution: <a href="https://www.allievi.xyz">Allievi Scuola Superiore Sant'Anna</a>, Pisa, Italy
+      year: 2024 - 2025
       description:
-        - Description 1.
-        - Description 2.
-
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+        - Administered web applications running in Podman containers across multiple machines.
+        - Managed GraphQL-based microservices connecting the services.
 
 - title: Honors and Awards
   type: time_table
   contents:
-    - year: 1921
+    - year: 2023
       items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
+        - <a href="https://dii.unipi.it/news/news/di-nuovo-podio-il-team-pisano-alla-cyberchallenge-la-competizione-italiana-degli-hackers">Bronze medal at CyberChallenge</a> - Cybersecurity National Lab. Ranked third nationwide in the finals.
+    - year: 2021
       items:
-        - Max Planck Medal
+        - <a href="https://www.olimpiadidellacultura.it/albo_oro">Silver medal at Italian Culture and Talent Olympiad</a>. Ranked second in the finals.
+
+- title: Certificates
+  type: time_table
+  contents:
+    - title: Certificate in Advanced English
+      institution: Cambridge Assessment
+      year: 2022
+
+- title: Skills
+  type: nested_list
+  contents:
+    - title: Docker
+      items:
+        - "Level: Medium"
+        - Dockerfile, Docker Compose, Podman, Docker Networking
+    - title: Web development
+      items:
+        - "Level: Medium-Advanced"
+        - Vanilla JavaScript, HTML, CSS3, PHP, Symfony, Twig, GraphQL
+    - title: Arduino
+      items:
+        - "Level: Good"
+        - Arduino, ESP-32
+    - title: C/C++
+      items:
+        - "Level: Medium"
+        - C, C++, Linux
+    - title: C#
+      items:
+        - "Level: Medium"
+        - C#, ASP.NET, ASP.NET Core, Windows, Windows Forms
+    - title: Python
+      items:
+        - "Level: Medium"
+        - Python, Python Requests, web scraping, Telegram Bot API
+
+- title: Languages
+  type: list
+  contents:
+    - Italian - Native speaker
+    - English - Fluent (C1 Cambridge certified)
 
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Topic 1.
+    - title: Internet of things (IoT)
       items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
+        - Arduino, ESP-32, embedded systems
+        - Low energy devices
+        - Communication protocols (MQTT, ZigBee, LoRa)
+    - title: Cybersecurity
       items:
-        - Description 1.
-        - Description 2.
+        - Reverse engineering, web security, network security, OSINT
+        - Capture the flag (CTF) competitions
+    - title: Computational mathematics and Operational research
+      items:
+        - C++, C#, hardware acceleration, parallel computing
+        - Optimization algorithms, linear and nonlinear programming
 
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+#- title: Other Interests
+#  type: list
+#  contents:
+#    - boh
