@@ -9,8 +9,8 @@
       value: Computer engineering student based in Pisa
     - name: Email
       value: <a href="mailto:riccardo@ciucci.dev">riccardo@ciucci.dev</a>
-    - name: Location
-      value: Livorno, Italy
+    #- name: Location
+    #  value: Livorno, Italy
     #- name: Website
     #  value: <a href="https://ciucci.dev/">ciucci.dev</a>
     - name: LinkedIn
