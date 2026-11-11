@@ -3,7 +3,7 @@ layout: page
 title: Calculate 𝜋 in the browser
 description: >
   Play with different methods of approximation of 𝜋
-img: assets/img/pi-cover.svg
+img: assets/img/pi/cover.svg
 importance: 2
 category: education
 ---
@@ -79,7 +79,7 @@ He noticed that, by inscribing a regular polygon with more and more sides inside
 Some even say that Archimedes was killed by a Roman soldier because he refused to stop working on his "circles".
 
 <img 
-    src="/assets/img/archimedes_death.jpg" 
+    src="/assets/img/pi/archimedes_death.jpg" 
     title="Archimede's death"
     class="m-x-auto d-block rounded-1"
     style="width: 100%; max-width: 300px;">
@@ -119,7 +119,7 @@ starting from _N_ = 6, he doubled the number of sides over and over again, until
 
 To do this, it is necessary to be able to calculate the side of a rectangular polygon of _2N_ sides, simply by knowing the measure of the one with _N_ sides.
 
-<img src="/assets/img/archimede-method.svg" title="Archimede's method" 
+<img src="/assets/img/pi/archimede-method.svg" title="Archimede's method" 
     style="margin-inline: auto; width: 100%; max-width: 500px;">
 
 Simply with the pythagorean theorem we obtain _h_, and from it _L'_
