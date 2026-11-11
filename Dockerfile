@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim AS builder
+FROM ruby:3.3-slim-bookworm AS builder
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
         build-essential \
@@ -26,11 +26,13 @@ ENV EXECJS_RUNTIME=Node \
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
-RUN gem install --no-document jekyll bundler
+COPY Gemfile Gemfile.lock ./
+# Install exactly the Bundler version recorded in the lockfile.
+RUN gem install --no-document bundler --version "$(sed -n '/BUNDLED WITH/{n;s/^[[:space:]]*//;p;}' Gemfile.lock)"
+ENV BUNDLE_FROZEN=true
+RUN bundle install --no-cache
 
 COPY . /app
-
-RUN bundle install --no-cache
 
 RUN bundle exec jekyll build
 

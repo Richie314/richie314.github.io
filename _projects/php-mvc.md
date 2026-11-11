@@ -19,7 +19,7 @@ Let’s build toward Simple MVC using PHP 8.3 or newer. We’ll start with a res
 
 The early code examples are small building blocks, not complete replacements for the library files. Each section explains what to add or change. The final application example uses the finished library’s API.
 
-![An HTTP request travels through a router and controller to become a response.](images/request-flow.svg)
+![An HTTP request travels through a router and controller to become a response.](/assets/img/php-mvc/request-flow.svg)
 
 ## 1. Give every request one starting point
 
@@ -298,7 +298,7 @@ return call_user_func_array([$controller, $action], $named);
 
 With string array keys, PHP passes these as named arguments. `/hello?first-name=Ada` becomes `$first_name = 'Ada'` in the action.
 
-![A query field becomes a named action argument.](images/parameter-binding.svg)
+![A query field becomes a named action argument.](/assets/img/php-mvc/parameter-binding.svg)
 
 This convenience makes parameter names part of the action’s interface. Extra fields, missing required arguments, or array values where strings are expected can cause invocation errors. Type declarations help describe inputs, but application code still needs to validate what those inputs mean.
 
@@ -417,7 +417,7 @@ require $layout_file_path;
 
 A function has its own variable scope. The `use (...)` clause explicitly brings the selected file and data into this **closure**, a function created inside another piece of code. Without extracting inside the closure, the body would not receive `$name`, even though the layout could receive it.
 
-![The renderer prepares one set of values for the layout and page body.](images/view-scope.svg)
+![The renderer prepares one set of values for the layout and page body.](/assets/img/php-mvc/view-scope.svg)
 
 `array_merge()` gives later string keys priority. The order above means default view variables override action data, and built-in variables such as `$title` override both. Internal renderer variable names are reserved.
 

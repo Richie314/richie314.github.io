@@ -17,6 +17,8 @@ on:
       - "**.yml"
       - "Gemfile"
       - "Gemfile.lock"
+      - ".ruby-version"
+      - "requirements.txt"
       - "!.github/workflows/axe.yml"
       - "!.github/workflows/broken-links.yml"
       - "!.github/workflows/deploy-docker-tag.yml"
@@ -46,6 +48,8 @@ on:
       - "**.yml"
       - "Gemfile"
       - "Gemfile.lock"
+      - ".ruby-version"
+      - "requirements.txt"
       - "!.github/workflows/axe.yml"
       - "!.github/workflows/broken-links.yml"
       - "!.github/workflows/deploy-docker-tag.yml"
@@ -64,17 +68,21 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     # available images: https://github.com/actions/runner-images#available-images
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3.5"
+          # Read .ruby-version and use the latest supported 3.3 patch.
           bundler-cache: true
       - name: Setup Python 🐍
         uses: actions/setup-python@v5
@@ -91,13 +99,21 @@ jobs:
       - name: Install and Build 🔧
         run: |
           sudo apt-get update && sudo apt-get install -y imagemagick
-          pip3 install --upgrade nbconvert
+          python -m pip install -r requirements.txt
           export JEKYLL_ENV=production
           bundle exec jekyll build
       - name: Purge unused CSS 🧹
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
+      - name: Check local links 🔗
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: true
+          # Validate rendered URLs and assets without requesting external sites.
+          args: >-
+            --offline --root-dir "${{ github.workspace }}/_site"
+            --index-files index.html --verbose --no-progress '_site/**/*.html'
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4

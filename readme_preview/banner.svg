@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Riccardo Ciucci — ciucci.dev</title>
+  <desc id="desc">Personal website. Projects, ideas, and a little about me.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#172b47"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#a5b4fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="300" rx="20" fill="url(#background)"/>
+  <g fill="none" stroke="#38bdf8" stroke-opacity=".12">
+    <circle cx="1060" cy="150" r="210"/>
+    <circle cx="1060" cy="150" r="160"/>
+    <circle cx="1060" cy="150" r="110"/>
+  </g>
+  <rect x="64" y="62" width="48" height="4" rx="2" fill="url(#accent)"/>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="64" y="109" fill="#7dd3fc" font-size="16" letter-spacing="4">PERSONAL WEBSITE</text>
+    <text x="60" y="172" fill="#f8fafc" font-size="54" font-weight="700">Riccardo Ciucci</text>
+    <text x="64" y="216" fill="#cbd5e1" font-size="21">Projects, ideas, and a little about me.</text>
+    <rect x="914" y="125" width="222" height="54" rx="27" fill="#0f172a" stroke="#38bdf8" stroke-opacity=".4"/>
+    <text x="1025" y="159" fill="#7dd3fc" font-size="24" font-weight="600" text-anchor="middle">ciucci.dev ↗</text>
+  </g>
+</svg>

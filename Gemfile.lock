@@ -352,5 +352,8 @@ DEPENDENCIES
   unicode_utils
   webrick
 
+RUBY VERSION
+   ruby 3.3.13p207
+
 BUNDLED WITH
    2.6.2
