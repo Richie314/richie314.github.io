@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" role="img" aria-labelledby="title desc">
+  <title id="title">Passing values to a layout and its body</title>
+  <desc id="desc">Render merges data and supplies it to both the layout and a body closure. The layout invokes RenderBody; the closure extracts its captured data before including the view.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker>
+  </defs>
+  <rect x="1" y="1" width="878" height="358" rx="18" fill="#f8fafc" stroke="#d4dce8"/>
+  <text x="440" y="32" fill="#263449" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" text-anchor="middle">Layout and body need their own template variables</text>
+  <rect x="30" y="122" width="180" height="82" rx="10" fill="#e8edf5" stroke="#c6d0e0"/>
+  <text x="120.0" y="163.0" fill="#263449" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Action data</text>
+  <text x="120.0" y="186.0" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" text-anchor="middle">[&#x27;name&#x27; =&gt; &#x27;Ada&#x27;]</text>
+  <rect x="270" y="122" width="180" height="82" rx="10" fill="#e6e9ff" stroke="#c6d0e0"/>
+  <text x="360.0" y="163.0" fill="#263449" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Render()</text>
+  <text x="360.0" y="186.0" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" text-anchor="middle">Merge view variables</text>
+  <rect x="555" y="62" width="285" height="82" rx="10" fill="#ffedcf" stroke="#c6d0e0"/>
+  <text x="697.5" y="103.0" fill="#263449" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Layout scope</text>
+  <text x="697.5" y="126.0" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" text-anchor="middle">$title and $RenderBody</text>
+  <rect x="555" y="220" width="285" height="82" rx="10" fill="#d9f2eb" stroke="#c6d0e0"/>
+  <text x="697.5" y="261.0" fill="#263449" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Body closure scope</text>
+  <text x="697.5" y="284.0" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" text-anchor="middle">$name and other view data</text>
+  <path d="M210 163H264" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M450 145H495V103H549" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M450 182H495V261H549" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M755 144V214" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="760" y="180" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" text-anchor="start">Calls</text>
+  <text x="760" y="197" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" text-anchor="start">$RenderBody()</text>
+  <text x="440" y="335" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="middle">Capture the data with use (...), then extract it inside the body closure.</text>
+
+</svg>

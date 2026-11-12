@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Building a small MVC library in PHP</title>
+  <desc id="description">Article cover for a beginner-friendly guide to building a PHP MVC library one feature at a time. Connected cards illustrate the model, controller, and view.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11182d"/>
+      <stop offset="1" stop-color="#1d2b49"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a8adff"/>
+      <stop offset="1" stop-color="#76dfcf"/>
+    </linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#8c9bc4" opacity="0.16"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#96a5d0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <rect x="690" y="104" width="510" height="526" fill="url(#dots)"/>
+  <circle cx="1110" cy="450" r="255" fill="none" stroke="#7585b8" stroke-opacity="0.1"/>
+  <circle cx="1110" cy="450" r="190" fill="none" stroke="#7585b8" stroke-opacity="0.1"/>
+  <rect width="1200" height="6" fill="url(#accent)"/>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="80" y="77" fill="#bdc8e4" font-size="14" font-weight="700" letter-spacing="2">FROM A SINGLE PAGE TO SIMPLE MVC</text>
+    <rect x="1008" y="49" width="112" height="36" rx="18" fill="#a8adff" fill-opacity="0.12" stroke="#a8adff" stroke-opacity="0.35"/>
+    <text x="1064" y="73" text-anchor="middle" fill="#d6d8ff" font-size="15" font-weight="700">PHP 8.3+</text>
+    <path d="M80 105H1120" stroke="#7382ac" stroke-opacity="0.25"/>
+
+    <text x="78" y="223" fill="#f5f7ff" font-size="57" font-weight="700" letter-spacing="-1.8">Building a small</text>
+    <text x="76" y="310" fill="#f5f7ff" font-size="78" font-weight="700" letter-spacing="-3">MVC library</text>
+    <text x="78" y="397" fill="#a8adff" font-size="78" font-weight="700" letter-spacing="-3">in PHP</text>
+    <rect x="81" y="426" width="62" height="4" rx="2" fill="#76dfcf"/>
+    <text x="80" y="473" fill="#d0d8ed" font-size="22">A beginner’s guide, one feature at a time.</text>
+
+    <!-- The controller obtains model data, then passes values to a view. -->
+    <path d="M940 238V282" fill="none" stroke="#96a5d0" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <path d="M940 408V430Q940 443 953 443H967Q980 443 980 456" fill="none" stroke="#96a5d0" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="816" y="142" width="260" height="96" rx="17" fill="#090e1d" fill-opacity="0.3"/>
+    <rect x="810" y="132" width="260" height="96" rx="17" fill="#25344f" stroke="#76dfcf" stroke-opacity="0.65"/>
+    <rect x="831" y="154" width="7" height="7" rx="2" fill="#76dfcf"/>
+    <text x="850" y="162" fill="#94ecdf" font-size="13" font-weight="700" letter-spacing="2">MODEL</text>
+    <text x="832" y="201" fill="#f5f7ff" font-size="24" font-weight="600">Application data</text>
+
+    <rect x="756" y="300" width="320" height="108" rx="17" fill="#090e1d" fill-opacity="0.3"/>
+    <rect x="750" y="290" width="320" height="108" rx="17" fill="#303654" stroke="#a8adff" stroke-opacity="0.8"/>
+    <rect x="773" y="315" width="7" height="7" rx="2" fill="#a8adff"/>
+    <text x="793" y="323" fill="#c8cbff" font-size="13" font-weight="700" letter-spacing="2">CONTROLLER</text>
+    <text x="772" y="366" fill="#f5f7ff" font-size="25" font-weight="600">Handle the request</text>
+
+    <rect x="856" y="474" width="260" height="96" rx="17" fill="#090e1d" fill-opacity="0.3"/>
+    <rect x="850" y="464" width="260" height="96" rx="17" fill="#3d3544" stroke="#f5c58b" stroke-opacity="0.65"/>
+    <rect x="871" y="486" width="7" height="7" rx="2" fill="#f5c58b"/>
+    <text x="890" y="494" fill="#f8d5a8" font-size="13" font-weight="700" letter-spacing="2">VIEW</text>
+    <text x="872" y="533" fill="#f5f7ff" font-size="24" font-weight="600">HTML templates</text>
+
+    <text x="80" y="567" fill="#9eaccb" font-size="16">Routing</text>
+    <circle cx="151" cy="562" r="2" fill="#76dfcf"/>
+    <text x="167" y="567" fill="#9eaccb" font-size="16">Views</text>
+    <circle cx="225" cy="562" r="2" fill="#76dfcf"/>
+    <text x="241" y="567" fill="#9eaccb" font-size="16">Testing</text>
+    <circle cx="310" cy="562" r="2" fill="#76dfcf"/>
+    <text x="326" y="567" fill="#9eaccb" font-size="16">Releases</text>
+  </g>
+</svg>

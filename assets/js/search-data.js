@@ -30,7 +30,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "projects-calculate-𝜋-in-the-browser",
+        },{id: "projects-building-a-small-mvc-library-in-php",
+          title: 'Building a small MVC library in PHP',
+          description: "Detailed pipeline on how to build a minimal Model-View-Control library for modern PHP",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/php-mvc/";
+            },},{id: "projects-calculate-𝜋-in-the-browser",
           title: 'Calculate 𝜋 in the browser',
           description: "Play with different methods of approximation of 𝜋",
           section: "Projects",handler: () => {
