@@ -1,0 +1,19 @@
+// Personal profile size and responsive interactive project controls.
+@media (min-width: 576px) {
+  .post .profile { width: 200px; }
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.25rem;
+  background: var(--global-bg-color);
+  color: var(--global-text-color);
+}
+.form-label { display: inline-block; margin-bottom: 0.5rem; }
+.block-info {
+  border-left: 4px solid var(--global-theme-color);
+  padding: 0.75rem 1rem;
+  background: var(--global-code-bg-color);
+}

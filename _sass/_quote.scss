@@ -1,7 +1,7 @@
 .quote {
   width: fit-content;
   padding: 1rem;
-  background-color: transparentize(#000, 0.98);
+  background-color: rgba(0, 0, 0, 0.02);
 
   & > .quote-body {
     z-index: 1;
@@ -17,7 +17,7 @@
     &::after {
       z-index: -1;
       position: absolute;
-      color: hsl(0, 0, 82.5%);
+      color: hsl(0, 0%, 82.5%);
       font-size: 4rem;
       font-style: normal;
       font-weight: 700;
@@ -38,7 +38,7 @@
   & > .quote-credits {
     margin-right: 2.75rem;
     padding-right: 0;
-    color: hsl(0, 0, 55%);
+    color: hsl(0, 0%, 55%);
     font-size: 0.8125rem; // 13px
     text-align: right;
     &::before {

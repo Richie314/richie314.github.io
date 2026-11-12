@@ -1,0 +1,24 @@
+---
+version: 1
+overrides:
+  _includes/repository/repo_trophies.liquid:
+    owner: al_folio_core
+    gem_version: 1.0.15
+    upstream_path: _includes/repository/repo_trophies.liquid
+    upstream_sha256: 03fadf88680eec1db8d61109948387a048d2bfc9b91f6a4def8a21b02b79064b
+    local_sha256: 489ad196fc373df25ddea19edee8a7283c6e5764e001385e1b512534b9196053
+    acknowledged_at: '2026-11-12'
+  _layouts/cv.liquid:
+    owner: al_folio_core
+    gem_version: 1.0.15
+    upstream_path: _layouts/cv.liquid
+    upstream_sha256: c586e8051e785b492a0f4452c4e06798d47a8c363d29487e48de4fcd9851700e
+    local_sha256: c1845c25752ca6d2403af869ffe5a8066e1bbf86379c8aedf3defecb3a2b4893
+    acknowledged_at: '2026-11-12'
+  assets/css/main.scss:
+    owner: al_folio_core
+    gem_version: 1.0.15
+    upstream_path: assets/css/main.scss
+    upstream_sha256: 437c6c911c596391413e435dc0ea7095e682e85c572c1fd3fff69f9597455b3e
+    local_sha256: 2dc316e3fd66d5d27edc4c79dbb48c678e83857b62dcec80808949fb31d19c91
+    acknowledged_at: '2026-11-12'

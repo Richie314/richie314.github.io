@@ -9,3 +9,5 @@ assets/libs/
 node_modules/
 vendor
 .idea
+__pycache__/
+al-folio-upgrade-report.md

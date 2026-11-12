@@ -12,6 +12,9 @@ on:
       - "**.bib"
       - "**.html"
       - "**.js"
+      - "**.scss"
+      - "**.css"
+      - "**.rb"
       - "**.liquid"
       - "**/*.md"
       - "**.yml"
@@ -19,6 +22,8 @@ on:
       - "Gemfile.lock"
       - ".ruby-version"
       - "requirements.txt"
+      - "tests/**"
+      - ".al-folio-overrides.yml"
       - "!.github/workflows/axe.yml"
       - "!.github/workflows/broken-links.yml"
       - "!.github/workflows/deploy-docker-tag.yml"
@@ -43,6 +48,9 @@ on:
       - "**.bib"
       - "**.html"
       - "**.js"
+      - "**.scss"
+      - "**.css"
+      - "**.rb"
       - "**.liquid"
       - "**/*.md"
       - "**.yml"
@@ -50,6 +58,8 @@ on:
       - "Gemfile.lock"
       - ".ruby-version"
       - "requirements.txt"
+      - "tests/**"
+      - ".al-folio-overrides.yml"
       - "!.github/workflows/axe.yml"
       - "!.github/workflows/broken-links.yml"
       - "!.github/workflows/deploy-docker-tag.yml"
@@ -102,10 +112,13 @@ jobs:
           python -m pip install -r requirements.txt
           export JEKYLL_ENV=production
           bundle exec jekyll build
-      - name: Purge unused CSS 🧹
+      - name: Verify theme migration
         run: |
-          npm install -g purgecss
-          purgecss -c purgecss.config.js
+          bundle exec al-folio upgrade audit
+          bundle exec al-folio upgrade overrides audit --fail-on-stale
+          python3 tests/check_site.py
+          node tests/check_interactions.js
+          python3 tests/check_features.py
       - name: Check local links 🔗
         uses: lycheeverse/lychee-action@v2
         with:

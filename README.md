@@ -20,7 +20,7 @@ With Docker and Docker Compose installed, run from the repository root:
 docker compose up --build -d
 ```
 
-Open **[localhost](http://localhost)**. Docker builds the site and serves it with Nginx on port 80; Ruby and gems are installed inside the image. The first build can take a few minutes. Run the same command after editing files to rebuild the preview.
+Open **[localhost:8080](http://localhost:8080)**. Docker builds the site and serves it with Nginx on local port 8080; Ruby and gems are installed inside the image. The first build can take a few minutes. Run the same command after editing files to rebuild the preview.
 
 Stop the preview:
 
@@ -28,7 +28,7 @@ Stop the preview:
 docker compose down
 ```
 
-To use port 8080 instead:
+To run without Docker Compose:
 
 ```sh
 docker build -t ciucci-site .
@@ -36,3 +36,13 @@ docker run --rm -p 8080:80 ciucci-site
 ```
 
 Then open **[localhost:8080](http://localhost:8080)** and press `Ctrl+C` to stop.
+
+## Theme and indexing
+
+The site uses al-folio v1.2 with pinned theme gems. Custom template overrides
+are recorded in `.al-folio-overrides.yml`. Run `bundle exec al-folio upgrade audit`
+after changing the theme versions.
+
+Jekyll generates `/sitemap.xml` on each build, and `/robots.txt` advertises
+`https://ciucci.dev/sitemap.xml`. Submit that URL in Google Search Console and
+Bing Webmaster Tools after publishing.

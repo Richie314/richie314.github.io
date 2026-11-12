@@ -1,133 +1,110 @@
-- title: General Information
-  type: map
-  contents:
-    - name: Name
-      value: Riccardo Ciucci
-    #- name: Position
-    #  value: College student
-    - name: Summary
-      value: Computer engineering student based in Pisa
-    - name: Email
-      value: <a href="mailto:riccardo@ciucci.dev">riccardo@ciucci.dev</a>
-    #- name: Location
-    #  value: Livorno, Italy
-    #- name: Website
-    #  value: <a href="https://ciucci.dev/">ciucci.dev</a>
-    - name: LinkedIn
-      value: <a href="https://www.linkedin.com/in/riccardo-ciucci-03bba8309">riccardo-ciucci-03bba8309</a>
-    - name: GitHub
-      value: <a href="https://github.com/Richie314">Richie314</a>
-
-- title: Education
-  type: time_table
-  contents:
-    - title: Computer Science, AI curriculum
+# RenderCV-compatible data, migrated from the original al-folio CV.
+cv:
+  sections:
+    General Information:
+    - label: Name
+      details: Riccardo Ciucci
+    - label: Summary
+      details: Computer engineering student based in Pisa
+    - label: Email
+      details: <a href="mailto:riccardo@ciucci.dev">riccardo@ciucci.dev</a>
+    - label: LinkedIn
+      details: <a href="https://www.linkedin.com/in/riccardo-ciucci-03bba8309">riccardo-ciucci-03bba8309</a>
+    - label: GitHub
+      details: <a href="https://github.com/Richie314">Richie314</a>
+    Education:
+    - start_date: '2026'
+      end_date: present
+      studyType: Computer Science, AI curriculum
       institution: <a href="https://di.unipi.it">University of Pisa</a>, Pisa, Italy
-      year: 2026 - present
-      description:
-        - Master's degree.
-    - title: Information Engineering
+      highlights:
+      - Master's degree.
+    - start_date: '2022'
+      end_date: present
+      studyType: Information Engineering
       institution: <a href="https://santannapisa.it">Sant'Anna School of Advanced Studies</a>, Pisa, Italy
-      year: 2022 - present
-      description:
-        - Bachelor of Science.
-    - title: Computer Engineering
+      highlights:
+      - Bachelor of Science.
+    - start_date: '2022'
+      end_date: '2026'
+      studyType: Computer Engineering
       institution: <a href="https://dii.unipi.it">University of Pisa</a>, Pisa, Italy
-      year: 2022 - 2026
-      description:
-        - Bachelor's degree.
-        - "Final score: 110/110."
-    - title: Liceo scientifico opzione scienze applicate
+      highlights:
+      - Bachelor's degree.
+      - 'Final score: 110/110.'
+    - start_date: '2017'
+      end_date: '2022'
+      studyType: Liceo scientifico opzione scienze applicate
       institution: <a href="https://liceocecioni.edu.it">Liceo Francesco Cecioni</a>, Livorno, Italy
-      year: 2017 - 2022
-      description:
-        - High school diploma.
-        - "Final score: 100/100 cum laude."
-
-- title: Experience
-  type: time_table
-  contents:
-    - title: IT Staff
-      institution: <a href="https://www.amichiamoci.it">Amichiamoci</a>, Livorno, Italy
-      year: 2022 - present
-      description:
-        - System developer and manager for the event.
-    - title: Chief administrator of students' IT systems
-      institution: <a href="https://www.allievi.xyz">Allievi Scuola Superiore Sant'Anna</a>, Pisa, Italy
-      year: 2024 - 2025
-      description:
-        - Administered web applications running in Podman containers across multiple machines.
-        - Managed GraphQL-based microservices connecting the services.
-
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 2023
-      items:
-        - <a href="https://dii.unipi.it/news/news/di-nuovo-podio-il-team-pisano-alla-cyberchallenge-la-competizione-italiana-degli-hackers">Bronze medal at CyberChallenge</a> - Cybersecurity National Lab. Ranked third nationwide in the finals.
-    - year: 2021
-      items:
-        - <a href="https://www.olimpiadidellacultura.it/albo_oro">Silver medal at Italian Culture and Talent Olympiad</a>. Ranked second in the finals.
-
-- title: Certificates
-  type: time_table
-  contents:
-    - title: Certificate in Advanced English
-      institution: Cambridge Assessment
-      year: 2022
-
-- title: Skills
-  type: nested_list
-  contents:
-    - title: Docker
-      items:
-        - "Level: Medium"
-        - Dockerfile, Docker Compose, Podman, Docker Networking
-    - title: Web development
-      items:
-        - "Level: Medium-Advanced"
-        - Vanilla JavaScript, HTML, CSS3, PHP, Symfony, Twig, GraphQL
-    - title: Arduino
-      items:
-        - "Level: Good"
-        - Arduino, ESP-32
-    - title: C/C++
-      items:
-        - "Level: Medium"
-        - C, C++, Linux
-    - title: C#
-      items:
-        - "Level: Medium"
-        - C#, ASP.NET, ASP.NET Core, Windows, Windows Forms
-    - title: Python
-      items:
-        - "Level: Medium"
-        - Python, Python Requests, web scraping, Telegram Bot API
-
-- title: Languages
-  type: list
-  contents:
-    - Italian - Native speaker
-    - English - Fluent (C1 Cambridge certified)
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Internet of things (IoT)
-      items:
-        - Arduino, ESP-32, embedded systems
-        - Low energy devices
-        - Communication protocols (MQTT, ZigBee, LoRa)
-    - title: Cybersecurity
-      items:
-        - Reverse engineering, web security, network security, OSINT
-        - Capture the flag (CTF) competitions
-    - title: Computational mathematics and Operational research
-      items:
-        - C++, C#, hardware acceleration, parallel computing
-        - Optimization algorithms, linear and nonlinear programming
-
-#- title: Other Interests
-#  type: list
-#  contents:
-#    - boh
+      highlights:
+      - High school diploma.
+      - 'Final score: 100/100 cum laude.'
+    Experience:
+    - start_date: '2022'
+      end_date: present
+      position: IT Staff
+      company: <a href="https://www.amichiamoci.it">Amichiamoci</a>, Livorno, Italy
+      highlights:
+      - System developer and manager for the event.
+    - start_date: '2024'
+      end_date: '2025'
+      position: Chief administrator of students' IT systems
+      company: <a href="https://www.allievi.xyz">Allievi Scuola Superiore Sant'Anna</a>, Pisa, Italy
+      highlights:
+      - Administered web applications running in Podman containers across multiple machines.
+      - Managed GraphQL-based microservices connecting the services.
+    Honors and Awards:
+    - date: '2023'
+      title: <a href="https://dii.unipi.it/news/news/di-nuovo-podio-il-team-pisano-alla-cyberchallenge-la-competizione-italiana-degli-hackers">Bronze
+        medal at CyberChallenge</a> - Cybersecurity National Lab. Ranked third nationwide in the finals.
+    - date: '2021'
+      title: <a href="https://www.olimpiadidellacultura.it/albo_oro">Silver medal at Italian Culture and Talent Olympiad</a>.
+        Ranked second in the finals.
+    Certificates:
+    - date: '2022'
+      name: Certificate in Advanced English
+      issuer: Cambridge Assessment
+    Skills:
+    - name: Docker
+      level: Medium
+      keywords:
+      - Dockerfile, Docker Compose, Podman, Docker Networking
+    - name: Web development
+      level: Medium-Advanced
+      keywords:
+      - Vanilla JavaScript, HTML, CSS3, PHP, Symfony, Twig, GraphQL
+    - name: Arduino
+      level: Good
+      keywords:
+      - Arduino, ESP-32
+    - name: C/C++
+      level: Medium
+      keywords:
+      - C, C++, Linux
+    - name: C#
+      level: Medium
+      keywords:
+      - C#, ASP.NET, ASP.NET Core, Windows, Windows Forms
+    - name: Python
+      level: Medium
+      keywords:
+      - Python, Python Requests, web scraping, Telegram Bot API
+    Languages:
+    - name: Italian
+      summary: Native speaker
+    - name: English
+      summary: Fluent (C1 Cambridge certified)
+    Academic Interests:
+    - name: Internet of things (IoT)
+      keywords:
+      - Arduino, ESP-32, embedded systems
+      - Low energy devices
+      - Communication protocols (MQTT, ZigBee, LoRa)
+    - name: Cybersecurity
+      keywords:
+      - Reverse engineering, web security, network security, OSINT
+      - Capture the flag (CTF) competitions
+    - name: Computational mathematics and Operational research
+      keywords:
+      - C++, C#, hardware acceleration, parallel computing
+      - Optimization algorithms, linear and nonlinear programming
