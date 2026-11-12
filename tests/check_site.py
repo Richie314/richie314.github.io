@@ -59,6 +59,25 @@ for name in ('assets/css/tailwind.css', 'assets/css/main.css', 'assets/css/al-fo
 for page in pages:
     if 'polyfill.io' in page.read_text():
         errors.append(f'Obsolete polyfill service in {page}')
+# Profile metadata is valid JSON-LD and stays outside the visible article.
+import json
+home = (root / 'index.html').read_text()
+profile_script = re.search(r'<script\b(?=[^>]*id="person-profile")[^>]*>(.*?)</script>', home, re.S)
+if not profile_script:
+    errors.append('Homepage person metadata is missing')
+else:
+    profile = json.loads(profile_script[1])
+    if profile.get('@type') != 'Person' or profile.get('name') != 'Riccardo Ciucci':
+        errors.append('Person metadata must identify the site owner')
+    if profile.get('url') != 'https://ciucci.dev/' or profile.get('subjectOf', {}).get('url') != 'https://ciucci.dev/cv/':
+        errors.append('Profile metadata must link to the canonical homepage and CV')
+    if not {'Embedded systems', 'Computer engineering', 'Computer science', 'Arduino', 'ESP32'} <= set(profile.get('knowsAbout', [])):
+        errors.append('Profile metadata is missing documented technical areas')
+    if 'jobs and internships' not in profile.get('description', ''):
+        errors.append('Profile metadata is missing the stated career interests')
+    if profile_script.start() > home.index('</head>'):
+        errors.append('Profile metadata must remain in the document head')
+
 # Protect addresses in CV, social icons, and the search palette at build time.
 for page in pages:
     content = unescape(page.read_text())

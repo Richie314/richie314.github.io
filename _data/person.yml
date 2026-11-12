@@ -1,0 +1,66 @@
+# Factual professional profile for machine-readable metadata.
+# Keep qualifications consistent with the About page and CV.
+"@type": Person
+name: Riccardo Ciucci
+givenName: Riccardo
+familyName: Ciucci
+description: >
+  Computer science student in Pisa with a background in computer engineering,
+  software development, systems administration, and Arduino and ESP32 projects.
+  Interested in jobs and internships in computer engineering, embedded engineering,
+  and computer science.
+homeLocation:
+  "@type": Place
+  name: Pisa, Italy
+sameAs:
+  - https://github.com/Richie314
+  - https://www.linkedin.com/in/riccardo-ciucci-03bba8309
+knowsAbout:
+  - Computer engineering
+  - Computer science
+  - Embedded systems
+  - Arduino
+  - ESP32
+  - Internet of Things
+  - C
+  - C++
+  - C#
+  - Python
+  - PHP
+  - JavaScript
+  - ASP.NET Core
+  - Docker
+  - Podman
+  - Linux
+  - Web development
+  - Systems administration
+  - Cybersecurity
+  - Reverse engineering
+  - OSINT
+knowsLanguage:
+  - Italian
+  - English
+affiliation:
+  - "@type": CollegeOrUniversity
+    name: University of Pisa
+    url: https://www.unipi.it
+  - "@type": CollegeOrUniversity
+    name: Sant'Anna School of Advanced Studies
+    url: https://santannapisa.it
+alumniOf:
+  "@type": CollegeOrUniversity
+  name: University of Pisa
+  url: https://www.unipi.it
+hasCredential:
+  - "@type": EducationalOccupationalCredential
+    name: Bachelor's degree in Computer Engineering
+    credentialCategory: Bachelor's degree
+    description: University of Pisa, 2026. Final score 110/110.
+    recognizedBy:
+      "@type": CollegeOrUniversity
+      name: University of Pisa
+      url: https://www.unipi.it
+  - "@type": EducationalOccupationalCredential
+    name: Certificate in Advanced English
+    credentialCategory: Language certificate
+    description: Cambridge Assessment, 2022. C1 English.
