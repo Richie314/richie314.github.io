@@ -181,3 +181,20 @@ d-article {
   .pi-demo__layout, .pi-demo__layout--series { grid-template-columns: minmax(0, 1fr); }
 }
 .pi-reference { padding: 1rem 1.25rem; border-left: 4px solid #3268a8; background: var(--global-code-bg-color); font: 1.05rem/1.8 ui-monospace, monospace; overflow-wrap: anywhere; }
+
+.malus-photo {
+  margin: 1.5rem 0;
+  img { display: block; width: 100%; height: auto; border-radius: 0.5rem; }
+  figcaption { margin-top: 0.5rem; }
+  &--compact { max-width: 480px; margin-inline: auto; }
+}
+.malus-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+  .malus-photo { margin: 0; min-width: 0; }
+}
+@media (max-width: 640px) {
+  .malus-photo-grid { grid-template-columns: minmax(0, 1fr); }
+}

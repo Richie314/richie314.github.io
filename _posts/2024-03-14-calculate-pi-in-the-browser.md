@@ -210,7 +210,7 @@ $$
 \pi_N=\frac{9801}{2\sqrt2\,S_N}.
 $$
 
-{% include pi-demo.liquid method='ramanujan' title='Try Ramanujan's original series' description='Compare one, two, and three terms before increasing the count further.' maximum='20' initial='1' %}
+{% include pi-demo.liquid method='ramanujan' title="Try Ramanujan's original series" description='Compare one, two, and three terms before increasing the count further.' maximum='20' initial='1' %}
 
 A single term gives approximately $$3.1415927300$$.
 It is already close, but the displayed trailing digits are not all correct.
