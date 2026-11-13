@@ -1,85 +1,32 @@
-<div class="row">
-  <!-- Control panel -->
-  <div class="col">
-    <div class="row">
-      <div class="col mb-3">
-        <label for="{{ include.algo }}-tot" class="form-label"> Array size </label>
-        <input
-          type="number"
-          class="form-control"
-          id="{{ include.algo }}-tot"
-          min="4"
-          max="1024"
-          step="1"
-          {% if include.array_size %}
-            value="{{ include.array_size }}"
-          {% else %}
-            value="32"
-          {% endif %}
-        >
+<section class="sorting-demo" aria-label="{{ include.name | default: include.algo }} sorting demo">
+  <div class="sorting-demo__layout">
+    <div class="sorting-demo__controls">
+      <div>
+        <label for="{{ include.algo }}-tot" class="form-label">Array size</label>
+        <input type="number" class="form-control" id="{{ include.algo }}-tot" min="4" max="1024" step="1" value="{{ include.array_size | default: 32 }}">
       </div>
+      <div>
+        <label for="{{ include.algo }}-interval" class="form-label">Step delay (ms)</label>
+        <input type="number" class="form-control" id="{{ include.algo }}-interval" min="10" max="1000" step="1" value="{{ include.delay | default: 100 }}">
+      </div>
+      <div class="sorting-demo__actions">
+        <button type="button" onclick="{{ include.algo }}.Input()" class="sorting-demo__button" title="Stop and shuffle the array">Shuffle</button>
+        <button type="button" onclick="{{ include.algo }}.Sort()" id="{{ include.algo }}-btn" class="sorting-demo__button sorting-demo__button--primary">Sort</button>
+      </div>
+      <p class="sorting-demo__counter">
+        <span>{{ include.swap_label | default: 'Swaps:' }}</span>
+        <output id="{{ include.algo }}-swaps">0</output>
+      </p>
+      <p id="{{ include.algo }}-status" class="sorting-demo__status" role="status">Ready to sort.</p>
     </div>
-    <div class="row">
-      <div class="col mb-3">
-        <label for="{{ include.algo }}-interval" class="form-label"> Iteration delay </label>
-        <input
-          type="number"
-          class="form-control"
-          id="{{ include.algo }}-interval"
-          min="10"
-          max="1000"
-          step="1"
-          {% if include.delay %}
-            value="{{ include.delay }}"
-          {% else %}
-            value="100"
-          {% endif %}
-        >
-      </div>
-    </div>
-    <div class="row user-select-none">
-      <div class="col">
-        <button
-          type="button"
-          onclick="{{ include.algo }}.Input()"
-          class="btn btn-secondary"
-          title="Shuffle the array"
-        >
-          Shuffle
-        </button>
-      </div>
-      <div class="col">
-        <button
-          type="button"
-          onclick="{{ include.algo }}.Sort()"
-          id="{{ include.algo }}-btn"
-          class="btn btn-secondary"
-          title="Sort the array"
-        >
-          Sort
-        </button>
+    <div class="sorting-demo__visual">
+      <canvas id="{{ include.algo }}" width="1350" height="900" role="img" aria-label="Array values shown as blue bars; active values are red, comparisons orange, and completed positions green.">Your browser does not support canvas.</canvas>
+      <div class="sorting-demo__legend" aria-label="Bar colors">
+        <span><i class="sorting-demo__swatch sorting-demo__swatch--array" aria-hidden="true"></i>Array</span>
+        <span><i class="sorting-demo__swatch sorting-demo__swatch--active" aria-hidden="true"></i>Active</span>
+        <span><i class="sorting-demo__swatch sorting-demo__swatch--compare" aria-hidden="true"></i>Compared</span>
+        <span><i class="sorting-demo__swatch sorting-demo__swatch--sorted" aria-hidden="true"></i>Settled</span>
       </div>
     </div>
   </div>
-
-  <!-- Drawing canvas -->
-  <div class="col">
-    <canvas
-      id="{{ include.algo }}"
-      width="1350"
-      height="900"
-      style="max-width: 100%; max-height: 250px"
-    >
-    </canvas>
-  </div>
-</div>
-<p>
-  <span>
-    {% if include.swap_label %}
-      {{ include.swap_label }}
-    {% else %}
-      Swaps:
-    {% endif %}
-  </span>
-  <output id="{{ include.algo }}-swaps"></output>
-</p>
+</section>

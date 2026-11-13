@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" role="img" aria-labelledby="title desc">
+<title id="title">Merge sort: split, then merge</title>
+<desc id="desc">The array 4, 1, 3, 2 splits into pairs and single values. Merging produces the sorted pairs 1, 4 and 2, 3, then the final array 1, 2, 3, 4.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#64748b"/></marker></defs>
+<rect width="760" height="440" rx="16" fill="#f8fafc"/>
+<g font-family="system-ui, sans-serif" fill="#172554" text-anchor="middle">
+<text x="380" y="34" font-size="22" font-weight="700">Split into smaller problems, then merge in order</text>
+<g stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" fill="none">
+<path d="M330 95 240 134M430 95 520 134M210 175 150 214M270 175 310 214M490 175 450 214M550 175 610 214"/>
+<path d="M150 255 210 294M310 255 270 294M450 255 490 294M610 255 550 294M240 335 330 374M520 335 430 374"/>
+</g>
+<g fill="#dbeafe" stroke="#93c5fd">
+<rect x="300" y="55" width="160" height="40" rx="8"/>
+<rect x="190" y="135" width="100" height="40" rx="8"/><rect x="470" y="135" width="100" height="40" rx="8"/>
+<rect x="125" y="215" width="50" height="40" rx="8"/><rect x="285" y="215" width="50" height="40" rx="8"/><rect x="425" y="215" width="50" height="40" rx="8"/><rect x="585" y="215" width="50" height="40" rx="8"/>
+</g>
+<g fill="#dcfce7" stroke="#86efac"><rect x="190" y="295" width="100" height="40" rx="8"/><rect x="470" y="295" width="100" height="40" rx="8"/><rect x="300" y="375" width="160" height="40" rx="8"/></g>
+<g font-family="ui-monospace, monospace" font-size="22">
+<text x="380" y="82">4 1 3 2</text><text x="240" y="162">4 1</text><text x="520" y="162">3 2</text>
+<text x="150" y="242">4</text><text x="310" y="242">1</text><text x="450" y="242">3</text><text x="610" y="242">2</text>
+<text x="240" y="322">1 4</text><text x="520" y="322">2 3</text><text x="380" y="402">1 2 3 4</text></g>
+<g font-size="16" text-anchor="start"><text x="24" y="160">SPLIT</text><text x="24" y="322">MERGE</text></g>
+</g></svg>
