@@ -40,7 +40,7 @@ required = {
     'index.html': ['Riccardo', 'Ciucci', 'Richard Bach', 'prof_pic_color', 'linkedin.com/in/riccardo-ciucci', 'ninja-keys'],
     'cv/index.html': ['Computer Science, AI curriculum', 'Information Engineering', '110/110', '100/100 cum laude', 'IT Staff', 'Chief administrator', 'Bronze medal', 'Silver medal', 'Certificate in Advanced English', 'Docker Networking', 'Native speaker', 'Computational mathematics', '/assets/pdf/CV-Riccardo-Ciucci.pdf'],
     'projects/index.html': ['Building a small MVC library in PHP', 'Sorting'],
-    'projects/sorting/index.html': ['bubble-tot', 'cocktailshaker-tot', 'merge-tot', '/assets/js/projects/sorting.js'],
+    'projects/sorting-algorithms-overview/index.html': ['bubble-tot', 'cocktailshaker-tot', 'merge-tot', '/assets/js/projects/sorting.js'],
     'projects/pi/index.html': ['/assets/js/projects/pi.js', '/assets/js/projects/async-tools.js'],
     'repositories/index.html': ['Richie314', 'github-stats-extended.vercel.app'],
 }
@@ -110,7 +110,7 @@ for image in trophies.images:
 import xml.etree.ElementTree as ET
 sitemap = ET.parse(root / 'sitemap.xml')
 urls = {node.text for node in sitemap.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
-for path in ('/', '/cv/', '/projects/', '/repositories/', '/projects/php-mvc/', '/projects/sorting/', '/projects/pi/', '/projects/starwars/'):
+for path in ('/', '/cv/', '/projects/', '/repositories/', '/projects/php-mvc/', '/projects/sorting-algorithms-overview/', '/projects/pi/', '/projects/star-wars-intro-maker/'):
     if 'https://ciucci.dev' + path not in urls:
         errors.append(f'Sitemap is missing {path}')
 if any(not url.startswith('https://ciucci.dev/') for url in urls):
