@@ -1,0 +1,98 @@
+<section class="pi-demo" data-pi-demo="{{ include.method }}" aria-labelledby="pi-{{ include.method }}-title">
+  <header class="pi-demo__header">
+    <span class="pi-demo__eyebrow">Try it in your browser</span>
+    <h3 id="pi-{{ include.method }}-title">{{ include.title }}</h3>
+    <p>{{ include.description }}</p>
+  </header>
+  <div class="pi-demo__layout{% if include.method == 'leibniz' or include.method == 'ramanujan' or include.method == 'chudnovsky' %} pi-demo__layout--series{% endif %}">
+    <div class="pi-demo__controls">
+      {% case include.method %}
+      {% when 'polygon' %}
+        <label for="pi-polygon-sides">Number of sides</label>
+        <select id="pi-polygon-sides" class="form-control" data-input="sides">
+          {% assign sides = '6,12,24,48,96,192,384,768,1536,3072,6144,12288,24576' | split: ',' %}
+          {% for n in sides %}<option value="{{ n }}"{% if n == '96' %} selected{% endif %}>{{ n }}</option>{% endfor %}
+        </select>
+        <dl class="pi-demo__metrics">
+          <div><dt>Lower approximation</dt><dd><output data-output="lower">—</output></dd></div>
+          <div><dt>Upper approximation</dt><dd><output data-output="upper">—</output></dd></div>
+          <div><dt>Gap between them</dt><dd><output data-output="gap">—</output></dd></div>
+        </dl>
+        <p class="pi-demo__hint">Blue: inscribed polygon.<br>Orange: circumscribed polygon.</p>
+      {% when 'collisions' %}
+        <label for="pi-collision-digits">Digits to explore</label>
+        <select id="pi-collision-digits" class="form-control" data-input="digits">
+          <option value="1">1 digit · mass ratio 1</option>
+          <option value="2" selected>2 digits · mass ratio 100</option>
+          <option value="3">3 digits · mass ratio 10,000</option>
+          <option value="4">4 digits · mass ratio 1,000,000</option>
+        </select>
+        <label for="pi-collision-speed">Impacts per animation step</label>
+        <select id="pi-collision-speed" class="form-control" data-input="speed">
+          <option value="1">1 · watch each impact</option><option value="10">10 · faster</option><option value="50">50 · fastest</option>
+        </select>
+        <div class="pi-demo__actions">
+          <button type="button" class="pi-demo__button pi-demo__button--primary" data-action="start">Start</button>
+          <button type="button" class="pi-demo__button" data-action="reset">Reset</button>
+        </div>
+        <dl class="pi-demo__metrics">
+          <div><dt>Collisions counted</dt><dd><output data-output="count">0</output></dd></div>
+          <div><dt>Scaled collision count</dt><dd><output data-output="estimate">—</output></dd></div>
+          <div><dt>Mass ratio M / m</dt><dd><output data-output="mass">100</output></dd></div>
+        </dl>
+      {% when 'monte-carlo' %}
+        <label for="pi-monte-samples">Total samples</label>
+        <input id="pi-monte-samples" class="form-control" data-input="samples" type="number" min="100" max="1000000" step="100" value="10000">
+        <label for="pi-monte-seed">Repeatable random seed</label>
+        <input id="pi-monte-seed" class="form-control" data-input="seed" type="number" min="1" max="4294967295" step="1" value="314159">
+        <label for="pi-monte-speed">Samples per animation step</label>
+        <select id="pi-monte-speed" class="form-control" data-input="speed">
+          <option value="100">100 · watch the estimate grow</option>
+          <option value="1000">1,000 · faster</option>
+          <option value="10000">10,000 · fastest</option>
+        </select>
+        <div class="pi-demo__actions">
+          <button type="button" class="pi-demo__button pi-demo__button--primary" data-action="start">Start</button>
+          <button type="button" class="pi-demo__button" data-action="reset">Reset</button>
+        </div>
+        <dl class="pi-demo__metrics">
+          <div><dt>Approximation · 4 × inside / total</dt><dd><output data-output="estimate">—</output></dd></div>
+          <div><dt>Samples counted</dt><dd><output data-output="count">0</output></dd></div>
+          <div><dt>Approximate 95% interval</dt><dd><output data-output="interval">Needs at least 30 samples</output></dd></div>
+        </dl>
+      {% else %}
+        <label for="pi-{{ include.method }}-terms">Number of terms · N</label>
+        <input id="pi-{{ include.method }}-terms" class="form-control" data-input="terms" type="number" min="1" max="{{ include.maximum }}" step="1" value="{{ include.initial }}">
+        <div class="pi-demo__actions">
+          <button type="button" class="pi-demo__button pi-demo__button--primary" data-action="calculate">Calculate</button>
+          <button type="button" class="pi-demo__button" data-action="cancel" disabled>Cancel</button>
+        </div>
+        <label class="pi-demo__progress-label">Calculation progress <progress data-output="progress" value="0" max="1"></progress></label>
+      {% endcase %}
+      <p class="pi-demo__status" data-output="status" role="status">Ready.</p>
+    </div>
+    <div class="pi-demo__visual">
+      {% if include.method == 'polygon' %}
+        <canvas width="720" height="720" aria-label="A circle between an inscribed blue polygon and a circumscribed orange polygon.">Polygon visualization requires canvas.</canvas>
+        <p class="pi-demo__hint">At high counts, the drawing uses at most 384 sides; the calculation uses your full selection.</p>
+      {% elsif include.method == 'collisions' %}
+        <canvas width="900" height="360" aria-label="A small blue block between a wall and a heavier red block; orange marks the latest collision.">Collision visualization requires canvas.</canvas>
+        <p class="pi-demo__hint">The scaled count builds toward π’s leading digits; only the final count gives the result.<br>The drawing jumps between collision events; the pauses are for display and do not represent physical time.</p>
+      {% elsif include.method == 'monte-carlo' %}
+        <canvas width="720" height="720" aria-label="Samples in a unit square: green inside the quarter circle, muted red outside it.">Monte Carlo visualization requires canvas.</canvas>
+        <p class="pi-demo__hint">The canvas shows the first 20,000 samples.<br>Every sample contributes to the estimate.</p>
+      {% else %}
+        <span class="pi-demo__result-label">Finite-sum approximation</span>
+        <output class="pi-demo__digits" data-output="estimate">Not calculated yet.</output>
+        <dl class="pi-demo__metrics">
+          {% if include.method == 'leibniz' %}
+            <div><dt>Truncation error bound</dt><dd><output data-output="bound">—</output></dd></div>
+          {% else %}
+            <div><dt>Working precision</dt><dd><output data-output="precision">—</output></dd></div>
+          {% endif %}
+        </dl>
+        <p class="pi-demo__hint">More working digits do not remove truncation error: increase the number of terms and compare the results.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>

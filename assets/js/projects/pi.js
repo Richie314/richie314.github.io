@@ -1,423 +1,276 @@
-"use strict";
-
-const _Colors = {
-  Cols: ["#112d4e", "#112d4e", "#dbe2ef"],
-  Bg: ["#f9f7f7", "#dbe2ef", "#3f72af"],
-};
-
-var ArchimedesInput = document.getElementById("archimedes-input");
-var ArchimedesReceive = document.getElementById("archimedes-receive");
-var archimedescanvas = document.getElementById("archimedes-canvas");
-var a_ctx = archimedescanvas.getContext("2d");
-var archimedes_div = document.getElementById("method-archimedes");
-var archimedescanvas2 = document.getElementById("archimedes-canvas-2");
-var a2_ctx = archimedescanvas2.getContext("2d");
-var ArchimedesInput2 = document.getElementById("archimedes-input-2");
-var ArchimedesReceive2 = document.getElementById("archimedes-receive-2");
-var oldArchimedesN = 12;
-
-var LeibnizInput = document.getElementById("leibniz-input");
-var LeibnizReceive = document.getElementById("leibniz-receive");
-var Leibniz_div = document.getElementById("method-leibniz");
-
-var RamanujanInput = document.getElementById("ramanujan-input");
-var RamanujanReceive = document.getElementById("ramanujan-receive");
-var Ramanujan_div = document.getElementById("method-ramanujan");
-
-var CollisionInput = document.getElementById("collision-input");
-var CollisionBtn = document.getElementById("collision-start");
-var CollisionReceive = document.getElementById("collision-receive");
-var CollisionCanvas = document.getElementById("collision-canvas");
-var Collision_div = document.getElementById("method-collisions");
-var ctx = CollisionCanvas.getContext("2d");
-var total = new Decimal(0);
-var steps = new Decimal(0);
-var block1, block2;
-var currentPi = new Decimal(0);
-var defauldDecimalJsPi = Decimal.acos(-1);
-var PiCollideBlock = class PiCollideBlock {
-  /**
-   *
-   * @param {Decimal | number} x
-   * @param {Decimal | number} w
-   * @param {Decimal | number} m
-   * @param {Decimal | number} v
-   * @param {Decimal | number} xc
-   */
-  constructor(x, w, m, v, xc) {
-    this.x = typeof x === "number" ? new Decimal(x) : x;
-    this.y = Decimal.sub(CollisionCanvas.height, w);
-    this.w = typeof w === "number" ? new Decimal(w) : w;
-    this.v = typeof v === "number" ? new Decimal(v) : v;
-    this.m = typeof m === "number" ? new Decimal(m) : m;
-    this.xvarraint = typeof xc === "number" ? new Decimal(xc) : xc;
+/* Browser controls and drawings. Expensive series run in pi-worker.js. */
+(() => {
+  'use strict';
+  const script = document.currentScript;
+  const workerURL = script.dataset.workerUrl;
+  const palette = { background: '#f3f4f6', ink: '#243247', blue: '#3268a8', orange: '#b66b20', green: '#367650', red: '#aa4141', pale: '#e1ebf6' };
+  const disposers = [];
+  const output = (card, name, value) => {
+    const node = card.querySelector(`[data-output="${name}"]`);
+    if (node) node.textContent = value;
+  };
+  const input = (card, name) => card.querySelector(`[data-input="${name}"]`);
+  const button = (card, name) => card.querySelector(`[data-action="${name}"]`);
+  function bounded(field, fallback) {
+    const parsed = field.value.trim() === '' ? NaN : Number(field.value);
+    const value = Number.isFinite(parsed) ? Math.min(Number(field.max), Math.max(Number(field.min), Math.floor(parsed))) : fallback;
+    field.value = value;
+    return value;
+  }
+  function background(canvas) {
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = palette.background;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    return ctx;
   }
 
-  get hitWall() {
-    //return this.x <= 0;
-    return this.x.lessThan(0);
-  }
-  get xw() {
-    return this.x.plus(this.w);
-  }
-  reverse() {
-    this.v = this.v.times(-1);
-  }
-  /**
-   *
-   * @param {Block} other
-   */
-  collide(other) {
-    return !(this.xw.lessThan(other.x) || other.xw.lessThan(this.x));
-  }
-  /**
-   *
-   * @param {Block} other
-   */
-  bounce(other) {
-    const sumM = this.m.plus(other.m);
-    return new Decimal(this.m.minus(other.m).dividedBy(sumM).times(this.v).plus(other.m.times(2).dividedBy(sumM).times(other.v)));
-  }
-
-  update() {
-    this.x = this.x.plus(this.v);
-  }
-  /**
-   *
-   * @param {CanvasRenderingContext2D} ctx
-   */
-  show(ctx) {
-    ctx.fillStyle = _Colors.Cols[0];
-    ctx.fillRect(this.x.toNumber() + 10, this.y.toNumber(), this.w.toNumber(), this.w.toNumber());
-  }
-};
-
-var RandomInput = document.getElementById("random-input");
-var RandomReset = document.getElementById("random-reset");
-var RandomSelect = document.getElementById("random-function-select");
-var RandomReceive = document.getElementById("random-receive");
-var RandomReceiveCanvas = document.getElementById("random-canvas-1");
-var RandomCtx = RandomReceiveCanvas.getContext("2d");
-var Random_div = document.getElementById("method-random");
-var RandomBtn = document.getElementById("random-btn");
-var RandomTotal = document.getElementById("random-total");
-
-//30 digits of pi, after the decimal point
-const PI_30_DIGITS = ["1415926535", "8979323846", "2643383279"].join("");
-
-/**
- *
- * @param {CanvasRenderingContext2D} ctx
- * @param {number} n
- */
-function DrawCircleAndPolygon(canv, ctx, n) {
-  ctx.clearRect(0, 0, canv.width, canv.height);
-  ctx.fillStyle = _Colors.Bg[1];
-  ctx.strokeStyle = _Colors.Bg[1];
-  ctx.lineWidth = 2.5;
-  ctx.beginPath();
-  ctx.arc(canv.width / 2, canv.height / 2, canv.width / 2 - 1, 0, 2 * Math.PI);
-  ctx.stroke();
-  ctx.fill();
-  ctx.closePath();
-  DrawPolygon(canv, ctx, n);
-}
-function PiArchimedeRecursive(r, n) {
-  const R = typeof r === "number" ? new Decimal(r) : r;
-  if (n <= 6 || n % 2 !== 0) return R;
-  const L = PiArchimedeRecursive(R, n / 2);
-  return R.minus(R.pow(2).minus(L.dividedBy(2).pow(2)).sqrt())
-    .times(2)
-    .times(R)
-    .sqrt();
-  //return Math.sqrt(
-  //    2 * r * r
-  //    - 2 * r * Math.sqrt(r * r - L * L / 4));
-}
-/**
- *
- * @param {CanvasRenderingContext2D} ctx
- * @param {number} n
- */
-function DrawPolygon(canv, ctx, n) {
-  ctx.beginPath();
-  ctx.moveTo(canv.width, canv.height / 2);
-  ctx.strokeStyle = _Colors.Cols[1];
-  ctx.lineWidth = 2.5;
-  const angleI = (2 * Math.PI) / n;
-  for (let angle = angleI; angle < 2 * Math.PI; angle += angleI) {
-    ctx.lineTo(((Math.cos(angle) + 1) * canv.width) / 2, ((Math.sin(-angle) + 1) * canv.height) / 2);
-  }
-  ctx.lineTo(canv.width, canv.height / 2);
-  ctx.stroke();
-  ctx.closePath();
-}
-function factorial(num) {
-  var n = new Decimal(1);
-  if (num < 2) return n;
-  for (var k = 2; k <= num; n = n.times(k++)) {}
-  return n;
-}
-function gcd(a, b) {
-  let c = a.minus(b);
-  while (c.comparedTo(0) !== 0) {
-    if (c.isPositive()) {
-      a = a.dividedBy(c);
-    } else {
-      b = b.dividedBy(c.negated());
+  // Unit-circle chord lengths; the rationalized recurrence avoids cancellation.
+  function polygonBounds(sides) {
+    let n = 6, chord = 1;
+    while (n < sides) {
+      chord /= Math.sqrt(2 + Math.sqrt(4 - chord * chord));
+      n *= 2;
     }
-    c = a.minus(b);
+    return { lower: n * chord / 2, upper: n * chord / Math.sqrt(4 - chord * chord) };
   }
-  return a;
-}
-function CoPrime(a, b) {
-  return gcd(a, b).equals(1);
-}
-var RandomGeneratorMethods = {
-  default: () => new Decimal(Math.random()),
-  decimalJS: () => Decimal.random(),
-};
-
-var Pi = {
-  CheckUserInput(input) {
-    input.value = Math.min(input.value, input.max);
-    input.value = Math.max(input.value, input.min);
-    return Number(input.value);
-  },
-  async Archimedes() {
-    return new Promise(() => {
-      let n = Math.floor(Pi.CheckUserInput(ArchimedesInput));
-      if (n > 2) {
-        ArchimedesReceive.innerHTML = Decimal.sin(defauldDecimalJsPi.dividedBy(n)).times(n).toSD(8).toString();
-        DrawCircleAndPolygon(archimedescanvas, a_ctx, n);
-      }
-    });
-  },
-  async Archimedes2(evt) {
-    if (evt) {
-      evt.preventDefault();
-    }
-    let n = Number(ArchimedesInput2.value);
-    await new Promise(() => {
-      ArchimedesReceive2.innerHTML = PiArchimedeRecursive(0.5, n).times(n).toSD(8).toString();
-      DrawCircleAndPolygon(archimedescanvas2, a2_ctx, n);
-    });
-  },
-  LeibnizStarted: false,
-  async Leibniz() {
-    if (Pi.LeibnizStarted) return;
-    let n = Math.floor(Pi.CheckUserInput(LeibnizInput));
-    LeibnizReceive.innerHTML = "...";
-    Pi.LeibnizStarted = true;
-    const One = new Decimal(1);
-    let pi1, pi2;
-    function IterateOdd() {
-      let p = new Decimal(1);
-      for (let k = 1; k < n; k += 2) {
-        const T = One.dividedBy(new Decimal(2 * k + 1));
-        p = p.minus(T);
-      }
-      //console.log('Odd: ' + p.toSD(30).toString());
-      return p;
-    }
-    function IterateEven() {
-      let p = new Decimal(0);
-      for (let k = 2; k < n; k += 2) {
-        const T = One.dividedBy(new Decimal(2 * k + 1));
-        p = p.plus(T);
-      }
-      //console.log('Even: ' + p.toSD(30).toString());
-      return p;
-    }
-    await RunParallel([
-      () => {
-        pi1 = IterateOdd();
-      },
-      () => {
-        pi2 = IterateEven();
-      },
-    ]);
-    LeibnizReceive.innerHTML = pi1.plus(pi2).times(4).toSD(30).toString();
-    Pi.LeibnizStarted = false;
-  },
-  RamanujanStarted: false,
-  async Ramanujan() {
-    if (Pi.RamanujanStarted) {
-      return;
-    }
-    Pi.RamanujanStarted = true;
-    const n = Math.floor(Pi.CheckUserInput(RamanujanInput));
-    console.log("Ramanujan(" + n + ")");
-    requestAnimationFrame(() => {
-      RamanujanReceive.innerHTML = "...";
-    });
-    const oldP = Decimal.precision;
-    Decimal.set({ precision: 5 * n });
-    const med = Math.floor(n / 2);
-    function Iteration(start, end) {
-      let p = new Decimal(0);
-      for (var k = start; k < end; k++) {
-        const Mk = Decimal(factorial(6 * k)).div(Decimal(factorial(3 * k)).times(Decimal(factorial(k)).pow(3)));
-        const Lk = Decimal(545140134).times(k).plus(13591409);
-        const Xk = Decimal(-262537412640768000).pow(k);
-        p = p.plus(Mk.times(Lk).div(Xk));
-      }
-      return p;
-    }
-    let blocks = await RunParallel([() => Iteration(0, med), () => Iteration(med, n)]);
-    const C = Decimal(1).div(Decimal(426880).times(Decimal(10005).sqrt()));
-    let p = Decimal(1).div(C.times(blocks[0].plus(blocks[1])));
-    p = p.toSD(30);
-    requestAnimationFrame(() => {
-      RamanujanReceive.innerHTML = p.toString();
-    });
-    Pi.RamanujanStarted = false;
-    Decimal.set({ precision: oldP });
-  },
-  collisionsRunning: false,
-  collisionDelay: 10,
-  collisionDelaysArray: {
-    2: 5,
-    3: 7,
-    4: 7,
-    5: 8,
-    6: 10,
-    7: 15,
-  },
-  Collision() {
-    //Start or stop
-    Pi.collisionsRunning = !Pi.collisionsRunning;
-    const digits = Math.floor(Pi.CheckUserInput(CollisionInput));
-    if (this.collisionsRunning) {
-      //start (was stopped before)
-      CollisionBtn.innerHTML = "Abort";
-      currentPi = new Decimal(0);
-      steps = Decimal.pow(10, digits - 1);
-      block1 = new PiCollideBlock(100, 20, 1, 0, 0);
-      block2 = new PiCollideBlock(300, 100, steps.pow(2), new Decimal(-1).dividedBy(steps), 20);
-      Pi.collisionDelay = Pi.collisionDelaysArray[digits];
-      //start animations
-      requestAnimationFrame(Pi.CollisionShow);
-      Pi.CollisionsUpdate().then(() => {
-        CollisionBtn.innerHTML = "Start";
-      });
-    }
-  },
-  async CollisionsUpdate() {
-    if (!Pi.collisionsRunning) {
-      return;
-    }
-    const stepPart = steps.div(10);
-    //split in 10 blocks of step/10 operations
-    async function RunBlock(count) {
-      return await new Promise((res) => {
-        for (let i = 0; count.greaterThan(i); i++) {
-          if (block1.collide(block2)) {
-            const v1 = block1.bounce(block2);
-            const v2 = block2.bounce(block1);
-            block1.v = v1;
-            block2.v = v2;
-            currentPi = currentPi.plus(1);
-          }
-          if (block1.hitWall) {
-            block1.reverse();
-            currentPi = currentPi.plus(1);
-          }
-          block1.update();
-          block2.update();
-          res();
+  function polygonDemo(card) {
+    const field = input(card, 'sides'), canvas = card.querySelector('canvas');
+    function draw() {
+      const n = Number(field.value), result = polygonBounds(n);
+      output(card, 'lower', result.lower.toPrecision(15));
+      output(card, 'upper', result.upper.toPrecision(15));
+      output(card, 'gap', (result.upper - result.lower).toExponential(4));
+      output(card, 'status', `${n.toLocaleString()} sides; approximations evaluated with floating-point arithmetic.`);
+      const ctx = background(canvas), center = canvas.width / 2, radius = canvas.width * 0.32;
+      ctx.strokeStyle = '#7b8796'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(center, center, radius, 0, 2 * Math.PI); ctx.stroke();
+      const visibleSides = Math.min(n, 384);
+      for (const [color, outer] of [[palette.orange, true], [palette.blue, false]]) {
+        const r = outer ? radius / Math.cos(Math.PI / visibleSides) : radius;
+        const rotation = outer ? Math.PI / visibleSides : 0;
+        ctx.beginPath();
+        for (let i = 0; i <= visibleSides; i++) {
+          const angle = 2 * Math.PI * i / visibleSides + rotation;
+          const x = center + r * Math.cos(angle), y = center - r * Math.sin(angle);
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
-      });
+        ctx.strokeStyle = color; ctx.lineWidth = 3; ctx.stroke();
+      }
+      ctx.fillStyle = palette.ink; ctx.font = '23px system-ui'; ctx.textAlign = 'center';
+      ctx.fillText(`${n.toLocaleString()} sides`, center, canvas.height - 35);
     }
-    for (let j = 0; j < 10; j++) {
-      await RunBlock(stepPart);
-      await delay(Pi.collisionDelay);
+    field.addEventListener('change', draw);
+    draw();
+  }
+
+  function seriesDemo(card, method) {
+    const field = input(card, 'terms'), start = button(card, 'calculate'), cancel = button(card, 'cancel');
+    const progress = card.querySelector('progress');
+    let worker = null;
+    function stop(message) {
+      if (worker) worker.terminate();
+      worker = null;
+      start.disabled = false; cancel.disabled = true; field.disabled = false;
+      if (message) output(card, 'status', message);
     }
-    if (block2.v.greaterThan(block1.v) && block1.v.isPositive()) {
-      //There will be no more collisions -> we can end
-      Pi.Collision(); //Call start/end function
-      return;
+    function calculate() {
+      stop();
+      const terms = bounded(field, method === 'leibniz' ? 1000 : 1);
+      if (!window.Worker) {
+        output(card, 'status', 'This browser does not support background workers. The formulas and source examples remain available below.');
+        return;
+      }
+      progress.value = 0;
+      output(card, 'estimate', 'Calculating…');
+      output(card, 'status', 'Calculating in the background…');
+      try {
+        const job = new Worker(workerURL);
+        worker = job; start.disabled = true; cancel.disabled = false; field.disabled = true;
+        job.onmessage = ({ data }) => {
+          if (worker !== job) return;
+          if (data.type === 'progress') progress.value = data.completed / data.terms;
+          else if (data.type === 'result') {
+            output(card, 'estimate', data.estimate);
+            if (method === 'leibniz') output(card, 'bound', `≤ ${data.bound.toExponential(5)} (exact-arithmetic bound)`);
+            else output(card, 'precision', `${data.precision} significant digits`);
+            progress.value = 1;
+            stop(`Completed ${data.terms.toLocaleString()} ${data.terms === 1 ? 'term' : 'terms'}.`);
+          } else if (data.type === 'error') {
+            output(card, 'estimate', '—'); stop(data.message);
+          }
+        };
+        job.onerror = () => { output(card, 'estimate', '—'); stop('The calculation could not load. Reload the page to try again.'); };
+        job.postMessage({ method, terms });
+      } catch (_) {
+        output(card, 'estimate', '—'); stop('The calculation could not start. Reload the page to try again.');
+      }
     }
-    await Pi.CollisionsUpdate();
-  },
-  CollisionShow() {
-    CollisionReceive.innerHTML = currentPi.toString();
-    ctx.fillStyle = _Colors.Bg[0];
-    ctx.fillRect(0, 0, CollisionCanvas.width, CollisionCanvas.height);
-    ctx.fillStyle = _Colors.Cols[1];
-    ctx.fillRect(0, 0, 10, CollisionCanvas.height);
-    block1.show(ctx);
-    block2.show(ctx);
-    if (Pi.collisionsRunning) {
-      requestAnimationFrame(Pi.CollisionShow);
-    }
-  },
-  Random() {
-    if (Pi.RandomId === 0) {
-      RandomInput.innerHTML = "Pause";
-      //RandomCtx.clearRect(0, 0, RandomReceiveCanvas.width, RandomReceiveCanvas.height)
-      Pi.RandomId = setInterval(Pi.RandomUpdate, 10);
+    start.addEventListener('click', calculate);
+    cancel.addEventListener('click', () => { output(card, 'estimate', '—'); stop('Cancelled. Change the number of terms and calculate again.'); });
+    field.addEventListener('keydown', (event) => { if (event.key === 'Enter') calculate(); });
+    disposers.push(() => stop());
+    calculate();
+  }
+
+  // Find the next impact analytically instead of hoping a time step detects it.
+  function collisionEvent(state) {
+    const wallTime = state.v1 < 0 ? -state.x1 / state.v1 : Infinity;
+    const pairTime = state.v1 > state.v2 ? Math.max(0, state.x2 - state.x1 - 0.5) / (state.v1 - state.v2) : Infinity;
+    const time = Math.min(wallTime, pairTime);
+    if (!Number.isFinite(time)) return false;
+    state.x1 += state.v1 * time;
+    state.x2 += state.v2 * time;
+    if (wallTime <= pairTime) {
+      state.x1 = 0; state.v1 = -state.v1; state.hit = 'wall';
     } else {
-      RandomInput.innerHTML = "Resume";
-      clearInterval(Pi.RandomId);
-      Pi.RandomId = 0;
+      state.x1 = state.x2 - 0.5;
+      const v1 = state.v1, v2 = state.v2, mass = state.mass;
+      state.v1 = (1 - mass) / (1 + mass) * v1 + 2 * mass / (1 + mass) * v2;
+      state.v2 = 2 / (1 + mass) * v1 + (mass - 1) / (1 + mass) * v2;
+      state.hit = 'pair';
     }
-  },
-  RandomId: 0,
-  RandomCurrentPi: {
-    num: new Decimal(0),
-    den: new Decimal(0),
-  },
-  RandomUpdate() {
-    const f = RandomGeneratorMethods[RandomSelect.value];
-    const x = f(),
-      y = f();
-    RandomCtx.fillStyle = _Colors.Cols[2];
-    if (x.pow(2).plus(y.pow(2)).lessThanOrEqualTo(1)) {
-      Pi.RandomCurrentPi.num = Pi.RandomCurrentPi.num.plus(1);
-      RandomCtx.fillStyle = _Colors.Cols[1];
+    state.count++;
+    return true;
+  }
+  function collisionDemo(card) {
+    const digits = input(card, 'digits'), speed = input(card, 'speed'), start = button(card, 'start');
+    const canvas = card.querySelector('canvas');
+    let state, timer = null, complete = false;
+    function pause() { if (timer !== null) clearInterval(timer); timer = null; }
+    function render() {
+      output(card, 'count', state.count.toLocaleString());
+      const places = Number(digits.value) - 1;
+      output(card, 'estimate', (state.count / 10 ** places).toFixed(places));
+      const ctx = background(canvas), floor = canvas.height - 60;
+      const scale = (canvas.width - 100) / Math.max(7, state.x2 + 2, state.x1 + 1);
+      const left = 45, x1 = left + state.x1 * scale, x2 = left + state.x2 * scale;
+      ctx.fillStyle = state.hit === 'wall' ? palette.orange : palette.ink;
+      ctx.fillRect(left - 15, 35, 15, floor - 35);
+      ctx.strokeStyle = '#7b8796'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(left, floor); ctx.lineTo(canvas.width - 25, floor); ctx.stroke();
+      ctx.fillStyle = palette.blue; ctx.fillRect(x1, floor - 60, 0.5 * scale, 60);
+      ctx.fillStyle = state.hit === 'pair' ? palette.orange : palette.red;
+      ctx.fillRect(x2, floor - 100, scale, 100);
+      ctx.fillStyle = palette.ink; ctx.font = '22px system-ui'; ctx.textAlign = 'left';
+      ctx.fillText('m = 1', left, 28);
+      ctx.fillText(`M = ${state.mass.toLocaleString()}`, canvas.width / 2, 28);
+      ctx.font = '19px system-ui'; ctx.fillText(`v₁ = ${state.v1.toPrecision(3)} · v₂ = ${state.v2.toPrecision(3)}`, left, canvas.height - 20);
     }
-    Pi.RandomCurrentPi.den = Pi.RandomCurrentPi.den.plus(1);
-    RandomReceive.innerHTML = Pi.RandomCurrentPi.num.times(4).dividedBy(Pi.RandomCurrentPi.den).toSD(10).toString();
-    RandomTotal.innerHTML = Pi.RandomCurrentPi.den.toString();
-    //requestAnimationFrame(() => {
-    RandomCtx.beginPath();
-    RandomCtx.arc(x.toNumber() * 1000, y.toNumber() * 1000, 2, 0, 2 * Math.PI);
-    RandomCtx.closePath();
-    RandomCtx.fill();
-    //})
-  },
-  RandomReset() {
-    if (Pi.RandomId !== 0) {
-      clearInterval(Pi.RandomId);
-      Pi.RandomId = 0;
+    function reset() {
+      pause(); complete = false;
+      const d = Number(digits.value);
+      state = { mass: 100 ** (d - 1), x1: 2, x2: 4, v1: 0, v2: -1, count: 0, hit: '' };
+      output(card, 'estimate', '—'); output(card, 'mass', state.mass.toLocaleString());
+      output(card, 'status', 'Ready. Count both block–block and block–wall collisions.');
+      start.textContent = 'Start'; render();
     }
-    RandomInput.innerHTML = "Start";
-    Pi.RandomCurrentPi.num = new Decimal(0);
-    Pi.RandomCurrentPi.den = new Decimal(1);
-    RandomReceive.innerHTML = "0";
-    RandomCtx.clearRect(0, 0, RandomReceiveCanvas.width, RandomReceiveCanvas.height);
-  },
-};
+    function tick() {
+      for (let i = 0; i < Number(speed.value); i++) {
+        if (!collisionEvent(state)) {
+          pause(); complete = true; start.textContent = 'Run again';
+          const count = String(state.count);
+          output(card, 'estimate', count.length > 1 ? `${count[0]}.${count.slice(1)}` : count);
+          output(card, 'status', 'Complete. Both blocks move away without another impact.');
+          break;
+        }
+      }
+      render();
+    }
+    start.addEventListener('click', () => {
+      if (timer !== null) { pause(); start.textContent = 'Resume'; output(card, 'status', 'Paused.'); }
+      else {
+        if (complete) reset();
+        start.textContent = 'Pause'; output(card, 'status', 'Counting collision events…');
+        timer = setInterval(tick, 160);
+      }
+    });
+    button(card, 'reset').addEventListener('click', reset);
+    digits.addEventListener('change', reset);
+    disposers.push(pause); reset();
+  }
 
-Pi.Archimedes();
-ArchimedesInput.addEventListener("input", Pi.Archimedes);
-Pi.Archimedes2();
-ArchimedesInput2.addEventListener("input", Pi.Archimedes2);
+  function seededRandom(seed) {
+    let state = seed >>> 0;
+    return () => {
+      state = (state + 0x6d2b79f5) >>> 0;
+      let t = state;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function monteCarloDemo(card) {
+    const samples = input(card, 'samples'), seed = input(card, 'seed'), speed = input(card, 'speed'), start = button(card, 'start');
+    const canvas = card.querySelector('canvas'), ctx = canvas.getContext('2d');
+    const pad = 35, size = canvas.width - 2 * pad;
+    let total = 0, inside = 0, random, target, frame = null, lastUpdate = 0;
+    function pause() { if (frame !== null) cancelAnimationFrame(frame); frame = null; }
+    function drawBase() {
+      background(canvas);
+      ctx.fillStyle = palette.pale; ctx.beginPath(); ctx.moveTo(pad, pad + size);
+      ctx.arc(pad, pad + size, size, -Math.PI / 2, 0); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = palette.blue; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(pad, pad + size, size, -Math.PI / 2, 0); ctx.stroke();
+      ctx.strokeStyle = '#7b8796'; ctx.strokeRect(pad, pad, size, size);
+      ctx.fillStyle = palette.ink; ctx.font = '20px system-ui'; ctx.textAlign = 'left';
+      ctx.fillText('0', pad - 20, canvas.height - 13); ctx.fillText('1', canvas.width - pad, canvas.height - 13); ctx.fillText('1', 10, pad);
+    }
+    function reset() {
+      pause(); target = bounded(samples, 10000); random = seededRandom(bounded(seed, 314159));
+      total = 0; inside = 0; lastUpdate = 0;
+      start.textContent = 'Start'; samples.disabled = false; seed.disabled = false;
+      output(card, 'estimate', '—'); output(card, 'count', '0'); output(card, 'interval', 'Needs at least 30 samples');
+      output(card, 'status', 'Ready. The same seed reproduces the same samples.'); drawBase();
+    }
+    function tick(timestamp) {
+      // Limit visual updates independently of the display's refresh rate.
+      if (timestamp - lastUpdate < 80) {
+        frame = requestAnimationFrame(tick);
+        return;
+      }
+      lastUpdate = timestamp;
+      const limit = Math.min(target, total + Number(speed.value));
+      while (total < limit) {
+        const x = random(), y = random(), hit = x * x + y * y <= 1;
+        total++; if (hit) inside++;
+        if (total <= 20000) {
+          ctx.fillStyle = hit ? palette.green : palette.red;
+          ctx.fillRect(pad + x * size, pad + (1 - y) * size, 2, 2);
+        }
+      }
+      const p = inside / total;
+      output(card, 'estimate', (4 * p).toFixed(8)); output(card, 'count', `${total.toLocaleString()} / ${target.toLocaleString()}`);
+      if (total >= 30) {
+        const half = 1.96 * 4 * Math.sqrt(p * (1 - p) / total);
+        output(card, 'interval', `${Math.max(0, 4 * p - half).toFixed(5)} – ${Math.min(4, 4 * p + half).toFixed(5)}`);
+      }
+      if (total < target) frame = requestAnimationFrame(tick);
+      else {
+        frame = null; start.textContent = 'Run again'; samples.disabled = false; seed.disabled = false;
+        output(card, 'status', 'Complete. Change the seed and reset to try a different sample.');
+      }
+    }
+    start.addEventListener('click', () => {
+      if (frame !== null) { pause(); start.textContent = 'Resume'; output(card, 'status', 'Paused.'); }
+      else {
+        if (total === 0 || total >= target) reset();
+        samples.disabled = true; seed.disabled = true;
+        lastUpdate = 0;
+        start.textContent = 'Pause'; output(card, 'status', 'Sampling points…');
+        frame = requestAnimationFrame(tick);
+      }
+    });
+    button(card, 'reset').addEventListener('click', reset);
+    samples.addEventListener('change', reset); seed.addEventListener('change', reset);
+    disposers.push(pause); reset();
+  }
 
-Pi.Leibniz();
-LeibnizInput.addEventListener("input", Pi.Leibniz);
-
-document.getElementById("collision-start").addEventListener("click", function () {
-  Pi.Collision();
-});
-ctx.fillStyle = _Colors.Bg[0];
-ctx.fillRect(0, 0, CollisionCanvas.width, CollisionCanvas.height);
-ctx.fillStyle = _Colors.Cols[1];
-ctx.fillRect(0, 0, 10, CollisionCanvas.height);
-
-Pi.Ramanujan();
-RamanujanInput.addEventListener("input", Pi.Ramanujan);
-
-RandomInput.addEventListener("click", Pi.Random);
-RandomReset.addEventListener("click", Pi.RandomReset);
+  document.querySelectorAll('[data-pi-demo]').forEach((card) => {
+    const method = card.dataset.piDemo;
+    if (method === 'polygon') polygonDemo(card);
+    else if (method === 'collisions') collisionDemo(card);
+    else if (method === 'monte-carlo') monteCarloDemo(card);
+    else seriesDemo(card, method);
+  });
+  window.addEventListener('pagehide', () => disposers.forEach((dispose) => dispose()));
+})();

@@ -41,7 +41,7 @@ required = {
     'cv/index.html': ['Computer Science, AI curriculum', 'Information Engineering', '110/110', '100/100 cum laude', 'IT Staff', 'Chief administrator', 'Bronze medal', 'Silver medal', 'Certificate in Advanced English', 'Docker Networking', 'Native speaker', 'Computational mathematics', '/assets/pdf/CV-Riccardo-Ciucci.pdf'],
     'blog/index.html': ['Building a small MVC library in PHP', 'Sorting'],
     'blog/2025/sorting-algorithms-overview/index.html': ['bubble-tot', 'cocktailshaker-tot', 'merge-tot', '/assets/js/projects/sorting.js'],
-    'blog/2024/calculate-pi-in-the-browser/index.html': ['/assets/js/projects/pi.js', '/assets/js/projects/async-tools.js'],
+    'blog/2024/calculate-pi-in-the-browser/index.html': ['/assets/js/projects/pi.js', '/assets/js/projects/pi-worker.js'],
     'repositories/index.html': ['Richie314', 'github-stats-extended.vercel.app'],
 }
 for name, markers in required.items():

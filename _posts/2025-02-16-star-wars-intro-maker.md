@@ -23,11 +23,11 @@ You can find my complete source code on [GitHub](https://github.com/Richie314/St
 > Go to <https://starwars.ciucci.dev>
 {: .block-info }
 
-In this step-by-step guide, I’ll walk you through how I recreated the intro.
+In this step-by-step guide, I'll walk you through how I recreated the intro.
 
 ## 1. Give the renderer a small, stable structure
 
-We’ll start with a black page and these layers:
+We'll start with a black page and these layers:
 
 ```html
 <body class="wait">
@@ -75,12 +75,12 @@ We’ll start with a black page and these layers:
 `#board` supplies the crawl's tilted coordinate system; its child `#content` moves inside that system.
 By keeping those two responsibilities on separate elements, we can turn ordinary vertical text movement into movement into depth.
 
-I suggest using three paragraphs to match the audio timing; we’ll see why later.
+I suggest using three paragraphs to match the audio timing; we'll see why later.
 
 ## 2. Make a responsive cinema frame
 
-We’ll use a 16:9 frame that fits any viewport shape.
-Here is the CSS we’ll use to achieve this:
+We'll use a 16:9 frame that fits any viewport shape.
+Here is the CSS we'll use to achieve this:
 
 ```css
 body {
@@ -127,7 +127,7 @@ A full-height 16:9 frame is horizontally centered by the auto margins, with blac
 
 ## 3. Starfield background
 
-We’ll create the starfield using a series of white `<div>` elements against a black background.
+We'll create the starfield using a series of white `<div>` elements against a black background.
 
 ```css
 .star {
@@ -165,7 +165,7 @@ for (let i = 0; i < 100; i++) {
 
 ## 4. Blue opening sentence
 
-We’ll place the opening blue text, *A long time ago in a galaxy far, far away...*, in the middle of `#screen` and use a `@keyframes` rule to fade it in and out.
+We'll place the opening blue text, *A long time ago in a galaxy far, far away...*, in the middle of `#screen` and use a `@keyframes` rule to fade it in and out.
 
 ```css
 .intro {
@@ -193,13 +193,13 @@ We’ll place the opening blue text, *A long time ago in a galaxy far, far away.
 }
 ```
 
-Together with the base `opacity: 0` declaration, these keyframes keep the text hidden before and after the animation. Once we remove the loading class, it will start after a one-second delay and run for five seconds. We’ll raise the opacity to 1 to reveal the text, then lower it back to 0.
+Together with the base `opacity: 0` declaration, these keyframes keep the text hidden before and after the animation. Once we remove the loading class, it will start after a one-second delay and run for five seconds. We'll raise the opacity to 1 to reveal the text, then lower it back to 0.
 
 ## 5. "STAR WARS" logo
 
 I used an SVG image for the logo so the browser can rasterize its vector outlines at the size needed during scaling.
 A bitmap at insufficient resolution would look soft at the large initial size.
-We’ll use an ordinary `<img>` here: CSS transforms the whole image, rather than animating paths inside the SVG.
+We'll use an ordinary `<img>` here: CSS transforms the whole image, rather than animating paths inside the SVG.
 
 ```css
 .logo {
@@ -269,7 +269,7 @@ Now let's add the core geometry:
 }
 ```
 
-We’ll call the frame height *H*.
+We'll call the frame height *H*.
 The custom property is `H/100`, so the board is *3.5H tall*, and the perspective distance is *H*.
 Its bottom edge is anchored to the frame bottom.
 Much of the untransformed board extends above the frame; the transform projects that tall rectangle into a narrowing plane.
@@ -281,7 +281,7 @@ CSS transform composition matters: in `perspective(H) rotateX(35deg)`, the rotat
 ![How a vertical board becomes a receding crawl](/assets/img/star-wars/perspective.svg)
 
 We can use a simplified calculation to explain the narrowing.
-Let’s call a point’s distance upward from the bottom pivot *d*.
+Let's call a point's distance upward from the bottom pivot *d*.
 Before projection, its coordinates relative to that pivot are approximately:
 
 ```text
@@ -303,7 +303,7 @@ I suggest changing one parameter at a time because the angle, board height, and 
 
 ## 7. Main text
 
-We’ll use large text in the board’s local coordinates:
+We'll use large text in the board's local coordinates:
 
 ```css
 #content {
@@ -348,7 +348,7 @@ Perspective creates that apparent deceleration without any JavaScript motion loo
 The board clips its children, and the frame clips the whole scene.
 At 158 seconds the animation ends. With no forwards fill, `top` returns to its base `100%`, below the visible board.
 
-We’ll justify the paragraphs and center the episode number and title.
+We'll justify the paragraphs and center the episode number and title.
 The CSS relies on system font fallbacks and browser default paragraph margins and line height; these influence wrapping, spacing, and the eventual credits estimate.
 
 Longer writing does not increase the 140-second scroll duration.
@@ -356,8 +356,8 @@ It adds content below the start position, so sufficiently long text can remain u
 
 ## 8. Initial loader
 
-We’ll add an initial loading *gate* so the CSS animations don’t start before the audio and stylesheets are available.
-We’ll give the body the `wait` class initially:
+We'll add an initial loading *gate* so the CSS animations don't start before the audio and stylesheets are available.
+We'll give the body the `wait` class initially:
 
 ```css
 .hidden { 
@@ -466,7 +466,7 @@ CSS becomes active on rendering updates, so this is a practical shared epoch, no
 
 ![The renderer's visual and audio timeline](/assets/img/star-wars/timeline.svg)
 
-Here are the timing values we’ll use:
+Here are the timing values we'll use:
 
 | Event | Time after releasing `.wait` |
 | --- | --- |
@@ -481,7 +481,7 @@ The soundtrack starts **700 ms before the logo**, not when the logo appears.
 I used this timing in the renderer to match the soundtrack.
 All the delays depend on the audio file we use; the values in this article are specific to the file in my demo.
 
-We’ll create the audio object and control when playback starts:
+We'll create the audio object and control when playback starts:
 
 ```js
 const AUDIO_START_DELAY = 6300;
@@ -495,7 +495,7 @@ function CreateAudio() {
 const audio = CreateAudio();
 ```
 
-We’d like to start the audio once it has loaded, but browser autoplay policies may require the user to interact with the page first. We’ll use a click handler to retry playback and seek to the appropriate position so the audio matches the ongoing animations.
+We'd like to start the audio once it has loaded, but browser autoplay policies may require the user to interact with the page first. We'll use a click handler to retry playback and seek to the appropriate position so the audio matches the ongoing animations.
 
 ```js
 function StartAudio() {
@@ -519,7 +519,7 @@ function StartAudio() {
 document.addEventListener('click', () => StartAudio());
 ```
 
-We’ll handle three cases:
+We'll handle three cases:
 
 1. **Too early:** a negative `deltaT` schedules another attempt at the cue. A timeout may run late, so the next call recomputes the offset.
 2. **On time or late:** seek the track to the position it should have reached, then attempt playback. `currentTime` uses seconds; `performance.now()` and the delay use milliseconds, hence the division by 1000.
@@ -530,12 +530,12 @@ A click at 3 seconds schedules a future attempt; it does not start the music imm
 Because that later attempt is asynchronous, an early click may still fail to satisfy a browser's autoplay policy.
 A click after the cue retries `play()` directly in the click handler.
 
-We’re using a **seek-on-start synchronization** approach.
+We're using a **seek-on-start synchronization** approach.
 While audio is already playing, the early return prevents correction.
 
 ## 10. Closing credits
 
-We’ll wait 105 seconds before scheduling the closing credits, then add a delay based on the text length.
+We'll wait 105 seconds before scheduling the closing credits, then add a delay based on the text length.
 
 ```js
 const CREDITS_SHOW_DELAY = 105 * 1000;
@@ -579,13 +579,13 @@ function show_credits() {
 }
 ```
 
-We’ll leave a one-second gap so the browser can render the credits in a transparent state before the opacity changes.
+We'll leave a one-second gap so the browser can render the credits in a transparent state before the opacity changes.
 
 ## 11. Keep the presentation unobtrusive
 
-Finally, we’ll use JavaScript to suppress the context menu and hide the pointer after inactivity.
-We’ll hide the pointer with a `.no-cursor` class. Whenever the mouse moves, we’ll remove that class, clear the previous timeout, and schedule a new one to hide the pointer after two seconds.
-We’ll also set an initial timer to hide it after three seconds if the mouse never moves:
+Finally, we'll use JavaScript to suppress the context menu and hide the pointer after inactivity.
+We'll hide the pointer with a `.no-cursor` class. Whenever the mouse moves, we'll remove that class, clear the previous timeout, and schedule a new one to hide the pointer after two seconds.
+We'll also set an initial timer to hide it after three seconds if the mouse never moves:
 
 ```css
 .no-cursor { 

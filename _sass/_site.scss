@@ -137,3 +137,47 @@ d-article {
   summary { cursor: pointer; }
   img { width: 100%; height: auto; }
 }
+
+.pi-demo {
+  margin: 1.75rem 0 2.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.85rem;
+  background: var(--global-card-bg-color, var(--global-bg-color));
+  box-shadow: 0 3px 14px rgb(0 0 0 / 6%);
+
+  &__header { margin-bottom: 1.25rem; }
+  &__eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--global-theme-color); }
+  &__header h3 { margin: 0.35rem 0 0.6rem; font-size: 1.25rem; }
+  p { text-align: start; }
+  &__header p { margin: 0; }
+  &__layout { display: grid; grid-template-columns: minmax(11rem, 1fr) minmax(0, 1.6fr); gap: 1.5rem; align-items: start; }
+  &__layout--series { grid-template-columns: minmax(10rem, 0.8fr) minmax(0, 1.6fr); }
+  &__controls { display: flex; flex-direction: column; gap: 0.65rem; min-width: 0; }
+  &__controls label { margin: 0; font-size: 0.9rem; font-weight: 600; }
+  &__controls input, &__controls select { min-height: 44px; width: 100%; }
+  &__actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.35rem; }
+  &__button {
+    min-height: 44px; padding: 0.45rem 0.85rem; border: 2px solid #3268a8; border-radius: 0.4rem;
+    background: #f3f4f6; color: #244f81; font: inherit; font-weight: 600; cursor: pointer;
+    &:hover { background: #dfe9f5; }
+    &:focus-visible { outline: 3px solid #b66b20; outline-offset: 3px; }
+    &:disabled { opacity: 0.55; cursor: default; }
+    &--primary { background: #3268a8; color: #fff; &:hover { background: #244f81; } }
+  }
+  &__metrics { margin: 0.5rem 0; display: grid; gap: 0.85rem; }
+  &__metrics dt { font-size: 0.78rem; font-weight: 500; opacity: 0.85; }
+  &__metrics dd { margin: 0.15rem 0 0; font-family: ui-monospace, monospace; font-size: 0.95rem; overflow-wrap: anywhere; }
+  &__visual { min-width: 0; }
+  canvas { display: block; width: 100%; height: auto; max-width: 480px; margin: 0 auto; border: 1px solid #cbd1d9; border-radius: 0.5rem; background: #f3f4f6; }
+  &[data-pi-demo="collisions"] canvas { max-width: none; }
+  &__result-label { font-size: 0.8rem; font-weight: 600; }
+  &__digits { display: block; margin: 0.5rem 0 1rem; padding: 1rem; border: 1px solid var(--global-divider-color); border-radius: 0.5rem; background: var(--global-code-bg-color); font: 1.05rem/1.8 ui-monospace, monospace; overflow-wrap: anywhere; max-height: 12rem; overflow-y: auto; }
+  &__status, &__hint { margin: 0.5rem 0 0; font-size: 0.8rem; line-height: 1.6; }
+  &__progress-label progress { display: block; width: 100%; height: 0.6rem; margin-top: 0.5rem; accent-color: #3268a8; }
+}
+.post-content .pi-demo p { text-align: start; }
+@media (max-width: 700px) {
+  .pi-demo__layout, .pi-demo__layout--series { grid-template-columns: minmax(0, 1fr); }
+}
+.pi-reference { padding: 1rem 1.25rem; border-left: 4px solid #3268a8; background: var(--global-code-bg-color); font: 1.05rem/1.8 ui-monospace, monospace; overflow-wrap: anywhere; }

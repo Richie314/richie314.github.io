@@ -31,8 +31,8 @@ toc:
 I made these interactive sorting tools as a school project during my fourth year of high school.
 I wanted to turn the algorithms we were studying into something I could watch: values moving across an array, one comparison or exchange at a time.
 
-In this article, I’ll use those tools to explain eight sorting algorithms, from bubble sort to merge sort.
-We’ll look at the idea behind each one, follow a small example, and connect what happens on screen to its computational cost.<d-cite key="sorting-overview"></d-cite>
+In this article, I'll use those tools to explain eight sorting algorithms, from bubble sort to merge sort.
+We'll look at the idea behind each one, follow a small example, and connect what happens on screen to its computational cost.<d-cite key="sorting-overview"></d-cite>
 
 ## How to use the simulations
 
@@ -56,8 +56,8 @@ The animations also wait at different points, so their elapsed times are not ben
 
 ## What complexity tells us
 
-We’ll call the number of elements $$n$$.
-Time complexity describes how an algorithm’s work grows as $$n$$ increases, assuming comparisons, assignments, and swaps of individual values take constant time.
+We'll call the number of elements $$n$$.
+Time complexity describes how an algorithm's work grows as $$n$$ increases, assuming comparisons, assignments, and swaps of individual values take constant time.
 Auxiliary space counts additional working memory, including recursive calls, but excludes the input array.<d-cite key="complexity"></d-cite>
 
 
@@ -83,18 +83,18 @@ Passing the vector by reference lets us modify it without copying the entire inp
 | Cocktail shaker, fixed passes | $$\Theta(n^2)$$ | $$\Theta(n^2)$$ | $$\Theta(n^2)$$ | $$\Theta(1)$$ | Yes |
 | Insertion | $$\Theta(n)$$ | $$\Theta(n^2)$$ | $$\Theta(n^2)$$ | $$\Theta(1)$$ | Yes |
 | Selection | $$\Theta(n^2)$$ | $$\Theta(n^2)$$ | $$\Theta(n^2)$$ | $$\Theta(1)$$ | No |
-| Odd–even, full-cycle stopping | $$\Theta(n)$$ | $$\Theta(n^2)$$ | $$\Theta(n^2)$$ | $$\Theta(1)$$ | Yes |
+| Odd-even, full-cycle stopping | $$\Theta(n)$$ | $$\Theta(n^2)$$ | $$\Theta(n^2)$$ | $$\Theta(1)$$ | Yes |
 | Shell, halved gaps | $$\Theta(n\log n)$$ | Gap- and input-dependent; $$O(n^2)$$ upper bound | $$\Theta(n^2)$$ | $$\Theta(1)$$ | No |
 | Quick, last-element pivot | $$\Theta(n\log n)$$ | $$\Theta(n\log n)$$ | $$\Theta(n^2)$$ | $$\Theta(\log n)$$ balanced; $$\Theta(n)$$ worst | No |
 | Merge, always merging | $$\Theta(n\log n)$$ | $$\Theta(n\log n)$$ | $$\Theta(n\log n)$$ | $$\Theta(n)$$ | Yes |
 
 Implementation choices matter.
-Adding early stopping changes bubble sort’s best case; changing Shell sort’s gaps changes its bounds.
-Princeton’s [sorting summary](https://algs4.cs.princeton.edu/cheatsheet/) is a useful reference for the standard algorithms, while these [sorting lecture notes](https://www.cs.wm.edu/~tadavis/cs303/ch07f.pdf) discuss the quadratic worst case of Shell’s original gap sequence.
+Adding early stopping changes bubble sort's best case; changing Shell sort's gaps changes its bounds.
+Princeton's [sorting summary](https://algs4.cs.princeton.edu/cheatsheet/) is a useful reference for the standard algorithms, while these [sorting lecture notes](https://www.cs.wm.edu/~tadavis/cs303/ch07f.pdf) discuss the quadratic worst case of Shell's original gap sequence.
 
 ## Bubble sort
 
-We’ll start with adjacent pairs.
+We'll start with adjacent pairs.
 If the left value is larger, we swap the pair.
 After one left-to-right pass, the largest value in the active range has reached its final position at the right edge.
 Each new pass can therefore stop one element earlier.
@@ -135,7 +135,7 @@ void BubbleSort(std::vector<T>& arr, std::size_t start, std::size_t end) {
 ## Cocktail shaker sort
 
 Cocktail shaker sort takes bubble sort in both directions.
-We’ll move the largest remaining value to the right with a forward pass, then move the smallest remaining value to the left with a backward pass.
+We'll move the largest remaining value to the right with a forward pass, then move the smallest remaining value to the left with a backward pass.
 After that round, both boundaries can move inward.
 
 With `[2, 3, 4, 1]`, an ordinary forward bubble pass moves the `1` left by only one position.
@@ -173,7 +173,7 @@ void ShakerSort(std::vector<T>& arr, std::size_t start, std::size_t end) {
 
 ## Insertion sort
 
-Here we’ll maintain a sorted prefix.
+Here we'll maintain a sorted prefix.
 We take the next value and move it left until it reaches the correct position inside that prefix.
 This is similar to inserting a new card into an already ordered hand.
 
@@ -217,7 +217,7 @@ void InsertionSort(std::vector<T>& arr, std::size_t start, std::size_t end) {
 
 ## Selection sort
 
-Instead of exchanging every out-of-order pair, we’ll search the entire unsorted suffix for its minimum and swap that minimum into the next position.
+Instead of exchanging every out-of-order pair, we'll search the entire unsorted suffix for its minimum and swap that minimum into the next position.
 The sorted prefix grows by one value per pass.
 
 For `[4, 2, 3, 1]`, the first search finds `1` and exchanges it with `4`, giving `[1, 2, 3, 4]`.
@@ -251,11 +251,11 @@ void SelectionSort(std::vector<T>& arr, std::size_t start, std::size_t end) {
 
 ## Odd-even sort
 
-Odd–even sort, also called brick sort, alternates between two sets of adjacent pairs.
+Odd-even sort, also called brick sort, alternates between two sets of adjacent pairs.
 Using zero-based indices, one phase checks `(0, 1), (2, 3), …`; the other checks `(1, 2), (3, 4), …`.
 Each pair is exchanged if it is out of order.
 
-We’ll repeat **both phases** until an entire two-phase cycle makes no swaps.
+We'll repeat **both phases** until an entire two-phase cycle makes no swaps.
 A single quiet phase is insufficient: `[1, 3, 2, 4]` needs no exchanges in the even-indexed pairs, but its middle pair is still reversed.
 The C++ example below explicitly checks the full cycle.
 
@@ -266,7 +266,7 @@ Strict adjacent swaps make it stable, and it needs $$\Theta(1)$$ extra space.
 Pairs within one phase do not overlap, which makes the algorithm interesting for parallel execution.
 This browser simulation runs sequentially; the bounds here describe sequential work.
 
-{% include sorting.liquid algo='oddeven' name='Odd–even sort' %}
+{% include sorting.liquid algo='oddeven' name='Odd-even sort' %}
 
 ```cpp
 #include <cstddef>
@@ -294,7 +294,7 @@ void OddEvenSort(std::vector<T>& arr, std::size_t start, std::size_t end) {
 ## Shell sort
 
 Shell sort extends insertion sort by comparing values several positions apart.
-We’ll first insertion-sort subsequences separated by a large **gap**, then reduce the gap and repeat.
+We'll first insertion-sort subsequences separated by a large **gap**, then reduce the gap and repeat.
 The final gap of one is an ordinary insertion-sort pass, but earlier passes have already moved values closer to their destinations.
 
 The gap sequence here is $$\lfloor n/2\rfloor,\lfloor n/4\rfloor,\ldots,1$$.
@@ -304,7 +304,7 @@ Watch how values can move across the array much earlier than in adjacent-swap in
 
 On sorted input, each gap pass still visits roughly $$n$$ values, and there are $$\Theta(\log n)$$ passes, giving $$\Theta(n\log n)$$ best time.
 This halving sequence has a $$\Theta(n^2)$$ worst case.
-I use a conservative $$O(n^2)$$ upper bound for its average time rather than assigning Shell sort a universal average-case exponent: the gap sequence is part of the algorithm’s analysis.
+I use a conservative $$O(n^2)$$ upper bound for its average time rather than assigning Shell sort a universal average-case exponent: the gap sequence is part of the algorithm's analysis.
 
 The implementation uses $$\Theta(1)$$ auxiliary space.
 It is not stable because long-distance movements can carry equal keys past one another.
@@ -335,7 +335,7 @@ void ShellSort(std::vector<T>& arr, std::size_t start, std::size_t end) {
 ## Quicksort
 
 Quicksort partitions an array around a **pivot**, then recursively sorts the two sides.<d-cite key="quicksort"></d-cite>
-In this version, we’ll choose the last value as the pivot, collect values less than or equal to it on the left, and finally place the pivot between the partitions.
+In this version, we'll choose the last value as the pivot, collect values less than or equal to it on the left, and finally place the pivot between the partitions.
 The pivot is then in its final sorted position.
 
 For `[4, 1, 3, 2]`, the pivot is `2`.
@@ -355,7 +355,7 @@ $$
 T(n)=T(n-1)+\Theta(n)=\Theta(n^2).
 $$
 
-I suggest comparing the balanced and unbalanced recurrences: quicksort’s performance depends on the shape of its recursion tree.
+I suggest comparing the balanced and unbalanced recurrences: quicksort's performance depends on the shape of its recursion tree.
 Randomizing pivot selection helps avoid predictable bad inputs, while three-way partitioning handles repeated keys more effectively.
 
 Partitioning uses constant working space, but recursive calls need $$\Theta(\log n)$$ space for balanced partitions and $$\Theta(n)$$ in the worst case.
@@ -395,7 +395,7 @@ void QuickSort(std::vector<T>& arr, std::size_t start, std::size_t end) {
 ## Merge sort
 
 Merge sort also divides the problem, but its split is always near the middle.<d-cite key="merge-sort"></d-cite>
-We’ll recursively sort the two halves, then merge them by repeatedly taking the smaller of their first unconsumed values.
+We'll recursively sort the two halves, then merge them by repeatedly taking the smaller of their first unconsumed values.
 A one-element range is already sorted.
 
 For `[4, 1, 3, 2]`, we split into `[4, 1]` and `[3, 2]`, sort those into `[1, 4]` and `[2, 3]`, then merge them into `[1, 2, 3, 4]`.
@@ -469,9 +469,9 @@ $$
 \lceil\log_2(n!)\rceil=\Omega(n\log n).
 $$
 
-That lower bound explains why merge sort’s worst-case growth is optimal in this model.
+That lower bound explains why merge sort's worst-case growth is optimal in this model.
 It does not apply to every possible sorting method: algorithms such as counting sort use extra assumptions about the keys.
-Princeton’s [introduction to sorting](https://algs4.cs.princeton.edu/20sorting/) provides a path into these broader topics.
+Princeton's [introduction to sorting](https://algs4.cs.princeton.edu/20sorting/) provides a path into these broader topics.
 
 For me, the value of this school project is the connection between the code and its behavior.
 We can watch where values move, identify the invariant each pass maintains, and then explain why the amount of work grows the way it does.

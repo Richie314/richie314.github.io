@@ -3,410 +3,361 @@ layout: post
 tags: [math, numerical-methods, probability, computer-science, javascript, demo-avaible]
 title: Calculating 𝜋 in the browser
 description: >
-  Play with different methods of approximation of 𝜋
+  Explore pi through polygon bounds, infinite series, elastic collisions, and random sampling, with interactive demonstrations of how each method converges.
 thumbnail: assets/img/pi/cover.svg
 date: 2024-03-14
 last_modified_at: 2026-11-13
+math: true
+toc:
+  beginning: true
 ---
 
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/9.0.0/decimal.min.js"></script>
-<script defer src="{{ '/assets/js/projects/async-tools.js' | relative_url }}"></script>
-<script defer src="{{ '/assets/js/projects/pi.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/projects/pi.js' | relative_url }}" data-worker-url="{{ '/assets/js/projects/pi-worker.js' | relative_url }}"></script>
 
-First, for this demo, we're going to need two helper functions to ease calculations and
-better display the results. This is beacuse most of the code we're going to run will be asynchornous.
+A circle, an infinite sum, two colliding blocks, and a cloud of random points seem to have little in common.
+Yet each can lead us to the same number: **𝜋**.
+In this article, I'll use browser experiments to connect these methods and show why some gain accurate digits much faster than others.
+
+I suggest starting with the polygon demo, where we can see the geometry directly, then comparing the slow alternating series with the rapidly converging formulas.
+The last two demos approach 𝜋 through mechanics and probability.
+Their purpose is to make the ideas visible, rather than to compete with specialized software for computing digits.
+
+## What are we calculating?
+
+For a circle of circumference $$C$$ and radius $$r$$, we define
+
+$$
+\pi=\frac{C}{2r}.
+$$
+
+The same constant appears in its area, $$A=\pi r^2$$, and in many formulas involving waves, probability, and complex numbers.
+Changing the circle's size changes its circumference and diameter by the same factor, leaving their ratio unchanged.
+
+<div class="pi-reference" aria-label="Pi to 50 decimal places">𝜋 = 3.14159265358979323846264338327950288419716939937510…</div>
+
+𝜋 is **irrational**, so it cannot be written as a ratio of two integers, and its decimal expansion neither terminates nor eventually repeats.
+It is also **transcendental**: it is not a root of any nonzero polynomial with integer coefficients.
+These facts do not prevent us from defining 𝜋 exactly or writing exact formulas for it.
+They mean that a finite decimal display is always an approximation.
+
+There are two different sources of numerical error to watch for here.
+**Truncation error** comes from stopping a polygon construction or an infinite sum after finitely many steps.
+**Rounding error** comes from storing and manipulating numbers with finite precision.
+Increasing the number of displayed digits addresses neither problem by itself.
+
+## A short history, without the long gaps
+
+Approximations to 𝜋 existed long before Archimedes.
+Progress also continued between ancient Greece and seventeenth-century Europe, notably in Chinese and Indian mathematics.
+The following milestones give some context for the methods we'll try.
+
+| Period | Development |
+| --- | --- |
+| Ancient Egypt and Mesopotamia | Practical approximations supported calculations involving circles. |
+| Third century BCE | Archimedes bounded 𝜋 using inscribed and circumscribed polygons. |
+| Fifth century CE | Zu Chongzhi obtained the remarkably accurate fraction $$355/113$$. |
+| Around 1400 | Madhava and the Kerala tradition developed series related to the arctangent, centuries before their European rediscovery. |
+| Seventeenth century | Gregory and Leibniz independently developed the arctangent-series approach in Europe. |
+| Eighteenth and nineteenth centuries | Proofs of irrationality and transcendence clarified what kinds of exact representations are impossible. |
+| 1914 | Ramanujan published strikingly fast series for $$1/\pi$$. |
+| Late 1980s | The Chudnovsky brothers developed another extremely fast series. |
+| 2003 | Galperin published a method for extracting digits by counting elastic collisions. |
+
+For the historical background, I recommend MacTutor's [history of 𝜋](https://mathshistory.st-andrews.ac.uk/HistTopics/Pi_through_the_ages/) and its [chronology of approximations](https://mathshistory.st-andrews.ac.uk/HistTopics/Pi_chronology/).
+We'll return to the original papers and computational references as each method appears.
+
+## 1. Archimedes: trapping a circle between polygons
+
+A regular polygon inscribed in a circle has a smaller perimeter than the circle.
+A regular polygon circumscribed around it has a larger perimeter.
+Dividing those perimeters by the circle's diameter gives a lower and an upper bound for 𝜋.
+As the number of sides increases, the two bounds approach one another.
+
+For a unit circle and an $$n$$-sided polygon, modern trigonometry writes the bounds as
+
+$$
+n\sin\left(\frac{\pi}{n}\right)<\pi<n\tan\left(\frac{\pi}{n}\right).
+$$
+
+The angles here are in **radians**.
+These formulas describe the geometry neatly, but plugging a known value of 𝜋 into sine would not independently calculate 𝜋.
+The demo instead starts from a regular hexagon and doubles its sides using square roots.
+
+Let $$q_n$$ be the side length of an inscribed polygon in a circle of radius one.
+A regular hexagon has $$q_6=1$$.
+Bisecting one of its central triangles and applying the Pythagorean theorem gives
+
+$$
+q_{2n}=\sqrt{2-\sqrt{4-q_n^2}}.
+$$
+
+When $$q_n$$ is small, the subtraction loses significant digits in floating-point arithmetic.
+Rationalizing the expression gives the more stable form used by the demo:
+
+$$
+q_{2n}=\frac{q_n}{\sqrt{2+\sqrt{4-q_n^2}}}.
+$$
+
+The corresponding perimeter ratios are
+
+$$
+L_n=\frac{nq_n}{2},\qquad
+U_n=\frac{nq_n}{\sqrt{4-q_n^2}},\qquad
+L_n<\pi<U_n.
+$$
+
+{% include pi-demo.liquid method='polygon' title='Squeeze the circle' description='Double the number of sides and watch the gap between the two approximations shrink.' %}
+
+At 96 sides, the demo gives approximately $$3.14103195<\pi<3.14271460$$.
+Archimedes used rational estimates of square roots to obtain the famous, slightly wider bounds
+
+$$
+\frac{223}{71}<\pi<\frac{22}{7}.
+$$
+
+Notice that $$22/7$$ is an upper bound, rather than an exact value of 𝜋.
+The demo follows the geometric idea using modern floating-point arithmetic; its displayed endpoints are rounded approximations, not certified interval-arithmetic results.
+`Math.PI` is used to draw the polygons, but not in the recurrence that computes their perimeter ratios.
+
+Asymptotically, the geometric errors shrink like $$1/n^2$$:
+
+$$
+\pi-L_n\sim\frac{\pi^3}{6n^2},\qquad
+U_n-\pi\sim\frac{\pi^3}{3n^2}.
+$$
+
+Doubling the number of sides therefore reduces the error by roughly a factor of four once the polygons are sufficiently fine.
+
+<details markdown="1">
+<summary>A compact implementation of the stable recurrence</summary>
 
 ```js
-async function RunParallel(arrayofFunctions) {
-    if (!arrayofFunctions)
-        return;
-    const arrayOfPromises = arrayofFunctions.filter(f => typeof f === 'function').map(
-        (f, i, all) => new Promise((res, rej) => {
-            try {
-                res(f());
-            } catch (err) {
-                rej(err);
-            }
-        })
-    );
-    return await Promise.all(arrayOfPromises);
-}
-async function delay(time) {
-    if (!time || isNaN(time))
-        return;
-    return await new Promise(resolve => setTimeout(resolve, time));
-}
-```
-
-We'll also use the [DecimalJS](https://mikemcl.github.io/decimal.js/) library and 
-these other functions for basic operations.
-
-```js
-function factorial(num) {
-  var n = new Decimal(1);
-  if (num < 2) return n;
-  for (var k = 2; k <= num; n = n.times(k++)) {}
-  return n;
-}
-function gcd(a, b) {
-  let c = a.minus(b);
-  while (c.comparedTo(0) !== 0) {
-    if (c.isPositive()) {
-      a = a.dividedBy(c);
-    } else {
-      b = b.dividedBy(c.negated());
-    }
-    c = a.minus(b);
+function polygonBounds(sides) {
+  let n = 6, chord = 1;
+  while (n < sides) {
+    chord /= Math.sqrt(2 + Math.sqrt(4 - chord * chord));
+    n *= 2;
   }
-  return a;
-}
-function CoPrime(a, b) {
-  return gcd(a, b).equals(1);
-}
-```
-
-Already in ancient times there was a need to calculate the circumferences and areas of circles. However, the procedure is not so easy, since 𝜋 is transcendental and irrational.
-For this reason, today as in the past, we must resort to approximations, always trying to improve our precision in doing so.
-
-The first mathematician to find a procedure to approach 𝜋 was the Syracusan (of Greek-Carthaginian origin) Archimedes. After him, humanity had to wait until the end of the Middle Ages to see further progress in this research: James Gregory and Gottfried Leibniz developed the procedure that was used until the last century. At the same time, Isaac Newton also developed a similar procedure.
-However, it was Srinivasa Ramanujan who found the most efficient (in terms of computability) formula to approximate 𝜋, a formula that is still used today, with slight modifications.
-
-There are also methodologies that have been known for years but never used due to their low speed or precision: the first is a simulation of elastic collisions between two particular bodies, and therefore requires many calculations, although it does not make errors; the second uses random numbers, which are not really obtainable in reality.
-
-## Archimede's method
-
-The first to try to approximate this value was Archimedes in Syracuse, in 250 BC.
-He noticed that, by inscribing a regular polygon with more and more sides inside a circle of radius 0.5, its perimeter got closer and closer to 𝜋, in this case the value of the circumference.
-Some even say that Archimedes was killed by a Roman soldier because he refused to stop working on his "circles".
-
-<img 
-    src="/assets/img/pi/archimedes_death.jpg" 
-    title="Archimede's death"
-    class="m-x-auto d-block rounded-1"
-    style="width: 100%; max-width: 300px;">
-
-$$ \pi = N sin{180° \over N} $$
-
-<div class="row">
-    <div class="col col-4">
-        <div class="row">
-            <div class="col mb-3">
-                <div class="input-group">
-                    <span class="input-group-text">N = </span>
-                    <input type="number" 
-                        min="3" max="99999" step="1"
-                        value="10" id="archimedes-input" size="5"
-                        class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <span class="italic">𝜋 = </span>
-                <output id="archimedes-receive"></output>
-            </div>
-        </div>
-    </div>
-    <div class="col col-8">
-        <canvas id="archimedes-canvas" 
-            width="1000" height="1000" 
-            class="m-x-auto"
-            style="max-height: 250px;"></canvas>
-    </div>
-</div>
-
-Archimedes, however, did not have the "sine" and therefore resorted to a simplified version of this formula:
-starting from _N_ = 6, he doubled the number of sides over and over again, until he reached _N_ = 96.
-
-To do this, it is necessary to be able to calculate the side of a rectangular polygon of _2N_ sides, simply by knowing the measure of the one with _N_ sides.
-
-<img src="/assets/img/pi/archimede-method.svg" title="Archimede's method" 
-    style="margin-inline: auto; width: 100%; max-width: 500px;">
-
-Simply with the pythagorean theorem we obtain _h_, and from it _L'_
-
-$$ h = r - \sqrt{r^2 - {L^2 \over 4}} $$
-
-$$ {L'}^2 = 2rh \rightarrow {L'}^2 = 2r^2 - 2r\sqrt{r^2 - {L^2 \over 4}} $$
-
-$$ L' = \sqrt{2r^2 - 2r\sqrt{r^2 - {L^2 \over 4}}} $$
-
-$$ \pi \approx N \times L' = N\sqrt{2r^2 - 2r\sqrt{r^2 - {L^2 \over 4}}} $$
-
-Starting from the hexagon it is simple, since _L_ = _r_
-
-<div class="row">
-    <div class="col col-4">
-        <div class="row">
-            <div class="col mb-3">
-                <div class="input-group">
-                    <span class="input-group-text">N = </span>
-                    <select id="archimedes-input-2" class="form-control">
-                        <option value="6">6</option>
-                        <option value="12">12</option>
-                        <option value="24">24</option>
-                        <option value="48">48</option>
-                        <option value="96">96</option>
-                        <option value="192">192</option>
-                        <option value="384">384</option>
-                        <option value="768">768</option>
-                        <option value="1536">1536</option>
-                        <option value="3072">3072</option>
-                    </select>
-                </div>
-            </div>            
-        </div>
-        <div class="row">
-            <div class="col">
-                <span class="italic">𝜋 = </span>
-                <output id="archimedes-receive-2"></output>
-            </div>
-        </div>
-    </div>
-    <div class="col col-8">
-        <canvas id="archimedes-canvas-2" 
-            width="1000" height="1000"
-            class="d-none m-x-auto" 
-            style="max-height: 250px;"></canvas>
-    </div>
-</div>
-
-By using this procedure up to _N_ = 96, repeating it not only by inscribing but also by circumscribing the polygons, the Sicilian managed to arrive at
-
-$$ {223 \over 71} < \pi < {22 \over 7} $$
-
-It is worth noting that the mathematician did not have a modern method for calculating square roots and was thus forced to use only approximate techniques.
-
-## Madhava-Gregory-Leibniz's series
-
-In 1668, Scottish mathematician and astronomer James Gregory devised an infinite series to approximate the inverse of tangents.
-
-$$ 
-tan^{-1}{x} = \sum_{K=0}^\infty { {(-1)^K x^{2K+1} } \over {2K+1} } = x - {x^3 \over 3} + {x^5 \over 5} - {x^7 \over 7} + {x^9 \over 9} - {x^{11} \over 11} + ... 
-$$
-
-Gottfried Leibniz, a few years later, imposed x = 1 and thus obtained:
-
-$$ {\pi \over 4} = \sum_{K=0}^\infty { { (-1)^K } \over {2K+1} } = 1 - {1 \over 3} + {1 \over 5} - {1 \over 7} + {1 \over 9} - {1 \over 11} + ... 
-$$
-
-To approximate 𝜋 it will be possible to insert a very large value of _N_ into the following formula:
-
-$$ \pi \approx 4 \sum_{K=0}^N { { (-1)^K } \over {2K+1} } $$
-
-<div class="row">
-    <div class="col">
-        <div class="input-group">
-            <span class="input-group-text">N = </span>
-            <input type="number" 
-                min="4" max="1000000" step="1"
-                value="1000" id="leibniz-input" size="10"
-                class="form-control">
-        </div> 
-    </div>
-    <div class="col">
-        <span class="italic">𝜋 = </span>
-        <output id="leibniz-receive">3.14</output>
-    </div>
-</div>
-
-These two series are easily proved by the work of another Indian mathematician of two centuries earlier, Madhava of Sangamagrama, who first derived the way to approximate an angle from its tangent:
-
-$$ 
-\theta = \sum_{N=0}^\infty { {(-1)^N tan^{2N+1}{\theta} } \over {2N+1} } = tan{\theta} - {tan^3{\theta} \over 3} + {tan^5{\theta} \over 5} - {tan^7{\theta} \over 7} + ... 
-$$
-
-By setting $$ θ = 𝜋 / 4 $$, we arrive at Leibniz's formula.
-
-### Implementation
-
-```js
-async function Leibniz(n) {
-    let p = new Decimal(1);
-    const One = new Decimal(1); // Used to not generate n uneeded instances
-    let even = false;
-    for (let k = 1; k <= n; k++) {
-        const t = One.dividevBy(2 * k + 1);
-        if (even) {
-            p = p.plut(t); // 2,4,6,...
-        } else {
-            p = p.minus(t);// 1,3,5
-        }
-        even = !even;
-    }
-    return p.times(4);
+  return {
+    lower: n * chord / 2,
+    upper: n * chord / Math.sqrt(4 - chord * chord)
+  };
 }
 ```
 
-## Ramanujan's formula
+Here, `sides` must be one of `6, 12, 24, …`, as enforced by the selector.
 
-Srinivasa Ramanujan, an Indian mathematician, in 1910 arrived at this series which converges in the reciprocal of 𝜋:
+</details>
 
-$$ {1 \over \pi} = { {2 \sqrt{ 2 }} \over 9801}\sum_{k=0}^\infty { { (4k)! (1103 + 26390k)} \over { (k!)^4 396^{4k}} } $$
+## 2. The Madhava-Gregory-Leibniz series
 
-This series was the basis for the "fast algorithms" for computing 𝜋, in particular this formula was taken up and modified in 1988 by the Chudnovsky brothers who wrote:
+The derivative of $$\arctan x$$ is $$1/(1+x^2)$$.
+Expanding this denominator as a geometric series and integrating gives
 
-$$ {1 \over \pi} = 12\sum_{k=0}^\infty { { (-1)^k (6k)! (13591409 + 545140134k)} \over { (3k)! (k!)^3 (640320)^{3(k+1/2)} } } $$
+$$
+\arctan x=\sum_{k=0}^{\infty}\frac{(-1)^k x^{2k+1}}{2k+1}.
+$$
 
-Later simplified to:
+The power series converges for $$|x|<1$$ and also converges at the endpoints $$x=\pm1$$.
+Since $$\arctan1=\pi/4$$, we obtain
 
-$$ {128096012 \over {3\pi}} = \sum_{k=0}^\infty { { (6k)! (13591409 + 545140134k)} \over { (3k)! (k!)^3 (-2625374112640768000)^k } } $$
+$$
+\pi=4\left(1-\frac13+\frac15-\frac17+\cdots\right).
+$$
 
-Each term of the sum is very complex to calculate but the convergence to 𝜋 is very fast: with just 2 iterations you can correctly obtain 9 decimal places.
+This result is associated with Madhava, Gregory, and Leibniz because of its development in different mathematical traditions.
+The [NIST Digital Library of Mathematical Functions](https://dlmf.nist.gov/4.45) discusses the arctangent series and why reducing the argument improves computation.
 
-<div class="row">
-    <div class="col">
-        <div class="input-group">
-            <span class="input-group-text">k = </span>
-            <input type="number" 
-                min="2" max="256" step="1"
-                value="4" id="ramanujan-input" size="10"
-                class="form-control">
-        </div> 
-    </div>
-    <div class="col">
-        <span class="italic">𝜋 = </span>
-        <output id="ramanujan-receive">3.140592653839794</output>
-    </div>
-</div>
+We'll define $$N$$ as the **number of terms**, so the finite sum ends at $$k=N-1$$:
 
-### Implementation
+$$
+\pi_N=4\sum_{k=0}^{N-1}\frac{(-1)^k}{2k+1}.
+$$
 
-```js
-async function Ramanujan(n) {
-    const oldP = Decimal.precision;
-    Decimal.set({ precision: 5 * n }); // We're gonna need a lot of precision
+Because the terms alternate and decrease in magnitude, the first omitted term bounds the truncation error:
 
-    // Since the operation is quite resource expensive, 
-    // calculations will be splitted in two blocks (that will later be summed).
-    // This will result in a slight performance loss (JS is single-threaded)
-    // but will prevent the browser UI from freezing
-    const pivot = Math.floor(n / 2);
-    let blocks = await RunParallel([() => RamanujanIteration(0, pivot), () => RamanujanIteration(pivot, n)]);
-    const C = Decimal(1).div(Decimal(426880).times(Decimal(10005).sqrt())); // Constant we will divide the results by
-    let p = Decimal(1).div(C.times(blocks[0].plus(blocks[1])));
-    
-    Decimal.set({ precision: oldP }); // Restore the initial precision
-    return p;
-}
+$$
+|\pi-\pi_N|\leq\frac{4}{2N+1}.
+$$
 
-function RamanujanIteration(start, end) {
-    let p = new Decimal(0);
-    for (var k = start; k < end; k++) {
-        const Mk = Decimal(factorial(6 * k)).div(Decimal(factorial(3 * k)).times(Decimal(factorial(k)).pow(3)));
-        const Lk = Decimal(545140134).times(k).plus(13591409);
-        const Xk = Decimal(-262537412640768000).pow(k);
-        p = p.plus(Mk.times(Lk).div(Xk));
-    }
-    return p;
-}
-```
+Odd values of $$N$$ give an overestimate; even values give an underestimate.
+At 1,000 terms, the bound is still about $$0.002$$.
+This is a beautifully simple formula, but a slow way to obtain many digits.
 
-## The collisions method
+{% include pi-demo.liquid method='leibniz' title='Watch a slow series converge' description='Increase the term count and compare the result with the first-omitted-term error bound.' maximum='1000000' initial='1000' %}
 
-It seems absurd but this simulation of elastic collisions manages to calculate Pi!
+The bound assumes exact arithmetic.
+The implementation uses compensated summation to reduce floating-point accumulation error, but the displayed error bound does not certify the separate rounding error.
+The distinction becomes important when comparing a mathematical convergence theorem with a finite-precision program.
 
-Both blocks perform elastic collisions with each other and the left block bounces without losing energy when it hits the wall.
-The masses of the blocks are not random: the small block has a mass of unit while the other has a mass that is a multiple of 100.
+## 3. Ramanujan: many digits from very few terms
 
-Almost magically the number of collisions that the small block performs approximates 𝜋.
+Ramanujan's 1914 paper, [“Modular equations and approximations to 𝜋”](https://ramanujan.sirinudi.org/Volumes/published/ram06.html), contains a much faster series:
 
-[Watch the explaination on Youtube](https://www.youtube.com/watch?v=jsYwFizhncE "Watch on YouTube")
+$$
+\frac1\pi=\frac{2\sqrt2}{9801}
+\sum_{k=0}^{\infty}
+\frac{(4k)!\,(1103+26390k)}{(k!)^4\,396^{4k}}.
+$$
 
-The exponential complexity of the algorithm makes it terrible for computation times: for this reason it has never really been used to calculate digits of 𝜋 unknown to us.
+The large power in the denominator makes successive contributions shrink rapidly.
+Each additional term typically contributes roughly eight more decimal digits of accuracy.
+That is a radically different behavior from adding reciprocals of successive odd integers.
 
-It is still fun to simulate and watch.
+For $$N$$ terms, we first calculate the partial sum $$S_N$$, then invert the result:
 
-<div class="row">
-    <div class="col">
-        <div class="row">
-            <div class="col mb-3">
-                <label for="collision-input" class="form-label">
-                    Digits
-                </label>
-                <input type="number" 
-                    id="collision-input" class="form-control"
-                    min="2" value="4" max="7" step="1" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col mb-3">
-                <button type="button" id="collision-start" class="btn btn-primary">
-                    Start
-                </button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <span>
-                    𝜋 =
-                </span>
-                <output id="collision-receive">0</output>
-            </div>
-        </div>
-    </div>
-    <div class="col col-9">
-        <canvas id="collision-canvas" width="600" height="300" style="width: 100%; margin-inline: auto; max-height: 350px;"></canvas>
-    </div>
-</div>
+$$
+\pi_N=\frac{9801}{2\sqrt2\,S_N}.
+$$
 
-## Montecarlo's method
+{% include pi-demo.liquid method='ramanujan' title='Try Ramanujan's original series' description='Compare one, two, and three terms before increasing the count further.' maximum='20' initial='1' %}
 
-Taking a quarter of a circumference inscribed in a square, we have that the ratio between the areas is
+A single term gives approximately $$3.1415927300$$.
+It is already close, but the displayed trailing digits are not all correct.
+Adding a second term brings the error down to the order of $$10^{-16}$$.
 
-$$ { { {\pi r^2} \over 4 } \over {r^2}} = { {\pi r^2} \over {4 r^2}} = { \pi \over 4} $$
+The demo avoids recalculating large factorials from scratch.
+If
 
-By drawing a significant amount of points, the ratio between the number of points inside the quarter of the circle and the total number of points should be approximately the same as that of the areas.
+$$
+a_k=\frac{(4k)!}{(k!)^4\,396^{4k}},
+$$
 
-$$ {N_{Internals} \over N_{Total}} \approx { \pi \over 4} $$
+then the next coefficient follows from
 
-Because it uses randomly drawn numbers, this method is also called the Monte Carlo Method.
+$$
+\frac{a_{k+1}}{a_k}=
+\frac{(4k+1)(4k+2)(4k+3)(4k+4)}{(k+1)^4\,396^4}.
+$$
 
-<div class="row">
-    <div class="col">
-        <div class="row">
-            <div class="col mb-3">
-                <label for="random-function-select" class="form-label">
-                    Random generator
-                </label>
-                <select id="random-function-select" class="form-control">
-                    <option value="default">Browser built in</option>
-                    <option value="decimalJS">From Decimal.js library</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col mb-3">
-                <button type="button" class="btn btn-primary" id="random-input">
-                    Start
-                </button>
-            </div>
-            <div class="col mb-3">
-                <button type="button" class="btn btn-primary" id="random-reset">
-                    Reset
-                </button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <span>𝜋 = </span>
-                <output id="random-receive" class="receive">3.14</output>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <span>Number of points: </span>
-                <span id="random-total" class="receive">0</span>
-            </div>
-        </div>
-    </div>
-    <div class="col col-8">
-        <canvas 
-            id="random-canvas-1" 
-            width="1000" height="1000"
-            class="d-block m-x-auto border border-1" 
-            style="max-height: 200px;"></canvas>
-    </div>
-</div>
+We still need enough arithmetic precision to preserve the small contributions we are adding.
+The calculation uses a local copy of [Decimal.js](https://mikemcl.github.io/decimal.js/) with guard digits, rather than JavaScript's ordinary number type.
+This controls arithmetic precision; it does not turn a finite partial sum into the exact infinite sum.
 
-The use of randomly generated numbers unfortunately makes the values found not very reliable, as it is not possible to generate a number in a completely unconditional way. However, these "extractions" can be an indication of how good the algorithm that returns pseudo-random numbers is.
+## 4. Chudnovsky: a different fast series
+
+The formula below is related in spirit to Ramanujan's work, but it is a **Chudnovsky series**, and deserves its own name and demo:
+
+$$
+\pi=\frac{426880\sqrt{10005}}{displaystyle
+\sum_{k=0}^{\infty}
+\frac{(-1)^k(6k)!\,(13591409+545140134k)}
+{(3k)!\,(k!)^3\,640320^{3k}}}.
+$$
+
+It gains roughly fourteen decimal digits per additional term.
+The coefficients can again be updated by a recurrence, avoiding repeated factorial computations.
+This family of formulas is used in serious high-precision computation; the [FLINT documentation](https://flintlib.org/doc/algorithms/special-functions/constants.html) describes its implementation, while [Fabrice Bellard's computation report](https://bellard.org/pi/pi2700e9/pipcrecord.pdf) gives a practical example using the series.
+
+{% include pi-demo.liquid method='chudnovsky' title='Compare a faster series' description='Use the same small term counts as in the Ramanujan demo and compare how many leading digits settle.' maximum='12' initial='1' %}
+
+The number of terms is only part of the computational cost.
+A term involving long integers or high-precision decimals costs more than a single floating-point addition.
+Large implementations use techniques such as binary splitting to organize the arithmetic efficiently; this browser version uses a simpler recurrence that is easier to inspect.
+
+Both fast-series demos run in background workers, so the page stays responsive and the **Cancel** button can stop a calculation.
+Their precision settings are independent, and the library is served locally with the site.
+You can read the [numerical worker source](/assets/js/projects/pi-worker.js) to see the two recurrences and the precision choices.
+
+## 5. Galperin's method: count the collisions
+
+Now we'll leave series behind and consider two blocks on a frictionless line, with a wall on the left.
+The small block starts at rest between the wall and a larger block moving toward it.
+All collisions are perfectly elastic.
+We count **both** block-block impacts and impacts of the small block with the wall, stopping when no further collision can occur.
+
+If the masses are $$m$$ and $$M$$ and their incoming velocities are $$u$$ and $$v$$, conservation of momentum and kinetic energy gives
+
+$$
+u'=\frac{m-M}{m+M}u+\frac{2M}{m+M}v,\qquad
+v'=\frac{2m}{m+M}u+\frac{M-m}{m+M}v.
+$$
+
+At the wall, the small block's velocity simply changes sign.
+Both outgoing block velocities must be calculated from the **old** velocities before updating either block.
+
+For the mass ratios used in the demo, the final collision counts reveal leading digits of 𝜋:
+
+| Mass ratio $$M/m$$ | Total collisions | Digits read from the count |
+| --- | --- | --- |
+| 1 | 3 | 3 |
+| 100 | 31 | 3.1 |
+| 10,000 | 314 | 3.14 |
+| 1,000,000 | 3,141 | 3.141 |
+
+{% include pi-demo.liquid method='collisions' title='Let the blocks count' description='Choose a mass ratio, then count the impacts. Pause to inspect the state or increase the playback speed.' %}
+
+Why does a circle constant appear in a one-dimensional problem?
+In coordinates $$\sqrt m\,u$$ and $$\sqrt M\,v$$, fixed kinetic energy describes a circle in velocity space.
+The collision rules act as reflections, introducing an angle related to $$\arctan\sqrt{m/M}$$.
+Galperin's original paper, [“Playing pool with 𝜋”](https://www.maths.tcd.ie/~lebed/Galperin.%20Playing%20pool%20with%20pi.pdf), develops the geometric argument.
+
+The browser simulation advances directly to the next wall or block impact, rather than using small time steps that might let blocks pass through one another.
+It still uses finite-precision arithmetic, so the ideal mathematical construction should not be confused with a guarantee of unlimited numerical accuracy.
+I limit the demo to four digits to keep its behavior and running time manageable.
+
+Each extra digit requires about ten times as many collision events.
+It is a striking connection between mechanics and geometry, but an inefficient way to compute a long decimal expansion.
+The count supplies leading digits, rather than a rounded estimate at the last displayed place.
+
+## 6. Monte Carlo: estimate an area by sampling
+
+Consider a point with coordinates $$X$$ and $$Y$$ chosen uniformly in the unit square $$[0,1]^2$$.
+It lies inside the unit quarter disk exactly when $$X^2+Y^2\leq1$$.
+Since the square has area one and the quarter disk has area $$\pi/4$$,
+
+$$
+p=\Pr(X^2+Y^2\leq1)=\frac{\pi}{4}.
+$$
+
+If $$H$$ out of $$N$$ sampled points land inside the disk, we estimate 𝜋 with
+
+$$
+\widehat\pi=4\frac{H}{N}.
+$$
+
+Under the model of independent uniform samples, $$H$$ is binomial and the estimator is unbiased:
+
+$$
+\mathbb E[\widehat\pi]=\pi,\qquad
+\operatorname{Var}(\widehat\pi)=\frac{16p(1-p)}{N}.
+$$
+
+The standard error therefore decreases like $$1/\sqrt N$$.
+Roughly 100 times as many points are needed to reduce the typical error by a factor of ten.
+Random sampling is useful in problems where direct integration is difficult, but it is not competitive with the fast series for calculating 𝜋.
+
+{% include pi-demo.liquid method='monte-carlo' title='Fill the square with samples' description='Run a repeatable experiment: green points land inside the quarter circle, and muted red points land outside.' %}
+
+The interval shown by the demo uses the normal approximation
+
+$$
+\widehat\pi\;\pm\;1.96\times4
+\sqrt{\frac{\widehat p(1-\widehat p)}{N}},\qquad
+\widehat p=H/N.
+$$
+
+It is an **approximate 95% confidence interval** under the independent-sampling model, intended for a fixed final sample size with sufficiently many hits and misses.
+The confidence level describes repeated experiments; it does not assign a 95% probability to a fixed value of 𝜋 after the interval has been observed.
+Repeatedly inspecting a running interval is also different from a fixed-sample guarantee.
+The [NIST engineering handbook](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm) discusses confidence intervals for binomial proportions and more robust alternatives.
+
+The demo uses a seeded pseudorandom generator so that resetting with the same seed reproduces the same point sequence.
+Pseudorandomness is not itself a flaw that makes Monte Carlo unusable, but a small browser demo does not establish that a generator is suitable for every statistical application.
+Try several seeds and compare the fluctuations at the same sample count.
+An estimate can temporarily move farther from 𝜋 even while the long-run sampling error tends to decrease.
+
+## Comparing the methods
+
+| Method | What improves the result? | Characteristic behavior |
+| --- | --- | --- |
+| Polygon bounds | More sides | Geometric error decreases like $$1/n^2$$. |
+| Madhava-Gregory-Leibniz | More terms | Truncation error decreases like $$1/N$$. |
+| Ramanujan | More terms and sufficient arithmetic precision | Roughly eight additional decimal digits per term. |
+| Chudnovsky | More terms and sufficient arithmetic precision | Roughly fourteen additional decimal digits per term. |
+| Elastic collisions | A larger mass ratio | About ten times as many impacts for each extra digit. |
+| Monte Carlo | More samples | Typical statistical error decreases like $$1/\sqrt N$$. |
+
+I suggest comparing **convergence**, **arithmetic precision**, and **work performed**, rather than only the length of the displayed number.
+The polygon method gives a geometric enclosure, the series expose different convergence rates, collisions encode the digits in a dynamical system, and Monte Carlo estimates a probability.
+Together, they show how the same constant can emerge from very different mathematical structures.
