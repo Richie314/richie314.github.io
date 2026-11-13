@@ -1,0 +1,455 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Star Wars intro maker | Riccardo Ciucci </title> <meta name="author" content="Riccardo Ciucci"> <meta name="description" content="Star Wars intro simulation using JavaScript and CSS "> <meta name="keywords" content="Riccardo, Ciucci"> <meta property="og:site_name" content="Riccardo Ciucci"> <meta property="og:type" content="website"> <meta property="og:title" content="Riccardo Ciucci | Star Wars intro maker"> <meta property="og:url" content="https://ciucci.dev/projects/star-wars-intro-maker/"> <meta property="og:description" content="Star Wars intro simulation using JavaScript and CSS "> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="Star Wars intro maker"> <meta name="twitter:description" content="Star Wars intro simulation using JavaScript and CSS "> <script type="application/ld+json">
+    {
+        "author":
+        {
+            "@type": "Person",
+            "name": "Riccardo Ciucci"
+        },
+        "url": "https://ciucci.dev/projects/star-wars-intro-maker/",
+        "@type": "WebSite",
+        "description": "Star Wars intro simulation using JavaScript and CSS
+",
+        "headline": "Star Wars intro maker",
+        
+        "sameAs": ["https://github.com/Richie314","https://www.linkedin.com/in/riccardo-ciucci-03bba8309","https://telegram.me/richie314"],
+        
+        "name": "Riccardo Ciucci",
+        "@context": "https://schema.org"
+    }
+  </script> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%A7%91%F0%9F%8F%BB%E2%80%8D%F0%9F%92%BB&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://ciucci.dev/projects/star-wars-intro-maker/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> <link rel="stylesheet" href="/assets/al_email_protect/css/email-protect.css"> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Riccardo</span> Ciucci </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">About </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">Repos </a> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/">Projects <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">CV </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Star Wars intro maker</h1> <p class="post-description">Star Wars intro simulation using JavaScript and CSS </p> </header> <article> <p>For my web development exam, I presented a complete and accurate recreation of the Star Wars intros, built entirely with HTML5, CSS3, and vanilla JavaScript. I built the site so users could watch the original intros in both Italian and English, as well as create and edit custom ones through a form.</p> <p>You can find my complete source code on <a href="https://github.com/Richie314/StarWarsIntro" title="Go to the source code" rel="external nofollow noopener" target="_blank">GitHub</a>.</p> <blockquote class="block-info"> <p><span class="sr-only">Information: </span></p> <p><strong>A demo is available!</strong></p> <p>Go to <a href="https://starwars.ciucci.dev" rel="external nofollow noopener" target="_blank">https://starwars.ciucci.dev</a></p> </blockquote> <p>In this step-by-step guide, I’ll walk you through how I recreated the intro.</p> <h2 id="1-give-the-renderer-a-small-stable-structure">1. Give the renderer a small, stable structure</h2> <p>We’ll start with a black page and these layers:</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">"wait"</span><span class="nt">&gt;</span>
+  
+  <span class="c">&lt;!-- Simple CSS only loader to show until media assets (audio) load --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"loader"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"loader"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  
+  <span class="c">&lt;!-- Main 16:9 screen --&gt;</span>
+  <span class="nt">&lt;main</span> <span class="na">id=</span><span class="s">"screen"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"intro"</span><span class="nt">&gt;</span>
+      A long time ago in a galaxy far,<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+      far away...
+    <span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"logo"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"logo.svg"</span> <span class="na">alt=</span><span class="s">"Star Wars"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/section&gt;</span>
+
+    <span class="c">&lt;!-- Scrolling content --&gt;</span>
+    <span class="nt">&lt;article</span> <span class="na">id=</span><span class="s">"board"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"episode"</span><span class="nt">&gt;</span>
+          Episode X
+        <span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"title"</span><span class="nt">&gt;</span>
+          The css awakens
+        <span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"paragraph"</span><span class="nt">&gt;</span>
+          Text here
+        <span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/article&gt;</span>
+    <span class="nt">&lt;article</span> <span class="na">id=</span><span class="s">"credits"</span> <span class="na">class=</span><span class="s">"hidden"</span><span class="nt">&gt;</span>
+      End credits to show the author
+    <span class="nt">&lt;/article&gt;</span>
+  <span class="nt">&lt;/main&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">#screen</code> is the visible cinema frame. <code class="language-plaintext highlighter-rouge">.intro</code> and <code class="language-plaintext highlighter-rouge">.logo</code> sit above the starfield. <code class="language-plaintext highlighter-rouge">#board</code> supplies the crawl’s tilted coordinate system; its child <code class="language-plaintext highlighter-rouge">#content</code> moves inside that system. By keeping those two responsibilities on separate elements, we can turn ordinary vertical text movement into movement into depth.</p> <p>I suggest using three paragraphs to match the audio timing; we’ll see why later.</p> <h2 id="2-make-a-responsive-cinema-frame">2. Make a responsive cinema frame</h2> <p>We’ll use a 16:9 frame that fits any viewport shape. Here is the CSS we’ll use to achieve this:</p> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100vw</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100vh</span><span class="p">;</span>
+  <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nx">black</span><span class="p">;</span>
+  <span class="nl">min-height</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#screen</span> <span class="p">{</span>
+  <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+  <span class="nl">aspect-ratio</span><span class="p">:</span> <span class="m">16</span> <span class="o">/</span> <span class="m">9</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100vw</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.15vw</span><span class="p">;</span>
+  <span class="py">--percentageOfHeight</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="m">100vw</span> <span class="o">/</span> <span class="m">1600</span> <span class="o">*</span> <span class="m">9</span><span class="p">);</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="m">50vh</span> <span class="o">-</span> <span class="m">50</span> <span class="o">*</span> <span class="nf">var</span><span class="p">(</span><span class="l">--percentageOfHeight</span><span class="p">))</span> <span class="m">0</span> <span class="nb">auto</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="nb">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-aspect-ratio</span><span class="p">:</span> <span class="m">16</span> <span class="o">/</span> <span class="m">9</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">#screen</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100vh</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">2.3vh</span><span class="p">;</span>
+    <span class="py">--percentageOfHeight</span><span class="p">:</span> <span class="m">1vh</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>When the viewport is narrow or tall, the frame uses the full width. Its height is <code class="language-plaintext highlighter-rouge">100vw × 9/16</code>. The custom property is one hundredth of that frame height: <code class="language-plaintext highlighter-rouge">100vw × 9/1600</code>. Therefore <code class="language-plaintext highlighter-rouge">50vh - 50 × var(--percentageOfHeight)</code> is half the leftover vertical space, centering the frame with black bars above and below.</p> <p>On a wider viewport, height becomes the limiting dimension. A full-height 16:9 frame is horizontally centered by the auto margins, with black bars at its sides. <code class="language-plaintext highlighter-rouge">position: relative</code> makes the frame the containing block for its absolutely positioned layers. <code class="language-plaintext highlighter-rouge">overflow: hidden</code> clips the show to that frame.</p> <p><img src="/assets/img/star-wars/layers.svg" alt="The frame and its layers"></p> <h2 id="3-starfield-background">3. Starfield background</h2> <p>We’ll create the starfield using a series of white <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> elements against a black background.</p> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.star</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">1.5px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">1.5px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">249</span><span class="p">,</span> <span class="m">251</span><span class="p">,</span> <span class="m">242</span><span class="p">,</span> <span class="m">0.8</span><span class="p">);</span>
+  <span class="nl">z-index</span><span class="p">:</span> <span class="m">-1</span><span class="p">;</span>
+<span class="p">}</span>
+  <span class="nc">.star.star-big</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">4px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">4px</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">2px</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div> <p>Now let’s generate 100 of them and put them in random positions. Each star will have a 6% chance of being slightly larger.</p> <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">star</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">star</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">star</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nf">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.94</span><span class="p">)</span>
+    <span class="nx">star</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">star-big</span><span class="dl">'</span><span class="p">);</span>
+
+  <span class="nb">Object</span><span class="p">.</span><span class="nf">assign</span><span class="p">(</span><span class="nx">star</span><span class="p">.</span><span class="nx">style</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">top</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nb">Math</span><span class="p">.</span><span class="nf">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">}</span><span class="s2">%`</span><span class="p">,</span> 
+    <span class="na">left</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nb">Math</span><span class="p">.</span><span class="nf">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">}</span><span class="s2">%`</span>
+  <span class="p">});</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">screen</span><span class="dl">'</span><span class="p">).</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">star</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="4-blue-opening-sentence">4. Blue opening sentence</h2> <p>We’ll place the opening blue text, <em>A long time ago in a galaxy far, far away…</em>, in the middle of <code class="language-plaintext highlighter-rouge">#screen</code> and use a <code class="language-plaintext highlighter-rouge">@keyframes</code> rule to fade it in and out.</p> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.intro</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">40%</span><span class="p">;</span> 
+  <span class="nl">left</span><span class="p">:</span> <span class="m">15%</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">70%</span><span class="p">;</span> 
+  <span class="nl">height</span><span class="p">:</span> <span class="m">20%</span><span class="p">;</span>
+  <span class="nl">z-index</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+  
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Century</span> <span class="n">Gothic</span><span class="p">,</span> <span class="n">CenturyGothic</span><span class="p">,</span> <span class="n">AppleGothic</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">2.6em</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="m">400</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nf">rgb</span><span class="p">(</span><span class="m">75</span><span class="p">,</span> <span class="m">213</span><span class="p">,</span> <span class="m">238</span><span class="p">);</span>
+  
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">animation</span><span class="p">:</span> <span class="n">intro</span> <span class="m">5s</span> <span class="nb">ease-out</span> <span class="m">1s</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@keyframes</span> <span class="n">intro</span> <span class="p">{</span>
+  <span class="m">0%</span>   <span class="p">{</span> <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">20%</span>  <span class="p">{</span> <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">90%</span>  <span class="p">{</span> <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">100%</span> <span class="p">{</span> <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>Together with the base <code class="language-plaintext highlighter-rouge">opacity: 0</code> declaration, these keyframes keep the text hidden before and after the animation. Once we remove the loading class, it will start after a one-second delay and run for five seconds. We’ll raise the opacity to 1 to reveal the text, then lower it back to 0.</p> <h2 id="5-star-wars-logo">5. “STAR WARS” logo</h2> <p>I used an SVG image for the logo so the browser can rasterize its vector outlines at the size needed during scaling. A bitmap at insufficient resolution would look soft at the large initial size. We’ll use an ordinary <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> here: CSS transforms the whole image, rather than animating paths inside the SVG.</p> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.logo</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">2.5%</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">2.5%</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">95%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="nf">fit-content</span><span class="p">;</span>
+
+  <span class="nl">z-index</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+  <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="py">user-select</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+
+  <span class="nl">animation</span><span class="p">:</span> <span class="n">logo</span> <span class="m">13s</span> <span class="nb">linear</span> <span class="m">7s</span><span class="p">;</span>
+  <span class="nl">transform-origin</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+  <span class="nc">.logo</span> <span class="nt">img</span> <span class="p">{</span> 
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> 
+    <span class="nl">height</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="k">@keyframes</span> <span class="n">logo</span> <span class="p">{</span>
+  <span class="m">0%</span>   <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">1.25</span><span class="p">);</span> <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">10%</span>  <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">1.1</span><span class="p">);</span>  <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">20%</span>  <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">.85</span><span class="p">);</span>  <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">30%</span>  <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">.7</span><span class="p">);</span>   <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">40%</span>  <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">.6</span><span class="p">);</span>   <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">50%</span>  <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">.5</span><span class="p">);</span>   <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">60%</span>  <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">.42</span><span class="p">);</span>  <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">70%</span>  <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">.34</span><span class="p">);</span>  <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">80%</span>  <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">.26</span><span class="p">);</span>  <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">90%</span>  <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">.18</span><span class="p">);</span>  <span class="nl">opacity</span><span class="p">:</span> <span class="m">.8</span><span class="p">;</span> <span class="p">}</span>
+  <span class="m">100%</span> <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">.1</span><span class="p">);</span>   <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>At seven seconds the logo appears already enlarged to 125% of its box. It shrinks around its center until 20 seconds into the scene.</p> <p>Opacity stays at one through 80% of the animation (17.4 seconds), then fades toward zero. <code class="language-plaintext highlighter-rouge">linear</code> interpolates each segment uniformly, but unequal scale differences between stops mean the overall scale change is not one constant rate.</p> <p>This is a 2D scale illusion, as the logo does not share the crawl’s perspective transform.</p> <h2 id="6-the-perspective-plane">6. The perspective plane</h2> <p>Now let’s add the core geometry:</p> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#board</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nx">#E2C64E</span><span class="p">;</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Century</span> <span class="n">Gothic</span><span class="p">,</span> <span class="n">CenturyGothic</span><span class="p">,</span> <span class="n">AppleGothic</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+  <span class="py">user-select</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+
+  <span class="nl">transform</span><span class="p">:</span> <span class="nf">perspective</span><span class="p">(</span><span class="nf">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="l">--percentageOfHeight</span><span class="p">)</span> <span class="o">*</span> <span class="m">100</span><span class="p">))</span>
+             <span class="nf">rotateX</span><span class="p">(</span><span class="m">35deg</span><span class="p">);</span>
+  <span class="nl">transform-origin</span><span class="p">:</span> <span class="m">50%</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="m">350</span> <span class="o">*</span> <span class="nf">var</span><span class="p">(</span><span class="l">--percentageOfHeight</span><span class="p">));</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">95%</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="nb">auto</span> <span class="m">2.5%</span> <span class="m">0</span> <span class="m">2.5%</span><span class="p">;</span>
+
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> 
+  <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>We’ll call the frame height <em>H</em>. The custom property is <code class="language-plaintext highlighter-rouge">H/100</code>, so the board is <em>3.5H tall</em>, and the perspective distance is <em>H</em>. Its bottom edge is anchored to the frame bottom. Much of the untransformed board extends above the frame; the transform projects that tall rectangle into a narrowing plane.</p> <p><code class="language-plaintext highlighter-rouge">transform-origin: 50% 100%</code> places the pivot at the bottom center. <code class="language-plaintext highlighter-rouge">rotateX(35deg)</code> tilts the top away from the viewer while keeping that pivot in place. CSS transform composition matters: in <code class="language-plaintext highlighter-rouge">perspective(H) rotateX(35deg)</code>, the rotation acts on points before the perspective projection. Swapping the functions changes the result.</p> <p><img src="/assets/img/star-wars/perspective.svg" alt="How a vertical board becomes a receding crawl"></p> <p>We can use a simplified calculation to explain the narrowing. Let’s call a point’s distance upward from the bottom pivot <em>d</em>. Before projection, its coordinates relative to that pivot are approximately:</p> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>y = -d × cos(35°)
+z = -d × sin(35°)
+scale = H / (H - z)
+      = H / (H + d × sin(35°))
+</code></pre></div></div> <p>At the pivot, <code class="language-plaintext highlighter-rouge">d = 0</code>, so the perspective scale is one. Farther upward, <code class="language-plaintext highlighter-rouge">z</code> becomes more negative and the denominator grows: the same line of text projects smaller. This is why parallel edges converge and distant lines become compressed. These equations describe the transform around the pivot; CSS layout then positions the transformed plane in the frame.</p> <p>A smaller perspective distance exaggerates the convergence. A larger distance flattens it. Increasing the angle lays the board farther back. I suggest changing one parameter at a time because the angle, board height, and typography jointly determine how much text is visible.</p> <h2 id="7-main-text">7. Main text</h2> <p>We’ll use large text in the board’s local coordinates:</p> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#content</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
+  <span class="nl">animation</span><span class="p">:</span> <span class="nb">scroll</span> <span class="m">140s</span> <span class="nb">linear</span> <span class="m">18s</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.paragraph</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">5.1em</span><span class="p">;</span>
+  <span class="nl">word-break</span><span class="p">:</span> <span class="n">keep-all</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">justify</span><span class="p">;</span>
+  <span class="py">user-select</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#episode</span><span class="o">,</span> <span class="nf">#title</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">5.8em</span><span class="p">;</span>
+  <span class="nl">overflow-x</span><span class="p">:</span> <span class="nb">visible</span><span class="p">;</span>
+  <span class="nl">overflow-y</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+  <span class="nl">word-break</span><span class="p">:</span> <span class="n">keep-all</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#title</span> <span class="p">{</span> 
+  <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@keyframes</span> <span class="nb">scroll</span> <span class="p">{</span>
+  <span class="nt">from</span> <span class="p">{</span> <span class="nl">top</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+  <span class="nt">to</span>   <span class="p">{</span> <span class="nl">top</span><span class="p">:</span> <span class="m">-200%</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>The animation starts at scene time 18 seconds, overlapping the last two seconds of the logo. Over 140 seconds, <code class="language-plaintext highlighter-rouge">#content</code> travels from one board-height below the board’s top to two board-heights above it. Percentage <code class="language-plaintext highlighter-rouge">top</code> values refer to the <strong>board’s height</strong>, not the text’s height or the viewport.</p> <p>Since the board is <code class="language-plaintext highlighter-rouge">3.5H</code>, the total travel is <code class="language-plaintext highlighter-rouge">3 × 3.5H = 10.5H</code>. The local speed is <code class="language-plaintext highlighter-rouge">10.5H / 140s = 0.075H/s</code>. It is linear in the tilted plane, but projected movement becomes slower as the text recedes. Perspective creates that apparent deceleration without any JavaScript motion loop.</p> <p>The board clips its children, and the frame clips the whole scene. At 158 seconds the animation ends. With no forwards fill, <code class="language-plaintext highlighter-rouge">top</code> returns to its base <code class="language-plaintext highlighter-rouge">100%</code>, below the visible board.</p> <p>We’ll justify the paragraphs and center the episode number and title. The CSS relies on system font fallbacks and browser default paragraph margins and line height; these influence wrapping, spacing, and the eventual credits estimate.</p> <p>Longer writing does not increase the 140-second scroll duration. It adds content below the start position, so sufficiently long text can remain unread when the animation ends.</p> <h2 id="8-initial-loader">8. Initial loader</h2> <p>We’ll add an initial loading <em>gate</em> so the CSS animations don’t start before the audio and stylesheets are available. We’ll give the body the <code class="language-plaintext highlighter-rouge">wait</code> class initially:</p> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.hidden</span> <span class="p">{</span> 
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#loader</span> <span class="p">{</span> 
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+  <span class="nt">body</span><span class="nc">.wait</span> <span class="nf">#loader</span> <span class="p">{</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> 
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> 
+    <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
+    <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+
+    <span class="nl">filter</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">z-index</span><span class="p">:</span> <span class="m">100</span><span class="p">;</span>
+  <span class="p">}</span>
+    <span class="nt">body</span><span class="nc">.wait</span> <span class="o">*</span><span class="nd">:not</span><span class="o">(</span><span class="nf">#loader</span><span class="o">,</span> <span class="nc">.loader</span><span class="o">)</span> <span class="p">{</span>
+      <span class="nl">filter</span><span class="p">:</span> <span class="nf">blur</span><span class="p">(</span><span class="m">1.5px</span><span class="p">);</span>
+      <span class="nl">animation-name</span><span class="p">:</span> <span class="nb">none</span> <span class="cp">!important</span><span class="p">;</span>
+      <span class="nl">animation-delay</span><span class="p">:</span> <span class="n">unset</span> <span class="cp">!important</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div> <p>This removes animation names while waiting; it does not pause animations halfway through. Removing <code class="language-plaintext highlighter-rouge">.wait</code> restores the declarations and starts their delay clocks together.</p> <p>The loading spinner uses two perpendicular pairs of bars painted with linear gradients. A <code class="language-plaintext highlighter-rouge">::before</code> pseudo-element repeats those bars rotated 45 degrees, yielding eight bars. A conic-gradient mask varies their opacity around the circle.</p> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@keyframes</span> <span class="n">Loader</span> <span class="p">{</span>
+  <span class="nt">from</span> <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="m">0turn</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nt">to</span>   <span class="p">{</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="m">1turn</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="nc">.loader</span> <span class="p">{</span> 
+  <span class="nl">animation</span><span class="p">:</span> <span class="n">Loader</span> <span class="m">1s</span> <span class="nf">steps</span><span class="p">(</span><span class="m">8</span><span class="p">)</span> <span class="nb">infinite</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">steps(8)</code> advances in eight jumps per second, rather than rotating smoothly.</p> <p>In the head, we’ll load the JavaScript before the stylesheets so their <code class="language-plaintext highlighter-rouge">onload</code> handlers exist:</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"view.js"</span> <span class="na">data-audio-url=</span><span class="s">"intro.mp3"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"view.css"</span> <span class="na">onload=</span><span class="s">"PageStyleLoaded()"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"animations.css"</span> <span class="na">onload=</span><span class="s">"PageAnimationsLoaded()"</span><span class="nt">&gt;</span>
+</code></pre></div></div> <p>The JavaScript captures <code class="language-plaintext highlighter-rouge">document.currentScript.dataset.audioUrl</code> during script execution. The application then injects the correct asset URL there.</p> <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">audioLoaded</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">pageStyleLoaded</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">pageAnimationsLoaded</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nf">CheckLoad</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">loading</span><span class="dl">'</span> <span class="o">||</span> <span class="o">!</span><span class="nx">audioLoaded</span> <span class="o">||</span> <span class="o">!</span><span class="nx">pageStyleLoaded</span> <span class="o">||</span> <span class="o">!</span><span class="nx">pageAnimationsLoaded</span><span class="p">)</span> 
+      <span class="k">return</span><span class="p">;</span>
+  <span class="nc">StartPage</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nf">AudioLoaded</span><span class="p">()</span> <span class="p">{</span> 
+  <span class="nx">audioLoaded</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> 
+  <span class="nc">CheckLoad</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nf">PageStyleLoaded</span><span class="p">()</span> <span class="p">{</span> 
+  <span class="nx">pageStyleLoaded</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> 
+  <span class="nc">CheckLoad</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nf">PageAnimationsLoaded</span><span class="p">()</span> <span class="p">{</span> 
+  <span class="nx">pageAnimationsLoaded</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> 
+  <span class="nc">CheckLoad</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOMContentLoaded</span><span class="dl">'</span><span class="p">,</span> <span class="nx">CheckLoad</span><span class="p">);</span>
+<span class="nx">audio</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">loadeddata</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nc">AudioLoaded</span><span class="p">());</span>
+</code></pre></div></div> <p>The <code class="language-plaintext highlighter-rouge">audio</code> object is created in the next step, before these listeners are registered. We should keep in mind that the <code class="language-plaintext highlighter-rouge">loadeddata</code> event means media data has become available; it does not guarantee that the entire track has downloaded or that playback will never stall.</p> <p><code class="language-plaintext highlighter-rouge">StartPage()</code> records the scene epoch and removes <code class="language-plaintext highlighter-rouge">.wait</code>:</p> <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Now</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">performance</span><span class="p">.</span><span class="nf">now</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nf">StartPage</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">start</span> <span class="o">=</span> <span class="nc">Now</span><span class="p">();</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">wait</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nc">StartAudio</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">performance.now()</code> gives elapsed milliseconds from a monotonic clock, avoiding wall-clock adjustments. CSS becomes active on rendering updates, so this is a practical shared epoch, not a guarantee of sample-accurate synchronization.</p> <h2 id="9-music-and-timing">9. Music and timing</h2> <p><img src="/assets/img/star-wars/timeline.svg" alt="The renderer's visual and audio timeline"></p> <p>Here are the timing values we’ll use:</p> <table> <thead> <tr> <th>Event</th> <th>Time after releasing <code class="language-plaintext highlighter-rouge">.wait</code> </th> </tr> </thead> <tbody> <tr> <td>Blue sentence starts / ends</td> <td>1 s / 6 s</td> </tr> <tr> <td>Audio file starts at offset zero</td> <td>6.3 s</td> </tr> <tr> <td>Logo starts / ends</td> <td>7 s / 20 s</td> </tr> <tr> <td>Crawl starts / ends</td> <td>18 s / 158 s</td> </tr> <tr> <td>Credits scheduling begins</td> <td>105 s, then a content-based delay</td> </tr> </tbody> </table> <p>The soundtrack starts <strong>700 ms before the logo</strong>, not when the logo appears.</p> <p>I used this timing in the renderer to match the soundtrack. All the delays depend on the audio file we use; the values in this article are specific to the file in my demo.</p> <p>We’ll create the audio object and control when playback starts:</p> <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">AUDIO_START_DELAY</span> <span class="o">=</span> <span class="mi">6300</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nf">CreateAudio</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">audio</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Audio</span><span class="p">(</span><span class="nx">audioSource</span><span class="p">);</span>
+  <span class="nx">audio</span><span class="p">.</span><span class="nx">autoplay</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="nx">audio</span><span class="p">.</span><span class="nx">muted</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="nx">audio</span><span class="p">.</span><span class="nx">preload</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">auto</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">audio</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">audio</span> <span class="o">=</span> <span class="nc">CreateAudio</span><span class="p">();</span>
+</code></pre></div></div> <p>We’d like to start the audio once it has loaded, but browser autoplay policies may require the user to interact with the page first. We’ll use a click handler to retry playback and seek to the appropriate position so the audio matches the ongoing animations.</p> <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">StartAudio</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">audio</span><span class="p">.</span><span class="nx">paused</span><span class="p">)</span> 
+    <span class="k">return</span><span class="p">;</span>
+  
+  <span class="kd">const</span> <span class="nx">deltaT</span> <span class="o">=</span> <span class="nc">Now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">start</span> <span class="o">-</span> <span class="nx">AUDIO_START_DELAY</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">deltaT</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">setTimeout</span><span class="p">(</span><span class="nx">StartAudio</span><span class="p">,</span> <span class="o">-</span><span class="nx">deltaT</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">deltaT</span> <span class="o">&gt;=</span> <span class="nx">audio</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span> 
+    <span class="k">return</span><span class="p">;</span>
+  <span class="nx">audio</span><span class="p">.</span><span class="nx">currentTime</span> <span class="o">=</span> <span class="nx">deltaT</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">;</span>
+  <span class="nx">audio</span><span class="p">.</span><span class="nf">play</span><span class="p">().</span><span class="nf">then</span><span class="p">(</span>
+    <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Audio started</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">).</span><span class="k">catch</span><span class="p">(</span>
+    <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">warn</span><span class="p">(</span><span class="dl">'</span><span class="s1">Audio will start when the user clicks on the page</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+<span class="nb">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nc">StartAudio</span><span class="p">());</span>
+</code></pre></div></div> <p>We’ll handle three cases:</p> <ol> <li> <strong>Too early:</strong> a negative <code class="language-plaintext highlighter-rouge">deltaT</code> schedules another attempt at the cue. A timeout may run late, so the next call recomputes the offset.</li> <li> <strong>On time or late:</strong> seek the track to the position it should have reached, then attempt playback. <code class="language-plaintext highlighter-rouge">currentTime</code> uses seconds; <code class="language-plaintext highlighter-rouge">performance.now()</code> and the delay use milliseconds, hence the division by 1000.</li> <li> <strong>Past the end:</strong> leave the finished track silent, rather than restarting it.</li> </ol> <p>For example, a click at scene time 12 seconds requests audio position <code class="language-plaintext highlighter-rouge">12 - 6.3 = 5.7</code> seconds. A click at 3 seconds schedules a future attempt; it does not start the music immediately. Because that later attempt is asynchronous, an early click may still fail to satisfy a browser’s autoplay policy. A click after the cue retries <code class="language-plaintext highlighter-rouge">play()</code> directly in the click handler.</p> <p>We’re using a <strong>seek-on-start synchronization</strong> approach. While audio is already playing, the early return prevents correction.</p> <h2 id="10-closing-credits">10. Closing credits</h2> <p>We’ll wait 105 seconds before scheduling the closing credits, then add a delay based on the text length.</p> <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">CREDITS_SHOW_DELAY</span> <span class="o">=</span> <span class="mi">105</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="c1">// Inside StartPage():</span>
+<span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">additional_delay</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="nc">ContentLength</span><span class="p">()</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2100</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nf">isNaN</span><span class="p">(</span><span class="nx">additional_delay</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">additional_delay</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">setTimeout</span><span class="p">(</span><span class="nx">show_credits</span><span class="p">,</span> <span class="nx">additional_delay</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">show_credits</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="nx">CREDITS_SHOW_DELAY</span><span class="p">);</span>
+</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">ContentLength()</code> reads <code class="language-plaintext highlighter-rouge">#content.getBoundingClientRect().height</code>, temporarily appends a <code class="language-plaintext highlighter-rouge">.paragraph</code> containing <code class="language-plaintext highlighter-rouge">A</code>, measures its height, removes it, and rounds the ratio. It returns zero for <code class="language-plaintext highlighter-rouge">NaN</code> or negative estimates.</p> <p>This is an approximate measure, not a count of rendered text lines. The content includes headings, margins, and spacing, and <code class="language-plaintext highlighter-rouge">getBoundingClientRect()</code> reflects transformed geometry. The temporary paragraph can also be at a different depth from the content it is meant to measure. I use the square-root formula as a <strong>heuristic</strong>; it is not derived from the scroll speed.</p> <p>For a returned estimate of 30, the extra wait is <code class="language-plaintext highlighter-rouge">sqrt(40) × 2.1 ≈ 13.28</code> seconds, putting the reveal at about 118.28 seconds. Even an estimate of zero adds <code class="language-plaintext highlighter-rouge">sqrt(10) × 2.1 ≈ 6.64</code> seconds.</p> <p>The reveal itself removes <code class="language-plaintext highlighter-rouge">display: none</code>, permits text selection, waits one more second, and starts a CSS opacity transition:</p> <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">show_credits</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">credits</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">hidden</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">credits</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">userSelect</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">credits</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">opacity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#credits</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">z-index</span><span class="p">:</span> <span class="m">50</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">transition</span><span class="p">:</span> <span class="nf">opacity</span> <span class="m">1.4s</span> <span class="nb">ease-in</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>We’ll leave a one-second gap so the browser can render the credits in a transparent state before the opacity changes.</p> <h2 id="11-keep-the-presentation-unobtrusive">11. Keep the presentation unobtrusive</h2> <p>Finally, we’ll use JavaScript to suppress the context menu and hide the pointer after inactivity. We’ll hide the pointer with a <code class="language-plaintext highlighter-rouge">.no-cursor</code> class. Whenever the mouse moves, we’ll remove that class, clear the previous timeout, and schedule a new one to hide the pointer after two seconds. We’ll also set an initial timer to hide it after three seconds if the mouse never moves:</p> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.no-cursor</span> <span class="p">{</span> 
+  <span class="nl">cursor</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Riccardo Ciucci. <br>Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme and hosted on <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.<br> Last updated: November 13, 2026. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "About",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-repos",
+          title: "Repos",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/repositories/";
+          },
+        },{id: "nav-projects",
+          title: "Projects",
+          description: "A non representative list of some side project",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "projects-building-a-small-mvc-library-in-php",
+          title: 'Building a small MVC library in PHP',
+          description: "Detailed pipeline on how to build a minimal Model-View-Control library for modern PHP",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/php-mvc/";
+            },},{id: "projects-calculate-𝜋-in-the-browser",
+          title: 'Calculate 𝜋 in the browser',
+          description: "Play with different methods of approximation of 𝜋",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/pi/";
+            },},{id: "projects-sorting-algorithms-overview",
+          title: 'Sorting algorithms overview',
+          description: "Explore eight sorting algorithms with interactive animations, C++ examples, and explanations of their time and space complexity.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/sorting-algorithms-overview/";
+            },},{id: "projects-star-wars-intro-maker",
+          title: 'Star Wars intro maker',
+          description: "Star Wars intro simulation using JavaScript and CSS",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/star-wars-intro-maker/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          document.getElementById("search-email-0").click();
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/Richie314", "_blank");
+        },
+      },{
+        id: 'social-linkedin',
+        title: 'LinkedIn',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/riccardo-ciucci-03bba8309", "_blank");
+        },
+      },{
+        id: 'social-telegram',
+        title: 'telegram',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://telegram.me/richie314", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> <script defer src="/assets/al_email_protect/js/email-protect.js"></script> <a id="search-email-0" href="#" class="al-email-protect" data-eu="riccardo" data-ed="ciucci.dev" hidden tabindex="-1" aria-hidden="true"></a></body> </html>

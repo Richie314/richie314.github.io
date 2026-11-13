@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+<title id="title">A tilted plane turns upward motion into recession</title><desc id="desc">A tilted plane turns upward motion into recession. Explanatory diagram for the opening crawl tutorial.</desc>
+<rect width="960" height="430" rx="16" fill="#101723"/>
+<style>text{font-family:Arial,sans-serif;fill:#edf2f8;font-size:18px} .muted{fill:#b8c6d7} .gold{fill:#e2c64e} .line{stroke:#8fa5bf;stroke-width:2;fill:none}</style>
+<text x="32" y="40" style="font-size:25px;font-weight:bold">A tilted plane turns upward motion into recession</text>
+<text x="50" y="90">Front view (schematic)</text>
+<path d="M70 340 L205 140 L295 140 L430 340 Z" stroke="#e2c64e" fill="#e2c64e" fill-opacity=".08" stroke-width="2"/>
+<path d="M105 290 H395 M140 240 H360 M175 190 H325" class="line"/>
+<path d="M250 320 V165 l-7 12 m7 -12 l7 12" stroke="#4bd5ee" fill="none" stroke-width="3"/>
+<circle cx="250" cy="340" r="5" fill="#4bd5ee"/>
+<text x="80" y="375">Bottom center = transform origin</text>
+<text x="510" y="90">Side view (schematic)</text>
+<path d="M550 340 H880 M820 340 V125" class="line" stroke-dasharray="6 6"/>
+<path d="M820 340 L680 140" stroke="#e2c64e" stroke-width="4"/>
+<path d="M820 280 Q800 280 785 290" class="line"/>
+<text x="770" y="265">35°</text>
+<text x="520" y="130" class="gold">Top recedes (negative z)</text>
+<text x="520" y="385" class="muted">Farther away → smaller projected text</text>
+</svg>
