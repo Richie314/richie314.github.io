@@ -12,8 +12,47 @@
   color: var(--global-text-color);
 }
 .form-label { display: inline-block; margin-bottom: 0.5rem; }
-.block-info {
-  border-left: 4px solid var(--global-theme-color);
-  padding: 0.75rem 1rem;
+// Callout icons supplement each banner's color without adding a visible label.
+.block-info,
+.block-warning,
+.block-danger,
+.block-success,
+.block-tip {
+  --callout-color: var(--global-theme-color);
+  --callout-icon: url("../img/callouts/info.svg");
+  position: relative;
+  border-left: 4px solid var(--callout-color);
+  padding: 0.75rem 1rem 0.75rem 3.25rem;
   background: var(--global-code-bg-color);
+  color: var(--global-text-color);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0.9rem;
+    left: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: var(--callout-color);
+    -webkit-mask: var(--callout-icon) center / contain no-repeat;
+    mask: var(--callout-icon) center / contain no-repeat;
+  }
+
+  > :last-child { margin-bottom: 0; }
+}
+
+.block-warning {
+  --callout-color: var(--global-warning-block, #d99a00);
+  --callout-icon: url("../img/callouts/warning.svg");
+}
+.block-danger {
+  --callout-color: var(--global-danger-block, #e05252);
+  --callout-icon: url("../img/callouts/danger.svg");
+}
+.block-success {
+  --callout-color: var(--global-success-block, #399b60);
+  --callout-icon: url("../img/callouts/success.svg");
+}
+.block-tip {
+  --callout-icon: url("../img/callouts/tip.svg");
 }

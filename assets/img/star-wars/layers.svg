@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400" viewBox="0 0 960 400" role="img" aria-labelledby="title desc">
+<title id="title">One frame, several independent layers</title><desc id="desc">One frame, several independent layers. Explanatory diagram for the opening crawl tutorial.</desc>
+<rect width="960" height="400" rx="16" fill="#101723"/>
+<style>text{font-family:Arial,sans-serif;fill:#edf2f8;font-size:18px} .muted{fill:#b8c6d7} .gold{fill:#e2c64e} .line{stroke:#8fa5bf;stroke-width:2;fill:none}</style>
+<text x="32" y="40" style="font-size:25px;font-weight:bold">One frame, several independent layers</text>
+<rect x="35" y="78" width="480" height="270" fill="black" stroke="#8fa5bf"/>
+<g fill="#ddd"><circle cx="70" cy="110" r="2"/><circle cx="450" cy="130" r="2"/><circle cx="130" cy="290" r="2"/><circle cx="475" cy="320" r="2"/><circle cx="250" cy="100" r="2"/></g>
+<path d="M100 340 L235 195 L315 195 L450 340 Z" fill="#e2c64e" fill-opacity=".12" stroke="#e2c64e"/>
+<text x="170" y="168" style="fill:#4bd5ee">Blue opening sentence</text>
+<text x="200" y="218" class="gold">SVG logo</text>
+<text x="190" y="298" class="gold">Tilted text plane</text>
+<text x="550" y="115">#screen: 16:9 clipping frame</text>
+<text x="550" y="158">Stars: static background</text>
+<text x="550" y="201">.intro / .logo: timed foreground</text>
+<text x="550" y="244">#board: perspective + rotation</text>
+<text x="550" y="287">#content: vertical movement</text>
+<text x="550" y="330">#credits: later overlay</text>
+<text x="35" y="380" class="muted">Layers are shown together for explanation; playback schedules their visibility.</text>
+</svg>

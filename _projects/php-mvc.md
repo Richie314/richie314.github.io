@@ -8,7 +8,7 @@ importance: 2
 category: education
 ---
 
-> ##### INFO
+> <span class="sr-only">Information: </span>
 >
 > The repo with the following code is avaible on [GitHub](https://github.com/Richie314/Php-Simple-MVC).
 {: .block-info }
