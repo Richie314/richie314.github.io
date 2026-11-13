@@ -57,6 +57,12 @@
   --callout-icon: url("../img/callouts/tip.svg");
 }
 
+figcaption { 
+  font-size: 0.875rem; 
+  color: var(--global-text-color) !important;
+  user-select: none;
+}
+
 // Keep the canvas palette legible in both site themes.
 .sorting-demo {
   --sort-array: #3268a8;
