@@ -1,0 +1,5 @@
+<ul class="article-tags" aria-label="Article topics">
+  {% for tag in page.tags %}
+  <li><a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">{{ tag | escape }}</a></li>
+  {% endfor %}
+</ul>

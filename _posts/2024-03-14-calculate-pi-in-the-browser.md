@@ -1,11 +1,12 @@
 ---
-layout: page
-title: Calculate 𝜋 in the browser
+layout: post
+tags: [math, numerical-methods, probability, computer-science, javascript, demo-avaible]
+title: Calculating 𝜋 in the browser
 description: >
   Play with different methods of approximation of 𝜋
-img: assets/img/pi/cover.svg
-importance: 2
-category: education
+thumbnail: assets/img/pi/cover.svg
+date: 2024-03-14
+last_modified_at: 2026-11-13
 ---
 
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/9.0.0/decimal.min.js"></script>

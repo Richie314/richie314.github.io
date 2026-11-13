@@ -103,3 +103,37 @@
   .sorting-demo { padding: 1rem; }
   .sorting-demo__layout { grid-template-columns: minmax(0, 1fr); }
 }
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 1rem;
+    background: var(--global-code-bg-color);
+    color: var(--global-text-color);
+    font-size: 0.8rem;
+  }
+}
+
+
+// Justify article prose in both native post layouts.
+.post-content,
+d-article {
+  p { text-align: justify; }
+  .sorting-demo p { text-align: start; }
+}
+
+.malus-plot {
+  min-width: 0;
+  > div { width: 100%; min-width: 0; }
+  details { margin-top: 0.75rem; font-size: 0.875rem; }
+  summary { cursor: pointer; }
+  img { width: 100%; height: auto; }
+}

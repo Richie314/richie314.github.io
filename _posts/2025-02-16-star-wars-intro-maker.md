@@ -1,11 +1,14 @@
 ---
-layout: page
+layout: post
+tags: [web-development, star-wars, animation, demo-avaible]
 title: Star Wars intro maker
 description: >
   Star Wars intro simulation using JavaScript and CSS
-img: assets/img/star-wars/cover.svg
-importance: 1
-category: fun
+thumbnail: assets/img/star-wars/cover.svg
+date: 2025-02-16
+last_modified_at: 2026-11-13
+toc:
+  beginning: true
 ---
 
 For my web development exam, I presented a complete and accurate recreation of the Star Wars intros, built entirely with HTML5, CSS3, and vanilla JavaScript.

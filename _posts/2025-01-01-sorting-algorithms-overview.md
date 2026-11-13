@@ -1,21 +1,38 @@
 ---
-layout: page
+layout: distill
+tags: [computer-science, algorithms, data-structures, cpp, visualization, demo-avaible]
 title: Sorting algorithms overview
-description: >
-  Explore eight sorting algorithms with interactive animations, C++ examples, and explanations of their time and space complexity.
-img: assets/img/sorting-algorithms-verview/cover.svg
+description: "Explore eight sorting algorithms with interactive animations, C++ examples, and explanations of their time and space complexity."
+thumbnail: assets/img/sorting-algorithms-verview/cover.svg
 math: true
-importance: 1
-category: education
+date: 2025-01-01
+last_modified_at: 2026-11-13
+authors:
+  - name: Riccardo Ciucci
+    url: https://ciucci.dev/
+bibliography: sorting-algorithms-overview.bib
+toc:
+  - name: "How to use the simulations"
+  - name: "What complexity tells us"
+  - name: "Bubble sort"
+  - name: "Cocktail shaker sort"
+  - name: "Insertion sort"
+  - name: "Selection sort"
+  - name: "Odd-even sort"
+  - name: "Shell sort"
+  - name: "Quicksort"
+  - name: "Merge sort"
+  - name: "What I suggest comparing"
 ---
 
+{% include post-topics.liquid %}
 <script defer src="{{ '/assets/js/projects/sorting.js' | relative_url }}"></script>
 
 I made these interactive sorting tools as a school project during my fourth year of high school.
 I wanted to turn the algorithms we were studying into something I could watch: values moving across an array, one comparison or exchange at a time.
 
 In this article, I’ll use those tools to explain eight sorting algorithms, from bubble sort to merge sort.
-We’ll look at the idea behind each one, follow a small example, and connect what happens on screen to its computational cost.
+We’ll look at the idea behind each one, follow a small example, and connect what happens on screen to its computational cost.<d-cite key="sorting-overview"></d-cite>
 
 ## How to use the simulations
 
@@ -41,7 +58,8 @@ The animations also wait at different points, so their elapsed times are not ben
 
 We’ll call the number of elements $$n$$.
 Time complexity describes how an algorithm’s work grows as $$n$$ increases, assuming comparisons, assignments, and swaps of individual values take constant time.
-Auxiliary space counts additional working memory, including recursive calls, but excludes the input array.
+Auxiliary space counts additional working memory, including recursive calls, but excludes the input array.<d-cite key="complexity"></d-cite>
+
 
 $$O(f(n))$$ gives an asymptotic upper bound; $$\Theta(f(n))$$ gives a tight growth bound.
 A quadratic algorithm does roughly four times as much work when we double a large input.
@@ -231,7 +249,7 @@ void SelectionSort(std::vector<T>& arr, std::size_t start, std::size_t end) {
 }
 ```
 
-## Odd–even sort
+## Odd-even sort
 
 Odd–even sort, also called brick sort, alternates between two sets of adjacent pairs.
 Using zero-based indices, one phase checks `(0, 1), (2, 3), …`; the other checks `(1, 2), (3, 4), …`.
@@ -316,7 +334,7 @@ void ShellSort(std::vector<T>& arr, std::size_t start, std::size_t end) {
 
 ## Quicksort
 
-Quicksort partitions an array around a **pivot**, then recursively sorts the two sides.
+Quicksort partitions an array around a **pivot**, then recursively sorts the two sides.<d-cite key="quicksort"></d-cite>
 In this version, we’ll choose the last value as the pivot, collect values less than or equal to it on the left, and finally place the pivot between the partitions.
 The pivot is then in its final sorted position.
 
@@ -376,7 +394,7 @@ void QuickSort(std::vector<T>& arr, std::size_t start, std::size_t end) {
 
 ## Merge sort
 
-Merge sort also divides the problem, but its split is always near the middle.
+Merge sort also divides the problem, but its split is always near the middle.<d-cite key="merge-sort"></d-cite>
 We’ll recursively sort the two halves, then merge them by repeatedly taking the smaller of their first unconsumed values.
 A one-element range is already sorted.
 
@@ -431,7 +449,7 @@ void MergeSort(std::vector<T>& arr, std::size_t start, std::size_t end) {
 }
 ```
 
- ## What I suggest comparing
+## What I suggest comparing
 
 Start with bubble sort and selection sort on arrays of the same size.
 Their comparison counts grow quadratically, but selection sort makes far fewer swaps.

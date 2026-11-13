@@ -129,8 +129,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: null # blog_name will be displayed in your blog page
-blog_description: null
+blog_name: Blog
+blog_description: A non-representative list of hobbies and side projects
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -177,9 +177,6 @@ newsletter:
 collections:
   books:
     output: true
-  projects:
-    output: true
-    permalink: /:collection/:title/
   teachings:
     output: true
 markdown: kramdown
@@ -204,6 +201,7 @@ exclude:
 - bin/
 - CLAUDE.md
 - Dockerfile
+- nginx.conf
 - docker-compose.yml
 - docker-compose-slim.yml
 - docs/
@@ -317,18 +315,16 @@ jekyll-archives:
     enabled:
     - year
     - tags
-    - categories
     permalinks:
       year: /blog/:year/
       tags: /blog/tag/:name/
-      categories: /blog/category/:name/
   books:
     enabled:
     - year
     - tags
     - categories
-display_tags: [] # these tags will be displayed on the front page of your blog
-display_categories: [] # these categories will be displayed on the front page of your blog
+display_tags: [physics, math, web-development, computer-science] # topic shortcuts on the blog index
+display_categories: [] # no category shortcuts on the blog index
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar

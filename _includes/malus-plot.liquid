@@ -1,0 +1,11 @@
+<figure class="malus-plot" aria-label="{{ include.caption | escape }}">
+  <pre><code class="language-plotly">{{ site.data.malus_plots[include.plot] | jsonify | escape }}</code></pre>
+  {% if include.plot2 %}
+  <pre><code class="language-plotly">{{ site.data.malus_plots[include.plot2] | jsonify | escape }}</code></pre>
+  {% endif %}
+  <figcaption>{{ include.caption }}</figcaption>
+  <details>
+    <summary>View static chart</summary>
+    <img src="{{ include.fallback | prepend: '/assets/img/malus-law/' | relative_url }}" alt="{{ include.caption | escape }}" loading="lazy">
+  </details>
+</figure>

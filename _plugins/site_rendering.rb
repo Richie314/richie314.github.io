@@ -57,7 +57,14 @@ end
 
 Liquid::Template.register_filter(CiucciRendering)
 Jekyll::Hooks.register [:pages, :documents], :post_render do |document|
-  next unless document.output_ext == ".html" && AlEmailProtect.enabled?(document.site)
+  next unless document.output_ext == ".html"
+
+  # Adjust the gem-owned related-posts heading without copying its template.
+  document.output = document.output.gsub(
+    ">Enjoy Reading This Article?</h2>",
+    ">Enjoyed reading this article?</h2>"
+  )
+  next unless AlEmailProtect.enabled?(document.site)
 
   document.output = CiucciRendering.protect_email(document.output)
 end
