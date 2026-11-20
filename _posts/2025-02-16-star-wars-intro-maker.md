@@ -2,8 +2,7 @@
 layout: post
 tags: [web-development, star-wars, animation, demo-avaible]
 title: Star Wars intro maker
-description: >
-  Star Wars intro simulation using JavaScript and CSS
+description: "Star Wars intro simulation using JavaScript and CSS"
 thumbnail: assets/img/star-wars/cover.svg
 date: 2025-02-16
 last_modified_at: 2026-11-13

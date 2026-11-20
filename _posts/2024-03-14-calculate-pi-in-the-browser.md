@@ -2,8 +2,7 @@
 layout: post
 tags: [math, numerical-methods, probability, computer-science, javascript, demo-avaible]
 title: Calculating 𝜋 in the browser
-description: >
-  Explore pi through polygon bounds, infinite series, elastic collisions, and random sampling, with interactive demonstrations of how each method converges.
+description: "Explore pi through polygon bounds, infinite series, elastic collisions, and random sampling, with interactive demonstrations of how each method converges."
 thumbnail: assets/img/pi/cover.svg
 date: 2024-03-14
 last_modified_at: 2026-11-13

@@ -56,6 +56,14 @@ module CiucciRendering
 end
 
 Liquid::Template.register_filter(CiucciRendering)
+Jekyll::Hooks.register :posts, :post_render do |post|
+  next unless post.output_ext == ".html"
+
+  post.output = post.output.sub(%r{</head>}i) do |closing_tag|
+    %(<meta name="robots" content="index, follow">\n#{closing_tag})
+  end
+end
+
 Jekyll::Hooks.register [:pages, :documents], :post_render do |document|
   next unless document.output_ext == ".html"
 
